@@ -18,7 +18,7 @@
             <div class="mb-1 pl-1">Select time step below:</div>
             <select class="custom-select" id="graph_source">
                 <option selected value="1">Snow - Daily</option>
-                <option value="2">Snow - Monthly</option>
+                <!-- <option value="2">Snow - Monthly</option>
                 <option value="10">Snow - Seasons</option>
                 <?php if ($this->isSetGrowthSeason->getFlag()){ ?>
                 <option value="11">Snow - Growing Season</option>
@@ -30,8 +30,8 @@
             <?php if ($this->isSetGrowthSeason->getFlag()){ ?>
                 <option value="25">Snow - Typical Year Growing Season</option>
             <?php } ?>
-                <option value="23">Snow - Typical Year Average</option>
-        </select>
+                <option value="23">Snow - Typical Year Average</option> -->
+            </select>
         </div>
     </div>
     
@@ -47,28 +47,13 @@
 
                     <optgroup label="Input Data">
                         <option selected value="temp">TEMP</option>
-                        <option value="precip">TOTPP</option>
-                        <option value="rain">RAIN</option>
-                        <option value="et">ETA</option>
+                        <option value="precip">PRECIP</option>
                     </optgroup>                                        
 
                     <optgroup label="Output Data">          
-                        <option value="snow">SNOF</option>
-                        <option value="rains">RAINS</option>
-                        <option value="rainns">RAINNS</option>
-                        <option value="snoa">SNOA</option>
-                        <option value="snom">SNOM</option>
-                        <option value="rssl">RSSL</option>
-                        <option value="rsi">RSI</option>
-                        <option value="tdsm">SNMT</option>
-                        <option value="rdsm">SNMR</option>
-                        <option value="snow_acc">SNTFmm</option>
-                        <option value="snowmelt">SNMF</option>
-                        <option value="et_above_g">ETasi</option>
-                        <option value="etfsas">ETfsas</option>
-                        <option value="et_above_re">ETasf</option>
-                        <option value="water_or_sr">WATisrf</option>
-                        <option value="snow_calc">SNTFcm</option>
+                        <option value="snow_mm">SNOW_MM</option>
+                        <option value="snow_cm">SNOW_CM</option>
+                        <option value="rain_mm">RAIN_MM</option>                       
                     </optgroup>
 
                     <?php if ($nValidationColumns > 0) { ?>
@@ -81,13 +66,7 @@
                         <?php } ?>
                         <?php if ($nValidationColumns > 2) { ?>
                             <option value="ucd3"><span data-toggle="tooltip" title="<?= $tooltips['UCD'] ?>">UCD3</span></option>
-                        <?php } ?>
-                        <?php if ($nValidationColumns > 3) { ?>
-                            <option value="ucd4"><span data-toggle="tooltip" title="<?= $tooltips['UCD'] ?>">UCD4</span></option>
-                        <?php } ?>
-                        <?php if ($nValidationColumns > 4) { ?>
-                            <option value="ucd5"><span data-toggle="tooltip" title="<?= $tooltips['UCD'] ?>">UCD5</span></option>
-                        <?php } ?>
+                        <?php } ?>                      
                     </optgroup>
                     <?php } ?>
                 </select>
@@ -104,28 +83,13 @@
                     
                     <optgroup label="Input Data">
                         <option value="temp">TEMP</option>
-                        <option value="precip">TOTPP</option>
-                        <option value="rain">RAIN</option>
-                        <option value="et">ETA</option>
-                    </optgroup>
-                                        
+                        <option value="precip">PRECIP</option>
+                    </optgroup>                                        
+
                     <optgroup label="Output Data">          
-                        <option value="snow">SNOF</option>
-                        <option value="rains">RAINS</option>
-                        <option value="rainns">RAINNS</option>
-                        <option value="snoa">SNOA</option>
-                        <option value="snom">SNOM</option>
-                        <option value="rssl">RSSL</option>
-                        <option value="rsi">RSI</option>
-                        <option value="tdsm">SNMT</option>
-                        <option value="rdsm">SNMR</option>
-                        <option value="snow_acc">SNTFmm</option>
-                        <option value="snowmelt">SNMF</option>
-                        <option value="et_above_g">ETasi</option>
-                        <option value="etfsas">ETfsas</option>
-                        <option value="et_above_re">ETasf</option>
-                        <option value="water_or_sr">WATisrf</option>
-                        <option value="snow_calc">SNTFcm</option>
+                        <option value="snow_mm">SNOW_MM</option>
+                        <option value="snow_cm">SNOW_CM</option>
+                        <option value="rain_mm">RAIN_MM</option>                       
                     </optgroup>
 
                     <?php if ($nValidationColumns > 0) { ?>
@@ -138,13 +102,7 @@
                         <?php } ?>
                         <?php if ($nValidationColumns > 2) { ?>
                             <option value="ucd3"><span data-toggle="tooltip" title="<?= $tooltips['UCD'] ?>">UCD3</span></option>
-                        <?php } ?>
-                        <?php if ($nValidationColumns > 3) { ?>
-                            <option value="ucd4"><span data-toggle="tooltip" title="<?= $tooltips['UCD'] ?>">UCD4</span></option>
-                        <?php } ?>
-                        <?php if ($nValidationColumns > 4) { ?>
-                            <option value="ucd5"><span data-toggle="tooltip" title="<?= $tooltips['UCD'] ?>">UCD5</span></option>
-                        <?php } ?>
+                        <?php } ?>                       
                     </optgroup>
                     <?php } ?>
                 </select>
@@ -161,28 +119,13 @@
                     
                     <optgroup label="Input Data">
                         <option value="temp">TEMP</option>
-                        <option value="precip">TOTPP</option>
-                        <option value="rain">RAIN</option>
-                        <option value="et">ETA</option>
+                        <option value="precip">PRECIP</option>
                     </optgroup>                                        
 
                     <optgroup label="Output Data">          
-                        <option value="snow">SNOF</option>
-                        <option value="rains">RAINS</option>
-                        <option value="rainns">RAINNS</option>
-                        <option value="snoa">SNOA</option>
-                        <option value="snom">SNOM</option>
-                        <option value="rssl">RSSL</option>
-                        <option value="rsi">RSI</option>
-                        <option value="tdsm">SNMT</option>
-                        <option value="rdsm">SNMR</option>
-                        <option value="snow_acc">SNTFmm</option>
-                        <option value="snowmelt">SNMF</option>
-                        <option value="et_above_g">ETasi</option>
-                        <option value="etfsas">ETfsas</option>
-                        <option value="et_above_re">ETasf</option>
-                        <option value="water_or_sr">WATisrf</option>
-                        <option value="snow_calc">SNTFcm</option>
+                        <option value="snow_mm">SNOW_MM</option>
+                        <option value="snow_cm">SNOW_CM</option>
+                        <option value="rain_mm">RAIN_MM</option>                       
                     </optgroup>
 
                     <?php if ($nValidationColumns > 0) { ?>
@@ -195,13 +138,7 @@
                         <?php } ?>
                         <?php if ($nValidationColumns > 2) { ?>
                             <option value="ucd3"><span data-toggle="tooltip" title="<?= $tooltips['UCD'] ?>">UCD3</span></option>
-                        <?php } ?>
-                        <?php if ($nValidationColumns > 3) { ?>
-                            <option value="ucd4"><span data-toggle="tooltip" title="<?= $tooltips['UCD'] ?>">UCD4</span></option>
-                        <?php } ?>
-                        <?php if ($nValidationColumns > 4) { ?>
-                            <option value="ucd5"><span data-toggle="tooltip" title="<?= $tooltips['UCD'] ?>">UCD5</span></option>
-                        <?php } ?>
+                        <?php } ?>                       
                     </optgroup>
                     <?php } ?>
                 </select>
@@ -218,28 +155,13 @@
                     
                     <optgroup label="Input Data">
                         <option value="temp">TEMP</option>
-                        <option value="precip">TOTPP</option>
-                        <option value="rain">RAIN</option>
-                        <option value="et">ETA</option>
+                        <option value="precip">PRECIP</option>
                     </optgroup>                                        
 
                     <optgroup label="Output Data">          
-                        <option value="snow">SNOF</option>
-                        <option value="rains">RAINS</option>
-                        <option value="rainns">RAINNS</option>
-                        <option value="snoa">SNOA</option>
-                        <option value="snom">SNOM</option>
-                        <option value="rssl">RSSL</option>
-                        <option value="rsi">RSI</option>
-                        <option value="tdsm">SNMT</option>
-                        <option value="rdsm">SNMR</option>
-                        <option value="snow_acc">SNTFmm</option>
-                        <option value="snowmelt">SNMF</option>
-                        <option value="et_above_g">ETasi</option>
-                        <option value="etfsas">ETfsas</option>
-                        <option value="et_above_re">ETasf</option>
-                        <option value="water_or_sr">WATisrf</option>
-                        <option value="snow_calc">SNTFcm</option>
+                        <option value="snow_mm">SNOW_MM</option>
+                        <option value="snow_cm">SNOW_CM</option>
+                        <option value="rain_mm">RAIN_MM</option>                       
                     </optgroup>
 
                     <?php if ($nValidationColumns > 0) { ?>
@@ -252,13 +174,7 @@
                         <?php } ?>
                         <?php if ($nValidationColumns > 2) { ?>
                             <option value="ucd3"><span data-toggle="tooltip" title="<?= $tooltips['UCD'] ?>">UCD3</span></option>
-                        <?php } ?>
-                        <?php if ($nValidationColumns > 3) { ?>
-                            <option value="ucd4"><span data-toggle="tooltip" title="<?= $tooltips['UCD'] ?>">UCD4</span></option>
-                        <?php } ?>
-                        <?php if ($nValidationColumns > 4) { ?>
-                            <option value="ucd5"><span data-toggle="tooltip" title="<?= $tooltips['UCD'] ?>">UCD5</span></option>
-                        <?php } ?>
+                        <?php } ?>                        
                     </optgroup>
                     <?php } ?>
                 </select>
@@ -308,30 +224,15 @@
             <div class="row py-1 pt-3">
                 <div class="col-12 d-flex justify-content-left">            
                     <a class="btn btn-outline-dark btn-sm col-hide-button toggle-vis" data-column="2"><span data-toggle="tooltip" title="<?= $tooltips['TEMP'] ?>">TEMP</span></a>
-                    <a class="btn btn-outline-dark btn-sm col-hide-button toggle-vis" data-column="3"><span data-toggle="tooltip" title="<?= $tooltips['TOTPP'] ?>">TOTPP</span></a>
-                    <a class="btn btn-outline-danger btn-sm active col-hide-button toggle-vis" data-column="4"><span data-toggle="tooltip" title="<?= $tooltips['RAIN'] ?>">RAIN</span></a>
+                    <a class="btn btn-outline-dark btn-sm col-hide-button toggle-vis" data-column="3"><span data-toggle="tooltip" title="<?= $tooltips['PRECIP'] ?>">PRECIP</span></a>
                 </div>
             </div>
 
             <div class="row py-1">
                 <div class="col-12 d-flex justify-content-left">            
-                    <a class="btn btn-outline-danger btn-sm active col-hide-button toggle-vis" data-column="5"><span data-toggle="tooltip" title="<?= $tooltips['SNOF'] ?>">SNOF</span></a>
-                    <a class="btn btn-outline-dark btn-sm col-hide-button toggle-vis" data-column="6"><span data-toggle="tooltip" title="<?= $tooltips['RAINS'] ?>">RAINS</span></a>
-                    <a class="btn btn-outline-dark btn-sm col-hide-button toggle-vis" data-column="7"><span data-toggle="tooltip" title="<?= $tooltips['RAINNS'] ?>">RAINNS</span></a>
-                    <a class="btn btn-outline-dark btn-sm col-hide-button toggle-vis" data-column="8"><span data-toggle="tooltip" title="<?= $tooltips['SNOA'] ?>">SNOA</span></a>
-                    <a class="btn btn-outline-dark btn-sm col-hide-button toggle-vis" data-column="9"><span data-toggle="tooltip" title="<?= $tooltips['SNOM'] ?>">SNOM</span></a>
-                    <a class="btn btn-outline-danger btn-sm active col-hide-button toggle-vis" data-column="10"><span data-toggle="tooltip" title="<?= $tooltips['RSSL'] ?>">RSSL</span></a>
-                    <a class="btn btn-outline-dark btn-sm col-hide-button toggle-vis" data-column="11"><span data-toggle="tooltip" title="<?= $tooltips['RSI'] ?>">RSI</span></a>
-                    <a class="btn btn-outline-danger btn-sm active col-hide-button toggle-vis" data-column="12"><span data-toggle="tooltip" title="<?= $tooltips['SNMT'] ?>">SNMT</span></a>
-                    <a class="btn btn-outline-danger btn-sm active col-hide-button toggle-vis" data-column="13"><span data-toggle="tooltip" title="<?= $tooltips['SNMR'] ?>">SNMR</span></a>
-                    <a class="btn btn-outline-dark btn-sm col-hide-button toggle-vis" data-column="14"><span data-toggle="tooltip" title="<?= $tooltips['SNTFmm'] ?>">SNTFmm</span></a>
-                    <a class="btn btn-outline-danger btn-sm active col-hide-button toggle-vis" data-column="15"><span data-toggle="tooltip" title="<?= $tooltips['SNMF'] ?>">SNMF</span></a>
-                    <a class="btn btn-outline-dark btn-sm col-hide-button toggle-vis" data-column="16"><span data-toggle="tooltip" title="<?= $tooltips['ETA'] ?>">ETA</span></a>
-                    <a class="btn btn-outline-dark btn-sm col-hide-button toggle-vis" data-column="17"><span data-toggle="tooltip" title="<?= $tooltips['ETasi'] ?>">ETasi</span></a>
-                    <a class="btn btn-outline-dark btn-sm col-hide-button toggle-vis" data-column="18"><span data-toggle="tooltip" title="<?= $tooltips['ETfsas'] ?>">ETfsas</span></a>
-                    <a class="btn btn-outline-dark btn-sm col-hide-button toggle-vis" data-column="19"><span data-toggle="tooltip" title="<?= $tooltips['ETasf'] ?>">ETasf</span></a>
-                    <a class="btn btn-outline-danger btn-sm active col-hide-button toggle-vis" data-column="20"><span data-toggle="tooltip" title="<?= $tooltips['WATisrf'] ?>">WATisrf</span></a>
-                    <a class="btn btn-outline-danger btn-sm active col-hide-button toggle-vis" data-column="21"><span data-toggle="tooltip" title="<?= $tooltips['SNTFcm'] ?>">SNTFcm</span></a>
+                    <a class="btn btn-outline-danger btn-sm active col-hide-button toggle-vis" data-column="4"><span data-toggle="tooltip" title="<?= $tooltips['SNOW_MM'] ?>">SNOW_MM</span></a>
+                    <a class="btn btn-outline-danger btn-sm active col-hide-button toggle-vis" data-column="5"><span data-toggle="tooltip" title="<?= $tooltips['SNOW_CM'] ?>">SNOW_CM</span></a>
+                    <a class="btn btn-outline-danger btn-sm active col-hide-button toggle-vis" data-column="6"><span data-toggle="tooltip" title="<?= $tooltips['RAIN_MM'] ?>">RAIN_MM</span></a>                    
                 </div>        
             </div>
 
@@ -348,16 +249,10 @@
                                 break;
                             case 2:
                                 $colName = 'UCD3';
-                                break;
-                            case 3:
-                                $colName = 'UCD4';
-                                break;
-                            case 4:
-                                $colName = 'UCD5';
-                                break;
+                                break;                           
                         }
                     ?>
-                        <a class="btn btn-outline-danger btn-sm active col-hide-button toggle-vis" data-column="<?= 22+$i ?>"><span data-toggle="tooltip" title="<?= $tooltips[$colName] ?>"><?= $colName ?></span></a>
+                        <a class="btn btn-outline-dark btn-sm col-hide-button toggle-vis" data-column="<?= 7+$i ?>"><span data-toggle="tooltip" title="<?= $tooltips[$colName] ?>"><?= $colName ?></span></a>
                     <?php } ?>            
                 </div>
             </div>
@@ -370,25 +265,10 @@
                     <tr>
                         <th scope="col">Statistic<br /><span id="stat_type"></th>
                         <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['TEMP'] ?>">TEMP</span> (&deg;C)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['TOTPP'] ?>">TOTPP</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['RAIN'] ?>">RAIN</span> (mm)</th>                
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['SNOF'] ?>">SNOF</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['RAINS'] ?>">RAINS</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['RAINNS'] ?>">RAINNS</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['SNOA'] ?>">SNOA</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['SNOM'] ?>">SNOM</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['RSSL'] ?>">RSSL</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['RSI'] ?>">RSI</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['SNMT'] ?>">SNMT</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['SNMR'] ?>">SNMR</span> (mm)</th>                
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['SNTFmm'] ?>">SNTFmm</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['SNMF'] ?>">SNMF</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['ETA'] ?>">ETA</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['ETasi'] ?>">ETasi</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['ETfsas'] ?>">ETfsas</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['ETasf'] ?>">ETasf</span> (mm)</th>                
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['WATisrf'] ?>">WATisrf</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['SNTFcm'] ?>">SNTFcm</span> (cm)</th>
+                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['PRECIP'] ?>">PRECIP</span> (mm)</th>
+                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['SNOW_MM'] ?>">SNOW_MM</span> (mm)</th>                
+                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['SNOW_CM'] ?>">SNOW_CM</span> (cm)</th>
+                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['RAIN_MM'] ?>">RAIN_MM</span> (mm)</th>                        
 
                         <?php for ($i = 0; $i < $nValidationColumns; $i++) {
                             switch ($i) {
@@ -400,13 +280,7 @@
                                     break;
                                 case 2:
                                     $colName = 'UCD3';
-                                    break;
-                                case 3:
-                                    $colName = 'UCD4';
-                                    break;
-                                case 4:
-                                    $colName = 'UCD5';
-                                    break;
+                                    break;                               
                             }
                         ?>
                             <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips[$colName] ?>"><?= $colName ?></span></th>
@@ -448,7 +322,7 @@
             <div class="mb-1 pl-1">Select time step for calibration stats:</div>
             <select class="custom-select" id="calib_type">
                 <option selected value="1">Daily</option>
-                <option value="2">Monthly</option>                    
+                <!-- <option value="2">Monthly</option>                    
                 <option value="10">Seasons</option>
                 <?php if ($this->isSetGrowthSeason->getFlag()) { ?>
                     <option value="11">Growing Season</option>
@@ -456,7 +330,7 @@
                 <option value="3">Yearly</option>
                 <option value="21">Typical Year Daily</option>
                 <option value="22">Typical Year Monthly</option>
-                <option value="24">Typical Year Seasons</option>
+                <option value="24">Typical Year Seasons</option> -->
                 <!-- <?php if ($this->isSetGrowthSeason->getFlag()) { ?>
                     <option value="25">Typical Year Growing Season</option>
                 <?php } ?>
@@ -468,7 +342,7 @@
     <div class="row borderedSection mx-5" id="calibrationWrapper">
         <div class="col-12">            
             <table class="table display cell-border compact text-center" id="calibDataTable">
-                <thead>
+                <thead>                    
                     <tr>                        
                         <th scope="col">Statistic</th>                        
                         <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips[$calibration['output1_field']] ?>"><?= $calibration['output1_field']?></span> vs <span data-toggle="tooltip" title="<?= $tooltips[$calibration['ucd1_field']] ?>"><?= $calibration['ucd1_field']?></span></th> 
@@ -614,53 +488,19 @@
                 case 'temp':
                     return 'TEMP (&deg;C)';                
                 case 'precip':
-                    return 'TOTPP (mm)';
-                case 'rain':
-                    return 'RAIN (mm)';
-                case 'et':
-                    return 'ETA (mm)';
+                    return 'PRECIP (mm)';               
                 case 'ucd1': 
                     return 'UCD1';
                 case 'ucd2': 
                     return 'UCD2';
                 case 'ucd3': 
-                    return 'UCD3';
-                case 'ucd4': 
-                    return 'UCD4';
-                case 'ucd5': 
-                    return 'UCD5';
-                case 'snow':
-                    return 'SNOF (mm)';
-                case 'rains': 
-                    return 'RAINS (mm)';
-                case 'rainns': 
-                    return 'RAINNS (mm)';
-                case 'snoa':
-                    return 'SNOA (mm)';
-                case 'snom': 
-                    return 'SNOM (mm)';                
-                case 'rssl': 
-                    return 'RSSL (mm)';
-                case 'rsi':
-                    return 'RSI (mm)';
-                case 'tdsm': 
-                    return 'SNMT (mm)';
-                case 'rdsm': 
-                    return 'SNMR (mm)';
-                case 'snow_acc': 
-                    return 'SNTFmm (mm)';
-                case 'snowmelt': 
-                    return 'SNMF (mm)';
-                case 'et_above_g': 
-                    return 'ETasi (mm)';
-                case 'etfsas':
-                    return 'ETfsas (mm)';
-                case 'et_above_re':
-                    return 'ETasf';
-                case 'water_or_sr': 
-                    return 'WATisrf (mm)';
-                case 'snow_calc': 
-                    return 'SNTFcm (cm)';            
+                    return 'UCD3';                
+                case 'snow_mm':
+                    return 'SNOW_MM (mm)';
+                case 'snow_mm': 
+                    return 'SNOW_CM (cm)';
+                case 'rain_mm': 
+                    return 'RAIN_MM (mm)';                   
             }        
         },
                 
@@ -1115,7 +955,7 @@
                     className: "dt-head-center dt-body-center"
                 },
                 {
-                    targets: [1, 2, 5, 6, 7, 8, 10, 13, 15, 16, 17, 18],
+                    targets: [1, 2, 6, 7, 8],
                     visible: false
                 }
             ],

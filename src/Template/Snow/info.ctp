@@ -8,7 +8,7 @@
         <div class="table-responsive text-left">
 
             <h5>On the Analysis Tab the user must provide the following:</h5>                
-
+<?/*
             <table class="table table-bordered text-center my-3">
                 <thead class="thead-dark">
                     <tr class="table-primary" style="font-style:italic">
@@ -99,5 +99,6 @@
             <h5>Consult section <a href="<?= $this->Url->build('/main/index#chapter_3.3');?>">3.3.</a> and section <a href="<?= $this->Url->build('/main/index#chapter_3.4');?>">3.4.</a> for more details.</h5>
         </div> 
     </div>
+    */ ?>
    
 </div>

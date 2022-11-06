@@ -463,7 +463,7 @@
                 <div class="mb-1 pl-1">Select time step for calibration stats:</div>
                 <select class="custom-select" id="calib_type">
                     <option selected value="1">Daily</option>
-                    <option value="2">Monthly</option>                    
+                    <!-- <option value="2">Monthly</option>                    
                     <option value="10">Seasons</option>
                     <?php if ($this->isSetGrowthSeason->getFlag()) { ?>
                         <option value="11">Growing Season</option>
@@ -471,7 +471,7 @@
                     <option value="3">Yearly</option>
                     <option value="21">Typical Year Daily</option>
                     <option value="22">Typical Year Monthly</option>
-                    <option value="24">Typical Year Seasons</option>
+                    <option value="24">Typical Year Seasons</option> -->
                     <!-- <?php if ($this->isSetGrowthSeason->getFlag()) { ?>
                         <option value="25">Typical Year Growing Season</option>
                     <?php } ?> -->

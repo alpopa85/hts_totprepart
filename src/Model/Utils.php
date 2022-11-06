@@ -1467,26 +1467,10 @@ class Utils
                 $item->time_index,
                 $item->time_name,
                 Utils::formatDataDecimals('temp', $item->temp),
-                Utils::formatDataDecimals('precip', $item->precip),
-                Utils::formatDataDecimals('rain', $item->rain),
+                Utils::formatDataDecimals('precip', $item->precip),                
                 Utils::formatDataDecimals('snow_mm', $item->snow_mm),
-                Utils::formatDataDecimals('rains', $item->rains),
-                Utils::formatDataDecimals('rainns', $item->rainns),
-                Utils::formatDataDecimals('snoa', $item->snoa),
-                Utils::formatDataDecimals('snom', $item->snom),
-                Utils::formatDataDecimals('rssl', $item->rssl),
-                Utils::formatDataDecimals('rsi', $item->rsi),
-                Utils::formatDataDecimals('tdsm', $item->tdsm),
-                Utils::formatDataDecimals('rdsm', $item->rdsm),
-                Utils::formatDataDecimals('snow_acc', $item->snow_acc),
-                Utils::formatDataDecimals('snowmelt', $item->snowmelt),
-                Utils::formatDataDecimals('et', $item->et),
-                Utils::formatDataDecimals('et_above_g', $item->et_above_g),
-                Utils::formatDataDecimals('etfsas', $item->etfsas),
-                Utils::formatDataDecimals('et_above_re', $item->et_above_re),
-                // Utils::formatDataDecimals('watisri', $item->watisri),
-                Utils::formatDataDecimals('water_or_sr', $item->water_or_sr),
-                Utils::formatDataDecimals('snow_calc', $item->snow_calc)
+                Utils::formatDataDecimals('snow_cm', $item->snow_cm),
+                Utils::formatDataDecimals('rain_mm', $item->rain_mm)                
             );
 
             // add validation data fields
@@ -3214,9 +3198,9 @@ class Utils
 
         self::removeDatasetFromTable('SnowData', $id);        
 
-        self::removeSnowAveragingDataset($id);
+        // self::removeSnowAveragingDataset($id);
 
-        self::setUserSnow(0);
+        self::setUserOutputReady(0);
     }
 
     public static function removeSnowAveragingDataset($id = null)
@@ -3309,108 +3293,28 @@ class Utils
             // input
             'temp' => 'temp',
             'precip' => 'precip',
-            'rain' => 'rain',
-            'et' => 'et',
             // validation
             'ucd1' => 'ucd1',
             'ucd2' => 'ucd2',
             'ucd3' => 'ucd3',
-            'ucd4' => 'ucd4',
-            'ucd5' => 'ucd5',
             // snow
-            'snow' => 'snow_mm',
-            'rains' => 'rains',
-            'rainns' => 'rainns',
-            'snoa' => 'snoa',
-            'snom' => 'snom',
-            'rssl' => 'rssl',
-            'rsi' => 'rsi',            
-            'tdsm' => 'tdsm',
-            'rdsm' => 'rdsm',
-            'snow_acc' => 'snow_acc',
-            'snowmelt' => 'snowmelt',
-            'et_above_g' => 'et_above_g',
-            'etfsas' => 'etfsas',
-            'et_above_re' => 'et_above_re',
-            'water_or_sr' => 'water_or_sr',
-            'snow_calc' => 'snow_calc',
-            // soil
-            'inf_cap_corr' => 'inf_cap_corr',
-            'drafre' => 'drafre',
-            'drain_corr' => 'drain_corr',
-            'drain_boost_excess' => 'drain_boost_excess',
-            'drain_boost_oversat' => 'drain_boost_oversat',
-            'drain_total' => 'drain_total',
-            'etisi' => 'etisi',
-            'et_corr' => 'et_corr',
-            'etfsas' => 'etfsas',
-            'swcint' => 'swcint',
-            'swc_corr_sat' => 'swc_corr_sat',
-            'swc_corr_sat_pc' => 'swc_corr_sat_pc',
-            'sr_exc' => 'sr_exc',
-            'sr_exc_less_drain' => 'sr_exc_less_drain',
-            'sr_sat' => 'sr_sat',
-            'sr_sat_less_drain' => 'sr_sat_less_drain',
-            'sr_total' => 'sr_total',
-            'sr_total_less_drain' => 'sr_total_less_drain',
-            'net_gain' => 'net_gain',
-            'net_loss' => 'net_loss',
-            'days_low_swc' => 'days_low_swc',
-            'days_high_swc' => 'days_high_swc'
+            'snow_mm' => 'snow_mm',
+            'snow_cm' => 'snow_cm',
+            'rain_mm' => 'rain_mm',            
         ];
 
         $graphTypeTableMapper = [
             // input
             'temp' => 'InputData',
             'precip' => 'InputData',
-            'rain' => 'InputData',
-            'et' => 'InputData',
             // validation
             'ucd1' => 'InputData',
             'ucd2' => 'InputData',
             'ucd3' => 'InputData',
-            'ucd4' => 'InputData',
-            'ucd5' => 'InputData',        
             // snow
-            'snow' => 'SnowData',
-            'rains' => 'SnowData',
-            'rainns' => 'SnowData',
-            'snoa' => 'SnowData',
-            'snom' => 'SnowData',
-            'rssl' => 'SnowData',
-            'rsi' => 'SnowData',            
-            'tdsm' => 'SnowData',
-            'rdsm' => 'SnowData',
-            'snow_acc' => 'SnowData',
-            'snowmelt' => 'SnowData',
-            'et_above_g' => 'SnowData',
-            'etfsas' => 'SnowData',
-            'et_above_re' => 'SnowData',
-            'water_or_sr' => 'SnowData',
-            'snow_calc' => 'SnowData',
-            // soil            
-            'inf_cap_corr' => 'SoilWaterData',
-            'drafre' => 'SoilWaterData',
-            'drain_corr' => 'SoilWaterData',
-            'drain_boost_excess' => 'SoilWaterData',
-            'drain_boost_oversat' => 'SoilWaterData',
-            'drain_total' => 'SoilWaterData',
-            'etisi' => 'SoilWaterData',
-            'et_corr' => 'SoilWaterData',
-            'etfsas' => 'SoilWaterData',
-            'swcint' => 'SoilWaterData',
-            'swc_corr_sat' => 'SoilWaterData',
-            'swc_corr_sat_pc' => 'SoilWaterData',
-            'sr_exc' => 'SoilWaterData',
-            'sr_exc_less_drain' => 'SoilWaterData',
-            'sr_sat' => 'SoilWaterData',
-            'sr_sat_less_drain' => 'SoilWaterData',
-            'sr_total' => 'SoilWaterData',
-            'sr_total_less_drain' => 'SoilWaterData',
-            'net_gain' => 'SoilWaterData',
-            'net_loss' => 'SoilWaterData',
-            'days_low_swc' => 'SoilWaterData',
-            'days_high_swc' => 'SoilWaterData'
+            'snow_mm' => 'SnowData',
+            'snow_cm' => 'SnowData',
+            'rain_mm' => 'SnowData',            
         ];
 
         $graphSourceTableMapper = [
@@ -3777,7 +3681,7 @@ class Utils
             ->first();
 
             if ($user instanceof User) {
-                if ($user->snow) {
+                if ($user->output_ready) {
                     return true;
                 } else {
                     return false;
@@ -4119,7 +4023,10 @@ class Utils
             'GS_end_day' => 'Growth Season End Day',
             'GS_end_month' => 'Growth Season End Month',
             // params
-            
+            'PRECIP_TO_SNOW' => 'Percentage of precipitation converted to snowfall (mm) based on temperature',
+            'PRECIP_TO_SNOW_val' => 'Values between 0 and 100',
+            'SNOW_MM_TO_CM' => 'Snowfall (mm) to snowfall (cm) conversion factor based on temperature',
+            'SNOW_MM_TO_CM_val' => 'Values between 0 and 10',
             // output
             'SNOW_MM' => 'Snow fall amount (mm)',
             'SNOW_CM' => 'Snow fall amount (cm)',
@@ -4144,15 +4051,7 @@ class Utils
 
             if(strcmp($key, 'precip') == 0){
                 return 'PRECIP (mm)';
-            }
-
-            if(strcmp($key, 'rain') == 0){
-                return 'RAIN (mm)';
-            }
-
-            if(strcmp($key, 'et') == 0){
-                return 'ETA (mm)';
-            }
+            }          
 
             if(strcmp($key, 'ucd1') == 0){
                 return 'UCD1';
@@ -4164,177 +4063,20 @@ class Utils
 
             if(strcmp($key, 'ucd3') == 0){
                 return 'UCD3';
-            }
-
-            if(strcmp($key, 'ucd4') == 0){
-                return 'UCD4';
-            }        
-
-            if(strcmp($key, 'ucd5') == 0){
-                return 'UCD5';
-            }        
+            }       
             
         // snow
             if(strcmp($key, 'snow_mm') == 0){
-                return 'SNOF (mm)';
+                return 'SNOW_MM (mm)';
             }
 
-            if(strcmp($key, 'rains') == 0){
-                return 'RAINS (mm)';
+            if(strcmp($key, 'snow_cm') == 0){
+                return 'SNOW_CM (cm)';
             }
 
-            if(strcmp($key, 'rainns') == 0){
-                return 'RAINNS (mm)';
-            }
-
-            if(strcmp($key, 'snoa') == 0){
-                return 'SNOA (mm)';
-            }
-
-            if(strcmp($key, 'snom') == 0){
-                return 'SNOM (mm)';
-            }
-
-            if(strcmp($key, 'rssl') == 0){
-                return 'RSSL (mm)';
-            }
-
-            if(strcmp($key, 'rsi') == 0){
-                return 'RSI (mm)';
-            }
-
-            if(strcmp($key, 'tdsm') == 0){
-                return 'SNMT (mm)';
-            }
-
-            if(strcmp($key, 'rdsm') == 0){
-                return 'SNMR (mm)';
-            }
-
-            if(strcmp($key, 'snow_acc') == 0){
-                return 'SNTFmm (mm)';
-            }
-
-            if(strcmp($key, 'snowmelt') == 0){
-                return 'SNMF (mm)';
-            }
-
-            if(strcmp($key, 'et_above_g') == 0){
-                return 'ETasi (mm)';
-            }
-
-            if(strcmp($key, 'et_above_re') == 0){
-                return 'ETasf (mm)';
-            }
-
-            if(strcmp($key, 'etfsas') == 0){
-                return 'ETfsas (mm)';
-            }
-
-            if(strcmp($key, 'watisri') == 0){
-                return 'WATisri (mm)';
-            }
-
-            if(strcmp($key, 'water_or_sr') == 0){
-                return 'WATisrf (mm)';
-            }
-
-            if(strcmp($key, 'snow_calc') == 0){
-                return 'SNTFcm (cm)';
-            }     
-
-        // soil moisture    
-            if(strcmp($key, 'infcap') == 0){
-                return 'INFcap (mm)';
-            }
-
-            if(strcmp($key, 'inf_cap_corr') == 0){
-                return 'INFact (mm)';
-            }
-
-            if(strcmp($key, 'dracap') == 0){
-                return 'DRAcap (mm)';
-            }
-
-            if(strcmp($key, 'drafre') == 0){
-                return 'DRAfre (mm)';
-            }
-
-            if(strcmp($key, 'drain_corr') == 0){
-                return 'DRAfin (mm)';
-            }
-
-            if(strcmp($key, 'drain_boost_excess') == 0){
-                return 'DRAbinf (mm)';
-            }
-
-            if(strcmp($key, 'drain_boost_oversat') == 0){
-                return 'DRAoss(mm)';
-            }
-
-            if(strcmp($key, 'drain_total') == 0){
-                return 'DRAact (mm)';
-            }
-
-            if(strcmp($key, 'etisi') == 0){
-                return 'ETisi (mm)';
+            if(strcmp($key, 'rain_mm') == 0){
+                return 'RAIN_MM (mm)';
             }            
-
-            if(strcmp($key, 'et_corr') == 0){
-                return 'ETcds (mm)';
-            }
-
-            if(strcmp($key, 'swcint') == 0){
-                return 'SWCint (mm)';
-            }
-
-            if(strcmp($key, 'swc_corr_sat') == 0){
-                return 'SWCfinmm (mm)';
-            }   
-            
-            if(strcmp($key, 'swc_corr_sat_pc') == 0){
-                return 'SWCfin (%)';
-            }   
-
-            if(strcmp($key, 'sr_exc') == 0){
-                return 'SReinf (mm)';
-            }   
-
-            if(strcmp($key, 'sr_exc_less_drain') == 0){
-                return 'SReinfDB (mm)';
-            }   
-
-            if(strcmp($key, 'sr_sat') == 0){
-                return 'SResas (mm)';
-            }   
-            
-            if(strcmp($key, 'sr_sat_less_drain') == 0){
-                return 'SResasDB (mm)';
-            }   
-
-            if(strcmp($key, 'sr_total') == 0){
-                return 'SRTint (mm)';
-            }   
-
-            if(strcmp($key, 'sr_total_less_drain') == 0){
-                return 'SRTact (mm)';
-            }
-
-            if(strcmp($key, 'net_gain') == 0){
-                return 'SWCgain (mm)';
-            }   
-            
-            if(strcmp($key, 'net_loss') == 0){
-                return 'SWCloss (mm)';
-            }             
-
-            if(strcmp($key, 'days_low_swc') == 0){
-                return 'SWClow';
-            }
-
-            if(strcmp($key, 'days_high_swc') == 0){
-                return 'SWChigh';
-            }
 
         // metadata
             if(strcmp($key, 'gs_start_day') == 0){

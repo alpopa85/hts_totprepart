@@ -15,30 +15,15 @@
 <div class="row py-1 pt-3 px-5 field-buttons">
     <div class="col-12 d-flex justify-content-left">            
         <a class="btn btn-outline-dark btn-sm col-hide-button toggle-vis" data-column="2"><span data-toggle="tooltip" title="<?= $tooltips['TEMP'] ?>">TEMP</span></a>
-        <a class="btn btn-outline-dark btn-sm col-hide-button toggle-vis" data-column="3"><span data-toggle="tooltip" title="<?= $tooltips['TOTPP'] ?>">TOTPP</span></a>
-        <a class="btn btn-outline-danger btn-sm active col-hide-button toggle-vis" data-column="4"><span data-toggle="tooltip" title="<?= $tooltips['RAIN'] ?>">RAIN</span></a>
+        <a class="btn btn-outline-danger btn-sm active col-hide-button toggle-vis" data-column="3"><span data-toggle="tooltip" title="<?= $tooltips['PRECIP'] ?>">PRECIP</span></a>
     </div>
 </div>
 
 <div class="row py-1 px-5 field-buttons">
     <div class="col-12 d-flex justify-content-left">            
-        <a class="btn btn-outline-danger btn-sm active col-hide-button toggle-vis" data-column="5"><span data-toggle="tooltip" title="<?= $tooltips['SNOF'] ?>">SNOF</span></a>
-        <a class="btn btn-outline-dark btn-sm col-hide-button toggle-vis" data-column="6"><span data-toggle="tooltip" title="<?= $tooltips['RAINS'] ?>">RAINS</span></a>
-        <a class="btn btn-outline-dark btn-sm col-hide-button toggle-vis" data-column="7"><span data-toggle="tooltip" title="<?= $tooltips['RAINNS'] ?>">RAINNS</span></a>
-        <a class="btn btn-outline-dark btn-sm col-hide-button toggle-vis" data-column="8"><span data-toggle="tooltip" title="<?= $tooltips['SNOA'] ?>">SNOA</span></a>
-        <a class="btn btn-outline-dark btn-sm col-hide-button toggle-vis" data-column="9"><span data-toggle="tooltip" title="<?= $tooltips['SNOM'] ?>">SNOM</span></a>
-        <a class="btn btn-outline-danger btn-sm active col-hide-button toggle-vis" data-column="10"><span data-toggle="tooltip" title="<?= $tooltips['RSSL'] ?>">RSSL</span></a>
-        <a class="btn btn-outline-dark btn-sm col-hide-button toggle-vis" data-column="11"><span data-toggle="tooltip" title="<?= $tooltips['RSI'] ?>">RSI</span></a>
-        <a class="btn btn-outline-danger btn-sm active col-hide-button toggle-vis" data-column="12"><span data-toggle="tooltip" title="<?= $tooltips['SNMT'] ?>">SNMT</span></a>
-        <a class="btn btn-outline-danger btn-sm active col-hide-button toggle-vis" data-column="13"><span data-toggle="tooltip" title="<?= $tooltips['SNMR'] ?>">SNMR</span></a>
-        <a class="btn btn-outline-dark btn-sm col-hide-button toggle-vis" data-column="14"><span data-toggle="tooltip" title="<?= $tooltips['SNTFmm'] ?>">SNTFmm</span></a>
-        <a class="btn btn-outline-danger btn-sm active col-hide-button toggle-vis" data-column="15"><span data-toggle="tooltip" title="<?= $tooltips['SNMF'] ?>">SNMF</span></a>
-        <a class="btn btn-outline-dark btn-sm col-hide-button toggle-vis" data-column="16"><span data-toggle="tooltip" title="<?= $tooltips['ETA'] ?>">ETA</span></a>
-        <a class="btn btn-outline-dark btn-sm col-hide-button toggle-vis" data-column="17"><span data-toggle="tooltip" title="<?= $tooltips['ETasi'] ?>">ETasi</span></a>
-        <a class="btn btn-outline-dark btn-sm col-hide-button toggle-vis" data-column="18"><span data-toggle="tooltip" title="<?= $tooltips['ETfsas'] ?>">ETfsas</span></a>
-        <a class="btn btn-outline-dark btn-sm col-hide-button toggle-vis" data-column="19"><span data-toggle="tooltip" title="<?= $tooltips['ETasf'] ?>">ETasf</span></a>
-        <a class="btn btn-outline-danger btn-sm active col-hide-button toggle-vis" data-column="20"><span data-toggle="tooltip" title="<?= $tooltips['WATisrf'] ?>">WATisrf</span></a>
-        <a class="btn btn-outline-danger btn-sm active col-hide-button toggle-vis" data-column="21"><span data-toggle="tooltip" title="<?= $tooltips['SNTFcm'] ?>">SNTFcm</span></a>
+        <a class="btn btn-outline-danger btn-sm active col-hide-button toggle-vis" data-column="4"><span data-toggle="tooltip" title="<?= $tooltips['SNOW_MM'] ?>">SNOW_MM</span></a>
+        <a class="btn btn-outline-danger btn-sm active col-hide-button toggle-vis" data-column="5"><span data-toggle="tooltip" title="<?= $tooltips['SNOW_CM'] ?>">SNOW_CM</span></a>
+        <a class="btn btn-outline-danger btn-sm active col-hide-button toggle-vis" data-column="6"><span data-toggle="tooltip" title="<?= $tooltips['RAIN_MM'] ?>">RAIN_MM</span></a>        
     </div>        
 </div>
 
@@ -55,16 +40,10 @@
                     break;
                 case 2:
                     $colName = 'UCD3';
-                    break;
-                case 3:
-                    $colName = 'UCD4';
-                    break;
-                case 4:
-                    $colName = 'UCD5';
-                    break;
+                    break;                
             }
         ?>
-            <a class="btn btn-outline-danger btn-sm active col-hide-button toggle-vis" data-column="<?= 22+$i ?>"><span data-toggle="tooltip" title="<?= $tooltips[$colName] ?>"><?= $colName ?></span></a>
+            <a class="btn btn-outline-dark btn-sm col-hide-button toggle-vis" data-column="<?= 7+$i ?>"><span data-toggle="tooltip" title="<?= $tooltips[$colName] ?>"><?= $colName ?></span></a>
         <?php } ?>            
     </div>
 </div>
@@ -76,7 +55,7 @@
             <div class="mb-1 pl-1">Select time step below:</div>
             <select class="custom-select" id="graph_source">
                 <option selected value="1">Snow - Daily</option>
-                <option value="2">Snow - Monthly</option>
+                <!-- <option value="2">Snow - Monthly</option>
                 <option value="10">Snow - Seasons</option>
                 <?php if ($this->isSetGrowthSeason->getFlag()) { ?>
                     <option value="11">Snow - Growing Season</option>
@@ -88,7 +67,7 @@
                 <?php if ($this->isSetGrowthSeason->getFlag()) { ?>
                     <option value="25">Snow - Typical Year Growing Season</option>
                 <?php } ?>
-                <option value="23">Snow - Typical Year Average</option>
+                <option value="23">Snow - Typical Year Average</option> -->
             </select>
         </div>
     </div>
@@ -101,25 +80,10 @@
                         <th scope="col">Index</th>
                         <th scope="col" class="date-col">Date</th>
                         <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['TEMP'] ?>">TEMP</span> (&deg;C)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['TOTPP'] ?>">TOTPP</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['RAIN'] ?>">RAIN</span> (mm)</th>                
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['SNOF'] ?>">SNOF</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['RAINS'] ?>">RAINS</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['RAINNS'] ?>">RAINNS</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['SNOA'] ?>">SNOA</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['SNOM'] ?>">SNOM</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['RSSL'] ?>">RSSL</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['RSI'] ?>">RSI</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['SNMT'] ?>">SNMT</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['SNMR'] ?>">SNMR</span> (mm)</th>                
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['SNTFmm'] ?>">SNTFmm</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['SNMF'] ?>">SNMF</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['ETA'] ?>">ETA</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['ETasi'] ?>">ETasi</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['ETfsas'] ?>">ETfsas</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['ETasf'] ?>">ETasf</span> (mm)</th>                
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['WATisrf'] ?>">WATisrf</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['SNTFcm'] ?>">SNTFcm</span> (cm)</th>
+                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['PRECIP'] ?>">PRECIP</span> (mm)</th>
+                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['SNOW_MM'] ?>">SNOW_MM</span> (mm)</th>                
+                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['SNOW_CM'] ?>">SNOW_CM</span> (cm)</th>
+                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['RAIN_MM'] ?>">RAIN_MM</span> (mm)</th>                        
                         
                         <?php for ($i = 0; $i < $nValidationColumns; $i++) {
                             switch ($i) {
@@ -131,13 +95,7 @@
                                     break;
                                 case 2:
                                     $colName = 'UCD3';
-                                    break;
-                                case 3:
-                                    $colName = 'UCD4';
-                                    break;
-                                case 4:
-                                    $colName = 'UCD5';
-                                    break;
+                                    break;                                
                             }
                         ?>
                             <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips[$colName] ?>"><?= $colName ?></span></th>
@@ -181,25 +139,10 @@
                     <tr>
                         <th scope="col">Statistic<br /><span id="stat_type"></th>
                         <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['TEMP'] ?>">TEMP</span> (&deg;C)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['TOTPP'] ?>">TOTPP</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['RAIN'] ?>">RAIN</span> (mm)</th>                
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['SNOF'] ?>">SNOF</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['RAINS'] ?>">RAINS</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['RAINNS'] ?>">RAINNS</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['SNOA'] ?>">SNOA</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['SNOM'] ?>">SNOM</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['RSSL'] ?>">RSSL</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['RSI'] ?>">RSI</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['SNMT'] ?>">SNMT</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['SNMR'] ?>">SNMR</span> (mm)</th>                
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['SNTFmm'] ?>">SNTFmm</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['SNMF'] ?>">SNMF</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['ETA'] ?>">ETA</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['ETasi'] ?>">ETasi</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['ETfsas'] ?>">ETfsas</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['ETasf'] ?>">ETasf</span> (mm)</th>                
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['WATisrf'] ?>">WATisrf</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['SNTFcm'] ?>">SNTFcm</span> (cm)</th>
+                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['PRECIP'] ?>">PRECIP</span> (mm)</th>
+                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['SNOW_MM'] ?>">SNOW_MM</span> (mm)</th>                
+                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['SNOW_CM'] ?>">SNOW_CM</span> (cm)</th>
+                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['RAIN_MM'] ?>">RAIN_MM</span> (mm)</th>  
 
                         <?php for ($i = 0; $i < $nValidationColumns; $i++) {
                             switch ($i) {
@@ -211,13 +154,7 @@
                                     break;
                                 case 2:
                                     $colName = 'UCD3';
-                                    break;
-                                case 3:
-                                    $colName = 'UCD4';
-                                    break;
-                                case 4:
-                                    $colName = 'UCD5';
-                                    break;
+                                    break;                               
                             }
                         ?>
                             <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips[$colName] ?>"><?= $colName ?></span></th>
@@ -259,7 +196,7 @@
             <div class="mb-1 pl-1">Select time step for calibration stats:</div>
             <select class="custom-select" id="calib_type">
                 <option selected value="1">Daily</option>
-                <option value="2">Monthly</option>                    
+                <!-- <option value="2">Monthly</option>                    
                 <option value="10">Seasons</option>
                 <?php if ($this->isSetGrowthSeason->getFlag()) { ?>
                     <option value="11">Growing Season</option>
@@ -267,7 +204,7 @@
                 <option value="3">Yearly</option>
                 <option value="21">Typical Year Daily</option>
                 <option value="22">Typical Year Monthly</option>
-                <option value="24">Typical Year Seasons</option>
+                <option value="24">Typical Year Seasons</option> -->
                 <!-- <?php if ($this->isSetGrowthSeason->getFlag()) { ?>
                     <option value="25">Typical Year Growing Season</option>
                 <?php } ?>
@@ -328,7 +265,7 @@
                     className: "dt-head-center dt-body-center" // fixed-width-table-row
                 },
                 {
-                    targets: [2, 3, 6, 7, 8, 9, 11, 14, 16, 17, 18, 19],
+                    targets: [2, 7, 8, 9],
                     visible: false
                 }
             ],
@@ -384,7 +321,7 @@
                     className: "dt-head-center dt-body-center"
                 },
                 {
-                    targets: [1, 2, 5, 6, 7, 8, 10, 13, 15, 16, 17, 18],
+                    targets: [1, 6, 7, 8],
                     visible: false
                 }
             ],
