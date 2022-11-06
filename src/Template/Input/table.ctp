@@ -14,7 +14,7 @@
             <div class="mb-1 pl-1">Select time step below:</div>
             <select class="custom-select" id="graph_source">
                 <option selected value="1">Input Data - Daily</option>
-                <option value="2">Input Data - Monthly</option>
+                <!-- <option value="2">Input Data - Monthly</option>
                 <option value="10">Input Data - Seasons</option>
                 <?php if ($this->isSetGrowthSeason->getFlag()) { ?>
                     <option value="11">Input Data - Growing Season</option>
@@ -26,7 +26,7 @@
                 <?php if ($this->isSetGrowthSeason->getFlag()) { ?>
                     <option value="25">Input Data - Typical Year Growing Season</option>
                 <?php } ?>
-                <option value="23">Input Data - Typical Year Average</option>
+                <option value="23">Input Data - Typical Year Average</option> -->
             </select>
         </div>
     </div>
@@ -39,9 +39,7 @@
                         <th scope="col">Index</th>
                         <th scope="col" class="date-col">Date</th>                
                         <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['TEMP'] ?>">TEMP</span> (&deg;C)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['TOTPP'] ?>">TOTPP</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['RAIN'] ?>">RAIN</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['ETA'] ?>">ETA</span> (mm)</th> 
+                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['PRECIP'] ?>">PRECIP</span> (mm)</th>
                         <?php for ($i = 0; $i < $nValidationColumns; $i++) {
                             switch ($i) {
                                 case 0:
@@ -52,13 +50,7 @@
                                     break;
                                 case 2:
                                     $colName = 'UCD3';
-                                    break;
-                                case 3:
-                                    $colName = 'UCD4';
-                                    break;
-                                case 4:
-                                    $colName = 'UCD5';
-                                    break;
+                                    break;                              
                             }
                         ?>
                             <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips[$colName] ?>"><?= $colName ?></span></th>
@@ -102,9 +94,7 @@
                     <tr>
                         <th scope="col">Statistic</th>
                         <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['TEMP'] ?>">TEMP</span> (&deg;C)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['TOTPP'] ?>">TOTPP</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['RAIN'] ?>">RAIN</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['ETA'] ?>">ETA</span> (mm)</th> 
+                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['PRECIP'] ?>">PRECIP</span> (mm)</th>
                         <?php for ($i = 0; $i < $nValidationColumns; $i++) {
                             switch ($i) {
                                 case 0:
@@ -115,13 +105,7 @@
                                     break;
                                 case 2:
                                     $colName = 'UCD3';
-                                    break;
-                                case 3:
-                                    $colName = 'UCD4';
-                                    break;
-                                case 4:
-                                    $colName = 'UCD5';
-                                    break;
+                                    break;                               
                             }
                         ?>
                             <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips[$colName] ?>"><?= $colName ?></span></th>

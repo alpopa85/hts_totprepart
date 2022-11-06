@@ -37,7 +37,7 @@
                 'controller' => 'input',
                 'action' => 'export-daily'], [
                     'class' => 'dropdown-item']); ?>     
-                    
+<?php /*                    
                 <?= $this->Html->link('Monthly', [
                 'controller' => 'input',
                 'action' => 'export-monthly'], [
@@ -89,17 +89,21 @@
                 <?= $this->Html->link('Typical Year Average', [
                 'controller' => 'input',
                 'action' => 'export-typical-year'], [
-                    'class' => 'dropdown-item']); ?>              
+                    'class' => 'dropdown-item']); ?>       
+                    
+        */?>
                 <hr/>
                 <?= $this->Html->link('Export Statistics', [
                 'controller' => 'input',
                 'action' => 'export-statistics'], [
                     'class' => 'dropdown-item']); ?>     
+        <?/*
                 <hr/>
                 <?= $this->Html->link('Export Global Configuration', [
                 'controller' => 'input',
                 'action' => 'export-metadata'], [
                     'class' => 'dropdown-item']); ?>  
+        */?>
             </div>
         </li>  
         <?php } ?>

@@ -14,7 +14,7 @@
             <div class="mb-1 pl-1">Select time step below:</div>
             <select class="custom-select" id="graph_source">
                 <option selected value="1">Input Data - Daily</option>
-                <option value="2">Input Data - Monthly</option>
+                <!-- <option value="2">Input Data - Monthly</option>
                 <option value="10">Input Data - Seasons</option>
                 <?php if ($this->isSetGrowthSeason->getFlag()) { ?>
                     <option value="11">Input Data - Growing Season</option>
@@ -26,7 +26,7 @@
                 <?php if ($this->isSetGrowthSeason->getFlag()) { ?>
                     <option value="25">Input Data - Typical Year Growing Season</option>
                 <?php } ?>
-                <option value="23">Input Data - Typical Year Average</option>
+                <option value="23">Input Data - Typical Year Average</option> -->
             </select>
         </div>
     </div>
@@ -43,9 +43,7 @@
                     
                     <optgroup label="Input Data">
                         <option selected value="temp">TEMP</option>
-                        <option value="precip">TOTPP</option>
-                        <option value="rain">RAIN</option>
-                        <option value="et">ETA</option>
+                        <option value="precip">PRECIP</option>                        
                     </optgroup>
                     
                     <?php if ($nValidationColumns > 0) { ?>
@@ -58,13 +56,7 @@
                         <?php } ?>
                         <?php if ($nValidationColumns > 2) { ?>
                             <option value="ucd3"><span data-toggle="tooltip" title="<?= $tooltips['UCD'] ?>">UCD3</span></option>
-                        <?php } ?>
-                        <?php if ($nValidationColumns > 3) { ?>
-                            <option value="ucd4"><span data-toggle="tooltip" title="<?= $tooltips['UCD'] ?>">UCD4</span></option>
-                        <?php } ?>
-                        <?php if ($nValidationColumns > 4) { ?>
-                            <option value="ucd5"><span data-toggle="tooltip" title="<?= $tooltips['UCD'] ?>">UCD5</span></option>
-                        <?php } ?>
+                        <?php } ?>                        
                     </optgroup>
                     <?php } ?>
                 </select>
@@ -81,9 +73,7 @@
                     
                     <optgroup label="Input Data">
                         <option value="temp">TEMP</option>
-                        <option value="precip">TOTPP</option>
-                        <option value="rain">RAIN</option>
-                        <option value="et">ETA</option>
+                        <option value="precip">PRECIP</option>
                     </optgroup>
                     
                     <?php if ($nValidationColumns > 0) { ?>
@@ -96,13 +86,7 @@
                         <?php } ?>
                         <?php if ($nValidationColumns > 2) { ?>
                             <option value="ucd3"><span data-toggle="tooltip" title="<?= $tooltips['UCD'] ?>">UCD3</span></option>
-                        <?php } ?>
-                        <?php if ($nValidationColumns > 3) { ?>
-                            <option value="ucd4"><span data-toggle="tooltip" title="<?= $tooltips['UCD'] ?>">UCD4</span></option>
-                        <?php } ?>
-                        <?php if ($nValidationColumns > 4) { ?>
-                            <option value="ucd5"><span data-toggle="tooltip" title="<?= $tooltips['UCD'] ?>">UCD5</span></option>
-                        <?php } ?>
+                        <?php } ?>                        
                     </optgroup>
                     <?php } ?>
                 </select>
@@ -119,9 +103,7 @@
                     
                     <optgroup label="Input Data">
                         <option value="temp">TEMP</option>
-                        <option value="precip">TOTPP</option>
-                        <option value="rain">RAIN</option>
-                        <option value="et">ETA</option>
+                        <option value="precip">PRECIP</option>
                     </optgroup>
                     
                     <?php if ($nValidationColumns > 0) { ?>
@@ -134,13 +116,7 @@
                         <?php } ?>
                         <?php if ($nValidationColumns > 2) { ?>
                             <option value="ucd3"><span data-toggle="tooltip" title="<?= $tooltips['UCD'] ?>">UCD3</span></option>
-                        <?php } ?>
-                        <?php if ($nValidationColumns > 3) { ?>
-                            <option value="ucd4"><span data-toggle="tooltip" title="<?= $tooltips['UCD'] ?>">UCD4</span></option>
-                        <?php } ?>
-                        <?php if ($nValidationColumns > 4) { ?>
-                            <option value="ucd5"><span data-toggle="tooltip" title="<?= $tooltips['UCD'] ?>">UCD5</span></option>
-                        <?php } ?>
+                        <?php } ?>                        
                     </optgroup>
                     <?php } ?>
                 </select>
@@ -157,9 +133,7 @@
                     
                     <optgroup label="Input Data">
                         <option value="temp">TEMP</option>
-                        <option value="precip">TOTPP</option>
-                        <option value="rain">RAIN</option>
-                        <option value="et">ETA</option>
+                        <option value="precip">PRECIP</option>
                     </optgroup>
                     
                     <?php if ($nValidationColumns > 0) { ?>
@@ -172,13 +146,7 @@
                         <?php } ?>
                         <?php if ($nValidationColumns > 2) { ?>
                             <option value="ucd3"><span data-toggle="tooltip" title="<?= $tooltips['UCD'] ?>">UCD3</span></option>
-                        <?php } ?>
-                        <?php if ($nValidationColumns > 3) { ?>
-                            <option value="ucd4"><span data-toggle="tooltip" title="<?= $tooltips['UCD'] ?>">UCD4</span></option>
-                        <?php } ?>
-                        <?php if ($nValidationColumns > 4) { ?>
-                            <option value="ucd5"><span data-toggle="tooltip" title="<?= $tooltips['UCD'] ?>">UCD5</span></option>
-                        <?php } ?>
+                        <?php } ?>                        
                     </optgroup>
                     <?php } ?>
                 </select>
@@ -230,9 +198,7 @@
                     <tr>
                         <th scope="col">Statistic</th>
                         <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['TEMP'] ?>">TEMP</span> (&deg;C)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['TOTPP'] ?>">TOTPP</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['RAIN'] ?>">RAIN</span> (mm)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['ETA'] ?>">ETA</span> (mm)</th> 
+                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['PRECIP'] ?>">PRECIP</span> (mm)</th>
                         <?php for ($i = 0; $i < $nValidationColumns; $i++) {
                             switch ($i) {
                                 case 0:
@@ -243,13 +209,7 @@
                                     break;
                                 case 2:
                                     $colName = 'UCD3';
-                                    break;
-                                case 3:
-                                    $colName = 'UCD4';
-                                    break;
-                                case 4:
-                                    $colName = 'UCD5';
-                                    break;
+                                    break;                               
                             }
                         ?>
                             <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips[$colName] ?>"><?= $colName ?></span></th>
@@ -393,21 +353,13 @@
                 case 'temp':
                     return 'TEMP (&deg;C)';                
                 case 'precip':
-                    return 'TOTPP (mm)';
-                case 'rain':
-                    return 'RAIN (mm)';
-                case 'et':
-                    return 'ETA (mm)';
+                    return 'PRECIP (mm)';                
                 case 'ucd1': 
                     return 'UCD1';
                 case 'ucd2': 
                     return 'UCD2';
                 case 'ucd3': 
-                    return 'UCD3';
-                case 'ucd4': 
-                    return 'UCD4';
-                case 'ucd5': 
-                    return 'UCD5';
+                    return 'UCD3';                
             }        
         },
 

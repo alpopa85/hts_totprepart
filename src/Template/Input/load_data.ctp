@@ -24,7 +24,7 @@
             <tr class="table-primary">
                 <td class="customlegend" colspan=7>
                     <fieldset>
-                        <legend>WATBAL Input data file: format, columns, and units for input and user calibration data (UCD)</legend>
+                        <legend>SNOW BUDDY Input data file: format, columns, and units for input and user calibration data (UCD)</legend>
                     </fieldset>
                 </td>
             </tr>
@@ -32,18 +32,14 @@
                 <th scope="row">Columns</th>
                 <td>DATE</td>
                 <td><span data-toggle="tooltip" title="<?= $tooltips['TEMP'] ?>">TEMP</span></td>
-                <td><span data-toggle="tooltip" title="<?= $tooltips['TOTPP'] ?>">TOTPP</span></td>
-                <td><span data-toggle="tooltip" title="<?= $tooltips['RAIN'] ?>">RAIN</span></td>
-                <td><span data-toggle="tooltip" title="<?= $tooltips['ETA'] ?>">ETA</span></td>                
-                <td class="validation-col"><span data-toggle="tooltip" title="<?= $tooltips['UCD'] ?>">UCD</span> (max. 5 columns)</td>
+                <td><span data-toggle="tooltip" title="<?= $tooltips['PRECIP'] ?>">PRECIP</span></td>
+                <td class="validation-col"><span data-toggle="tooltip" title="<?= $tooltips['UCD'] ?>">UCD</span> (max. 3 columns)</td>
             </tr>
             <tr class="table-info no-wrap-table-row">
                 <th scope="row">Units</th>
                 <td>yyyy-mm-dd</td>
                 <td>&deg;C</td>
                 <td>mm</td>               
-                <td>mm</td>
-                <td>mm</td>
                 <td>user choice</td>    
             </tr> 
             <tr class="table-info no-wrap-table-row">
@@ -51,8 +47,6 @@
                 <td>eg. 2021-12-24</td>
                 <td>-90 to 60</td>
                 <td>0 to 1800</td>                
-                <td>0 to 1800</td>  
-                <td>0 to 100</td>  
                 <td>user choice</td>    
             </tr> 
         </thead>
@@ -89,10 +83,11 @@
 
                 <div class="text-center">
                     <p>
-                        <h6>The tool calculates all parameters on a daily, monthly, meteorological season, growing season and annual basis.</h6>
+                        <h6>The tool calculates all parameters on a daily, monthly, and annual basis.</h6>
                     </p>
                 </div>
-
+                
+                <!--
                 <div class="form-check mb-3 text-center">
                     <input class="form-check-input" type="checkbox" value="1" id="growth_season_checkbox" checked>
                     <label class="form-check-label" for="growth_season_checkbox">
@@ -132,6 +127,7 @@
                     </p>
 
                 </div>
+                -->
 
                 <input type="hidden" name="inputHasHeaders" value="1" />
                 <input type="hidden" name="testFileStatus" value="1" />
@@ -181,6 +177,7 @@
             }        
         }
 
+        /*
         if ($('#uploadFileForm').find(':input[id=growth_season_checkbox]').prop('checked')){
             // console.log('checked: ' + $("#growth_season_start").val());
             if (!$("#growth_season_start").val()){
@@ -197,7 +194,7 @@
 
                 return;
             }
-        }        
+        }*/    
 
         $('#uploadFileForm').find(':input[type=submit]').prop('disabled', false);
         $('#uploadFileForm').find(':input[type=submit]').removeClass('disabled');
@@ -241,7 +238,7 @@
         // var csrfToken = <?= json_encode($this->request->getParam('_csrfToken')) ?>;  
         
         bsCustomFileInput.init();
-        initGrowthSeasonValues(); 
+        // initGrowthSeasonValues(); 
         validateForm();
 
         $("#test_data_btn").click((e)=>{            
@@ -294,6 +291,7 @@
         // FORM STUFF //
         /**************/        
 
+        /*
         $('#uploadFileForm').find(':input[id=growth_season_checkbox]').change(function(){
             if ($(this).prop('checked')){
                 $("#growth_season_dates").show();   
@@ -307,6 +305,7 @@
                 validateForm();
             }                        
         });
+        */
 
         $('#uploadFileForm').find(':input[name=inputDataFile]').change(function(){     
             if ($('#uploadFileForm').find(':input[name=inputDataFile]').val()){
@@ -320,6 +319,7 @@
             validateForm();
         });
 
+        /*
         $("#growth_season_start").change(function(){
             refreshGrowthSeasonValues();
             validateForm();
@@ -328,7 +328,8 @@
         $("#growth_season_end").change(function(){
             refreshGrowthSeasonValues();           
             validateForm();
-        });          
+        });  
+        */             
 
         $("#uploadFileForm").submit(async function(e){
             $("#mySpinnerContainer").show();
@@ -340,6 +341,11 @@
                 'controller' => 'input',
                 'action' => 'load-data'
             ], true); ?>";            
+
+            var redirectUrlSuccess = "<?= $this->Url->build([
+                'controller' => 'input',
+                'action' => 'graph'
+            ], true); ?>";     
 
             // ajax call to function that tells me how many UCD fields
             async function uploadFile(recaptchaToken) {
@@ -374,45 +380,46 @@
             // console.log('post recaptcha');
             
             let result = await uploadFile(recaptchaToken).then(function(data){
-                $("#mySpinnerContainer").hide();
+                // $("#mySpinnerContainer").hide();
 
                 if (data.success) {
+                    window.location.href = redirectUrlSuccess;
                     // console.log('there are these many UCD fields: ' + data.ucdFields);
 
                     // show modal for the given number of fields
-                    switch (data.ucdFields) {
-                        case 5:
-                            $("#ucd-present").show();
-                            $("#ucd5").show();
-                            $("#ucd-present-footer").show();
-                            $("#ucd-not-present-footer").hide();
-                        case 4:
-                            $("#ucd-present").show();
-                            $("#ucd4").show();
-                            $("#ucd-present-footer").show();
-                            $("#ucd-not-present-footer").hide();
-                        case 3:
-                            $("#ucd-present").show();
-                            $("#ucd3").show();
-                            $("#ucd-present-footer").show();
-                            $("#ucd-not-present-footer").hide();
-                        case 2:
-                            $("#ucd-present").show();
-                            $("#ucd2").show();
-                            $("#ucd-present-footer").show();
-                            $("#ucd-not-present-footer").hide();
-                        case 1:
-                            $("#ucd-present").show();
-                            $("#ucd1").show();
-                            $("#ucd-present-footer").show();
-                            $("#ucd-not-present-footer").hide();
-                            break;
-                        default:
-                            $("#ucdModalTitle").text("Attention! Input data set does not contain calibration data (UCD)!");
-                    }
-                    $("#ucdModal").modal({
-                        backdrop: 'static'
-                    });
+                    // switch (data.ucdFields) {
+                    //     case 5:
+                    //         $("#ucd-present").show();
+                    //         $("#ucd5").show();
+                    //         $("#ucd-present-footer").show();
+                    //         $("#ucd-not-present-footer").hide();
+                    //     case 4:
+                    //         $("#ucd-present").show();
+                    //         $("#ucd4").show();
+                    //         $("#ucd-present-footer").show();
+                    //         $("#ucd-not-present-footer").hide();
+                    //     case 3:
+                    //         $("#ucd-present").show();
+                    //         $("#ucd3").show();
+                    //         $("#ucd-present-footer").show();
+                    //         $("#ucd-not-present-footer").hide();
+                    //     case 2:
+                    //         $("#ucd-present").show();
+                    //         $("#ucd2").show();
+                    //         $("#ucd-present-footer").show();
+                    //         $("#ucd-not-present-footer").hide();
+                    //     case 1:
+                    //         $("#ucd-present").show();
+                    //         $("#ucd1").show();
+                    //         $("#ucd-present-footer").show();
+                    //         $("#ucd-not-present-footer").hide();
+                    //         break;
+                    //     default:
+                    //         $("#ucdModalTitle").text("Attention! Input data set does not contain calibration data (UCD)!");
+                    // }
+                    // $("#ucdModal").modal({
+                    //     backdrop: 'static'
+                    // });
                 } else {
                     // alert('Error ' + JSON.stringify(data));
                     window.location.href = redirectUrlError;

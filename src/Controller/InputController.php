@@ -30,8 +30,8 @@ class InputController extends AppController
         $this->set('activeNavbarId', 'input');    
 
         $this->set('hasInputData', Utils::hasInputData());
-        $this->set('hasSnowData', Utils::hasSnowData());
-        $this->set('hasSoilData', Utils::hasSoilData());
+        // $this->set('hasSnowData', Utils::hasSnowData());
+        // $this->set('hasSoilData', Utils::hasSoilData());
 
         $this->set('tooltips', Utils::getTooltips());    
         
@@ -40,8 +40,8 @@ class InputController extends AppController
             'ucd1' => Utils::getUcdAvgMethod('ucd1'),
             'ucd2' => Utils::getUcdAvgMethod('ucd2'),
             'ucd3' => Utils::getUcdAvgMethod('ucd3'),
-            'ucd4' => Utils::getUcdAvgMethod('ucd4'),
-            'ucd5' => Utils::getUcdAvgMethod('ucd5'),
+            // 'ucd4' => Utils::getUcdAvgMethod('ucd4'),
+            // 'ucd5' => Utils::getUcdAvgMethod('ucd5'),
         ));
         
         $this->exportPrefix = 'SNOW BUDDY_';        
@@ -318,7 +318,7 @@ class InputController extends AppController
             unset($paramData['inputHasHeaders']);
             unset($paramData['testFileStatus']);
             unset($paramData['token']); // this is the captcha token
-            Utils::validateGrowthSeasonParams($paramData);
+            // Utils::validateGrowthSeasonParams($paramData);
             Utils::writeParamsToDb($paramData, 'input');
 
             // die(json_encode($formData['inputDataFile']));
@@ -509,62 +509,42 @@ class InputController extends AppController
 
         $tempStats = Utils::fetchInputStatsFromDb('temp', $startDate, $endDate)[0];   
         $precipStats = Utils::fetchInputStatsFromDb('precip', $startDate, $endDate)[0];                
-        $rainStats = Utils::fetchInputStatsFromDb('rain', $startDate, $endDate)[0];   
-        $etStats = Utils::fetchInputStatsFromDb('et', $startDate, $endDate)[0];   
         $ucd1Stats = Utils::fetchInputStatsFromDb('ucd1', $startDate, $endDate)[0];   
         $ucd2Stats = Utils::fetchInputStatsFromDb('ucd2', $startDate, $endDate)[0];   
         $ucd3Stats = Utils::fetchInputStatsFromDb('ucd3', $startDate, $endDate)[0];   
-        $ucd4Stats = Utils::fetchInputStatsFromDb('ucd4', $startDate, $endDate)[0];   
-        $ucd5Stats = Utils::fetchInputStatsFromDb('ucd5', $startDate, $endDate)[0];           
 
         $statsData = [];
         $statsData[] = array(
             'Avg',
             Utils::formatDataDecimals('temp', $tempStats['average']),
             Utils::formatDataDecimals('precip', $precipStats['average']),
-            Utils::formatDataDecimals('rain', $rainStats['average']),
-            Utils::formatDataDecimals('et', $etStats['average']),
             Utils::formatDataDecimals('ucd1', $ucd1Stats['average']),         
             Utils::formatDataDecimals('ucd2', $ucd2Stats['average']),
             Utils::formatDataDecimals('ucd3', $ucd3Stats['average']),
-            Utils::formatDataDecimals('ucd4', $ucd4Stats['average']),
-            Utils::formatDataDecimals('ucd5', $ucd5Stats['average'])
         );
         $statsData[] = array(
             'Min',
             Utils::formatDataDecimals('temp', $tempStats['minimum']),
             Utils::formatDataDecimals('precip', $precipStats['minimum']),
-            Utils::formatDataDecimals('rain', $rainStats['minimum']),
-            Utils::formatDataDecimals('et', $etStats['minimum']),
             Utils::formatDataDecimals('ucd1', $ucd1Stats['minimum']),         
             Utils::formatDataDecimals('ucd2', $ucd2Stats['minimum']),
             Utils::formatDataDecimals('ucd3', $ucd3Stats['minimum']),
-            Utils::formatDataDecimals('ucd4', $ucd4Stats['minimum']),
-            Utils::formatDataDecimals('ucd5', $ucd5Stats['minimum'])
         );
         $statsData[] = array(
             'Max',
             Utils::formatDataDecimals('temp', $tempStats['maximum']),
             Utils::formatDataDecimals('precip', $precipStats['maximum']),
-            Utils::formatDataDecimals('rain', $rainStats['maximum']),
-            Utils::formatDataDecimals('et', $etStats['maximum']),
             Utils::formatDataDecimals('ucd1', $ucd1Stats['maximum']),         
             Utils::formatDataDecimals('ucd2', $ucd2Stats['maximum']),
             Utils::formatDataDecimals('ucd3', $ucd3Stats['maximum']),
-            Utils::formatDataDecimals('ucd4', $ucd4Stats['maximum']),
-            Utils::formatDataDecimals('ucd5', $ucd5Stats['maximum'])
         );
         $statsData[] = array(
             'Std Dev',
             Utils::formatDataDecimals('temp', $tempStats['std_dev']),
             Utils::formatDataDecimals('precip', $precipStats['std_dev']),
-            Utils::formatDataDecimals('rain', $rainStats['std_dev']),
-            Utils::formatDataDecimals('et', $etStats['std_dev']),
             Utils::formatDataDecimals('ucd1', $ucd1Stats['std_dev']),         
             Utils::formatDataDecimals('ucd2', $ucd2Stats['std_dev']),
             Utils::formatDataDecimals('ucd3', $ucd3Stats['std_dev']),
-            Utils::formatDataDecimals('ucd4', $ucd4Stats['std_dev']),
-            Utils::formatDataDecimals('ucd5', $ucd5Stats['std_dev'])
         );
 
         $response = array(       

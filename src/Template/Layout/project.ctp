@@ -130,7 +130,7 @@
                 <?= $this->Html->link('Input Data', [
                     'controller' => 'input',
                     'action' => 'index'], [
-                        'class' => 'nav-link disabled',
+                        'class' => 'nav-link',
                         'id' => 'input']); ?>  
                 <!-- <?= (isset($ucdFields) && $ucdFields['total']) ? $this->Html->link('UCD', "#ucd", [
                     'class' => ['nav-link', 'orange-ucd'],

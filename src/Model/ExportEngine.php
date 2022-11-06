@@ -290,74 +290,50 @@ class ExportEngine
     {
         $tempStats = Utils::fetchInputStatsFromDb('temp')[0];   
         $precipStats = Utils::fetchInputStatsFromDb('precip')[0];                
-        $rainStats = Utils::fetchInputStatsFromDb('rain')[0];   
-        $etStats = Utils::fetchInputStatsFromDb('et')[0];   
         $ucd1Stats = Utils::fetchInputStatsFromDb('ucd1')[0];   
         $ucd2Stats = Utils::fetchInputStatsFromDb('ucd2')[0];   
         $ucd3Stats = Utils::fetchInputStatsFromDb('ucd3')[0];   
-        $ucd4Stats = Utils::fetchInputStatsFromDb('ucd4')[0];   
-        $ucd5Stats = Utils::fetchInputStatsFromDb('ucd5')[0]; 
 
         $statsData = [];
         $statsData[] = array(
             'Statistic',
             'TEMP (C)',
-            'TOTPP (mm)',
-            'RAIN (mm)',
-            'ETA (mm)',
+            'PRECIP (mm)',
             'UCD1',
             'UCD2',
-            'UCD3',
-            'UCD4',
-            'UCD5'
+            'UCD3'
         );        
         $statsData[] = array(
             'Avg',
             Utils::formatDataDecimals('temp', $tempStats['average']),
             Utils::formatDataDecimals('precip', $precipStats['average']),
-            Utils::formatDataDecimals('rain', $rainStats['average']),
-            Utils::formatDataDecimals('et', $etStats['average']),
             Utils::formatDataDecimals('ucd1', $ucd1Stats['average']),         
             Utils::formatDataDecimals('ucd2', $ucd2Stats['average']),
             Utils::formatDataDecimals('ucd3', $ucd3Stats['average']),
-            Utils::formatDataDecimals('ucd4', $ucd4Stats['average']),
-            Utils::formatDataDecimals('ucd5', $ucd5Stats['average'])         
         );
         $statsData[] = array(
             'Min',
             Utils::formatDataDecimals('temp', $tempStats['minimum']),
             Utils::formatDataDecimals('precip', $precipStats['minimum']),
-            Utils::formatDataDecimals('rain', $rainStats['minimum']),
-            Utils::formatDataDecimals('et', $etStats['minimum']),
             Utils::formatDataDecimals('ucd1', $ucd1Stats['minimum']),         
             Utils::formatDataDecimals('ucd2', $ucd2Stats['minimum']),
             Utils::formatDataDecimals('ucd3', $ucd3Stats['minimum']),
-            Utils::formatDataDecimals('ucd4', $ucd4Stats['minimum']),
-            Utils::formatDataDecimals('ucd5', $ucd5Stats['minimum'])  
         );
         $statsData[] = array(
             'Max',
             Utils::formatDataDecimals('temp', $tempStats['maximum']),
             Utils::formatDataDecimals('precip', $precipStats['maximum']),
-            Utils::formatDataDecimals('rain', $rainStats['maximum']),
-            Utils::formatDataDecimals('et', $etStats['maximum']),
             Utils::formatDataDecimals('ucd1', $ucd1Stats['maximum']),         
             Utils::formatDataDecimals('ucd2', $ucd2Stats['maximum']),
             Utils::formatDataDecimals('ucd3', $ucd3Stats['maximum']),
-            Utils::formatDataDecimals('ucd4', $ucd4Stats['maximum']),
-            Utils::formatDataDecimals('ucd5', $ucd5Stats['maximum'])
         );
         $statsData[] = array(
             'Std Dev',
             Utils::formatDataDecimals('temp', $tempStats['std_dev']),
             Utils::formatDataDecimals('precip', $precipStats['std_dev']),
-            Utils::formatDataDecimals('rain', $rainStats['std_dev']),
-            Utils::formatDataDecimals('et', $etStats['std_dev']),
             Utils::formatDataDecimals('ucd1', $ucd1Stats['std_dev']),         
             Utils::formatDataDecimals('ucd2', $ucd2Stats['std_dev']),
             Utils::formatDataDecimals('ucd3', $ucd3Stats['std_dev']),
-            Utils::formatDataDecimals('ucd4', $ucd4Stats['std_dev']),
-            Utils::formatDataDecimals('ucd5', $ucd5Stats['std_dev'])
         );  
         
         if ($returnCollection){

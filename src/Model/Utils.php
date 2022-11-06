@@ -71,9 +71,9 @@ class Utils
     private static function resetUserData()
     {
         self::setUserDataLoaded(0);
-        self::setUserSnow(0);
-        self::setUserSoilWater(0);
-        self::setUserWaterBalance(0);
+        // self::setUserSnow(0);
+        // self::setUserSoilWater(0);
+        // self::setUserWaterBalance(0);
     }
 
     public static function setUserDataLoaded($status, $isTestFile = false)
@@ -115,7 +115,7 @@ class Utils
         }
     }
 
-    public static function setUserSnow($status)
+    public static function setUserOutputReady($status)
     {
         $userTable = TableRegistry::getTableLocator()->get('Users');
 
@@ -124,14 +124,14 @@ class Utils
             ->first();
 
         if ($user instanceof User) {
-            $user->snow = $status;
+            $user->output_ready = $status;
             $userTable->save($user);
         } else {
             throw new Exception('Cannot find User!');
         }
 
         if ($status == 1) {
-            self::addUsage('snow');
+            self::addUsage('output');
         }
     }
 
@@ -209,30 +209,18 @@ class Utils
                     'test_input' => 1
                 );
                 break;
-            case 'snow':
+            case 'output':
                 $data = array(
                     'user_id' => self::getCurrentDataset(),
-                    'snow' => 1
+                    'output' => 1
                 );
                 break;
-            case 'export_snow':
+            case 'export_output':
                 $data = array(
                     'user_id' => self::getCurrentDataset(),
                     'export_snow' => 1
                 );
-                break;
-            case 'soil_water':
-                $data = array(
-                    'user_id' => self::getCurrentDataset(),
-                    'soil_water' => 1
-                );
-                break;
-            case 'export_soil_water':
-                $data = array(
-                    'user_id' => self::getCurrentDataset(),
-                    'export_soil_water' => 1
-                );
-                break;            
+                break;                
         }
 
         $usage = $usageTable->newEntity($data);
@@ -282,8 +270,8 @@ class Utils
             $timeSeriesColIndex = 0;
             $tempSeriesColIndex = 1;
             $precipSeriesColIndex = 2;
-            $rainSeriesColIndex = 3;
-            $etSeriesColIndex = 4;
+            // $rainSeriesColIndex = 3;
+            // $etSeriesColIndex = 4;
 
             // $ucd1SeriesColIndex = 5;
             // $ucd2SeriesColIndex = 6;
@@ -291,12 +279,12 @@ class Utils
             // $ucd4SeriesColIndex = 8;
             // $ucd5SeriesColIndex = 9;
 
-            $vdSeriesStartColIndex = 5;
-            $vdSeriesColNames = ['ucd1', 'ucd2', 'ucd3', 'ucd4', 'ucd5'];
+            $vdSeriesStartColIndex = 3;
+            $vdSeriesColNames = ['ucd1', 'ucd2', 'ucd3'];
             $completedVdColumns = 0;
 
             $data = fgetcsv($readHandle, 1000, ",");
-            for ($i = 5; $i <= 9; $i++) {
+            for ($i = 3; $i <= 5; $i++) {
                 if (!empty($data[$i])) {
                     $completedVdColumns += 1;
                 }
@@ -337,17 +325,17 @@ class Utils
                     throw new Exception('Precipitation must be between 0 and 1800 [Line ' . ($rowCounter + 1) . ']');
                 }
 
-                if (Utils::validateInput('rain', $data[$rainSeriesColIndex]) == false) {
-                    Utils::removeCompleteDataset();
-                    Log::error('Rain amount must be between 0 and 1800.');
-                    throw new Exception('Rain amount must be between 0 and 1800 [Line ' . ($rowCounter + 1) . ']');
-                }
+                // if (Utils::validateInput('rain', $data[$rainSeriesColIndex]) == false) {
+                //     Utils::removeCompleteDataset();
+                //     Log::error('Rain amount must be between 0 and 1800.');
+                //     throw new Exception('Rain amount must be between 0 and 1800 [Line ' . ($rowCounter + 1) . ']');
+                // }
 
-                if (Utils::validateInput('et', $data[$etSeriesColIndex]) == false) {
-                    Utils::removeCompleteDataset();
-                    Log::error('Evapotranspiration must be between 0 and 100.');
-                    throw new Exception('Evapotranspiration must be between 0 and 100 [Line ' . ($rowCounter + 1) . ']');
-                }
+                // if (Utils::validateInput('et', $data[$etSeriesColIndex]) == false) {
+                //     Utils::removeCompleteDataset();
+                //     Log::error('Evapotranspiration must be between 0 and 100.');
+                //     throw new Exception('Evapotranspiration must be between 0 and 100 [Line ' . ($rowCounter + 1) . ']');
+                // }
 
                 /* validation fields */
                 // if (Utils::validateInput('ucd1', $data[$ucd1SeriesColIndex]) == false) {
@@ -391,9 +379,7 @@ class Utils
                     'time_month' => $dateDetails['month'],
                     'time_year' => $dateDetails['year'],
                     'temp' => $data[$tempSeriesColIndex],
-                    'precip' => $data[$precipSeriesColIndex],
-                    'rain' => $data[$rainSeriesColIndex],
-                    'et' => $data[$etSeriesColIndex]
+                    'precip' => $data[$precipSeriesColIndex]
                 );
 
                 // read validation data series
@@ -680,8 +666,15 @@ class Utils
         $inputDataTable = TableRegistry::getTableLocator()->get('InputData');
 
         $query = $inputDataTable->find();
+        $query->select([
+            'ucd1' => $query->func()->sum('ucd1'),
+            'ucd2' => $query->func()->sum('ucd2'),
+            'ucd3' => $query->func()->sum('ucd3')           
+        ]);
         $query->where(['dataset' => self::getCurrentDataset()]);
         $result = $query->first();
+
+        // Log::debug($result);
 
         if ($result) {
             if ($result->ucd1) {
@@ -694,15 +687,7 @@ class Utils
 
             if ($result->ucd3) {
                 $nValidationColumns++;
-            }
-
-            if ($result->ucd4) {
-                $nValidationColumns++;
-            }
-
-            if ($result->ucd5) {
-                $nValidationColumns++;
-            }
+            }         
         }
 
         return $nValidationColumns;
@@ -738,6 +723,9 @@ class Utils
     public static function getUcdAvgMethod($fieldName)
     {   
         // Log::debug(json_encode($fieldName));
+
+        // skip for now
+        return 1;
 
         $table = TableRegistry::getTableLocator()->get('UcdAverages');
 
@@ -1056,13 +1044,9 @@ class Utils
                 $customDateTime,
                 self::formatDataDecimals('temp', $item->temp),
                 self::formatDataDecimals('precip', $item->precip),
-                self::formatDataDecimals('rain', $item->rain),
-                self::formatDataDecimals('et', $item->et),
                 self::formatDataDecimals('ucd1', $item->ucd1),
                 self::formatDataDecimals('ucd2', $item->ucd2),
-                self::formatDataDecimals('ucd3', $item->ucd3),
-                self::formatDataDecimals('ucd4', $item->ucd4),
-                self::formatDataDecimals('ucd5', $item->ucd5)
+                self::formatDataDecimals('ucd3', $item->ucd3)
             );
         }
 
@@ -3178,11 +3162,11 @@ class Utils
     {
         self::removeInputDataset();
         self::removeParamsDataset();
-        self::removeCalibMapDataset();
-        self::resetUcdAvg();
+        // self::removeCalibMapDataset();
+        // self::resetUcdAvg();
 
-        self::removeSnowDataset();
-        self::removeSoilWaterDataset();                
+        // self::removeSnowDataset();
+        // self::removeSoilWaterDataset();                
 
         self::resetUserData();
     }
@@ -3190,7 +3174,7 @@ class Utils
     public static function removeInputDataset($id = null)
     {
         self::removeDatasetFromTable('InputData', $id);
-        self::removeInputAveragingDataset($id);
+        // self::removeInputAveragingDataset($id);
     }
 
     public static function removeInputAveragingDataset($id = null)
@@ -4124,118 +4108,22 @@ class Utils
     public static function getToolTips()
     {
         return array(
-            'TEMP' => 'Mean air temperature',
-            'TOTPP' => 'Total precipitation',
-            'RAIN' => 'Rain amount',
-            'ETA' => 'Actual evapotranspiration',
+            'TEMP' => 'Air temperature',
+            'PRECIP' => 'Total precipitation',
             'UCD' => 'User calibration data',
             'UCD1' => 'User calibration data',
             'UCD2' => 'User calibration data',
             'UCD3' => 'User calibration data',
-            'UCD4' => 'User calibration data',
-            'UCD5' => 'User calibration data',
             'GS_start_day' => 'Growth Season Start Day',
             'GS_start_month' => 'Growth Season Start Month',
             'GS_end_day' => 'Growth Season End Day',
             'GS_end_month' => 'Growth Season End Month',
-            // snow params
-            'SNWTinit' => 'Initial snow layer thickness - Thickness of the snow layer on the first day of the analysis. This is converted into mm for subsequent calculations using 1/CFSmc',
-            'SNWTinit_val' => 'Required values greater that or equal to 0',
-            'SNWMinit' => 'Initial snowmelt - Amount of snow melted on the first day of the analysis',
-            'SNWMinit_val' => 'Required values greater that or equal to 0',
-            'THRrs' => 'Air temperature threshold for rain to be accumulated as snow - Precipitation falling as rain is treated as snow when air temperature is below this threshold. This results in the respective rain amount to be added to the snow layer instead of infiltrating and/or becoming surface runoff',
-            'THRrs_val' => 'Required values between -20 and 10',
-            'THRsm' => 'Air temperature threshold for initiating snowmelt - Melting of the snow occurs on days with air temperature above this threshold',
-            'THRsm_val' => 'Required values between -20 and 10',
-            'CFTsm' => 'Correction factor, snowmelt due to air temperature - The amount of snow that is melted for each degree of air temperature above THRsm',
-            'CFTsm_val' => 'Required values greater that or equal to 0',            
-            'CFRsm' => 'Correction factor, snowmelt due to rain - The amount of snow that is melted for each mm of rain that is not accumulated in the snow layer',
-            'CFRsm_val' => 'Required values greater that or equal to 0',
-            'CFSmc' => 'Correction factor, snow as mm water to cm snow - Factor for converting calculated snow layer thickness from mm water (as calculated by the model) to cm of snow',
-            'CFSmc_val' => 'Required values greater that or equal to 0',
-            'CFets' => 'Correction factor, portion of evapotranspiration occurring in the soil - Factor for estimating the portion of actual evapotranspiration (ET) that occurs in the soil. The remainder of ET is considered to occur before water enters the soil (e.g., canopy interception; water ponding at the soil surface, etc.)',
-            'CFets_val' => 'Required values between 0 and 1',
-            // snow output
-            'SNOF' => 'Snow fall amount',
-            'RAINS' => 'Rain added to the snow layer - Amount of rain that is converted to snow (dependent on THRrs)',
-            'RAINNS' => 'Rain not added to the snow layer - Amount of rain that is converted to snow (dependent on THRrs)',
-            'SNOA' => 'Snowfall added to the snow layer - Amount of snowfall that is added to the snow layer (dependent on THRsm)',
-            'SNOM' => 'Snowfall not added to the snow layer - Amount of snowfall that is melting instead of being added to the snow layer',
-            'RSSL' => 'Rain and snow fall contributing to snow layer - Amount of water from rain and snowfall that accumulates to the snow layer before temperature and precipitation corrections for the snow layer are applied',
-            'RSI' => 'Rain and snow fall contributing to infiltration - Amount of water from rain and snowfall that does not accumulate to the snow and contributes to water available for infiltration',
-            'SNMT' => 'Snowmelt due to temperature - The amount of snowmelt is dependent on the air temperature. SNMT is calculated using the degree-day concept and is dependent on THRsm and CFTsm',
-            'SNMR' => 'Snowmelt due to rain - Rain that is not converted to snow can produce snowmelt. SNMR represents the amount of snowmelt associated (direct) rain. SNMR is calculated using a concept similar to the degree-day concept used for SNMT and is dependent on CFPsm',
-            'SNTFmm' => 'Snow layer thickness - Snow layer thickness (expressed as mm) after temperature and precipitation corrections. SNTF represents the final values of snow layer thickness and is a key output parameter',
-            'SNMF' => 'Snowmelt - Snowmelt amount after temperature and precipitation corrections. SNMF represents water originating from the snow layer that becomes available for infiltration and/or surface runoff. The assumption is that all the snow that melts becomes available for infiltration and/or surface runoff instead of being stored above the ground in liquid',
-            'ETasi' => 'Above soil ET (mm) before correction for dry soil - Portion of evapotranspiration that occurs above soil. The assumption is that a portion of evapotranspiration occurs in the soil and the reminder occurs above the soil via processes such as canopy interception and/or water ponding at the soil surface. The proportion of Etasi is controlled by CFets. This is an intermediate result that is adjusted via subsequent calculations',
-            'ETfsas' => 'ET from soil transferred to ET above soil when soil is dry - Evapotranspiration from soil ceases under dry soil conditions (controlled by THRets). THRets allows for transferring ET from soil to ET above ground ET (ETAs) if evaporative demand is still present (ETA) when the soil is dry. The full calculations for ETfsas are performed in the Water Balance module. If the Water Balance module has not been run, ETfsas is assumed to be zero. Generally ETfsas is small and hence this limitation is not expected to impact calculations significantly. ETfsas values are adjusted once the Water Balance model calculations are performed. ETfsas is the amount transferred from soil ET to above soil ET',
-            'ETasf' => 'Above soil ET after rerouting ET from dry soil - Portion of evapotranspiration that occurs above soil. The assumption is that a portion of evapotranspiration occurs in the soil and the reminder occurs above the soil via processes such as canopy interception and/or water ponding at the soil surface. The proportion of Etasf (and ETasi) is controlled by CFets. This is the final result representing the portion of evapotranspiration that occurs above soil and includes corrections for dry soil conditions (ETfsas)',
-            'WATisri' => 'Water available for infiltration or surface runoff before ET correction - The water amount that is available for either infiltration or surface runoff. WATisri is an intermediate result that does not account for the impact of evapotranspiration',
-            'WATisrf' => 'Water available for infiltration or surface runoff after ET correction - The water amount that is available for either infiltration or surface runoff after all corrections, including impact of evapotranspiration. WATisrf is a key parameter calculated in the SNOW module and constitutes starting point for the calculations conducted in the Water Balance module',
-            'SNTFcm' => 'Snow layer thickness - Snow layer thickness (expressed as cm) after temperature and precipitation corrections. SNTFcm is obtained by converting SNTFmm to cm of snow by using CFSmc. SNTFcm represents the final values of snow layer thickness and is a key output parameter . SNTFcm can be used for validating the results against snow layer thickness validation data',
-            // soil params  
-            'SWCinit' => 'SWC, as percentage of PORe on the first day of the analysis. SWCinit cannot be higher than the effective porosity of the layer (PORe)',
-            'SWCinit_val' => 'Required values between 1 and 100',
-            'SRinit' => 'Surface runoff - Amount of surface runoff on the first day of the analysis',
-            'SRinit_val' => 'Required values greater that or equal to 0',
-            'NGinit' => 'Net SWC gain - Net gain in SWC on the first day of the analysis',
-            'NGinit_val' => 'Required values greater that or equal to 0',
-            'NLinit' => 'Net SWC loss - Net loss in SWC on the first day of the analysis',
-            'NLinit_val' => 'Required values greater that or equal to 0',
-            'THKN' => 'Layer or root zone thickness - The thickness of the modelled layer. The layer can be the root zone, a soil horizon or the entire soil profile',
-            'THKN_val' => 'Required values greater that or equal to 0',
-            'PORe' => 'Layer effective porosity - Effective porosity of the layer. This is used for defining the maximum soil water content (SWC)',
-            'PORe_val' => 'Required values between 1 and 100',
-            'THRinfLH' => 'SWC threshold for switching between low and high infiltration rate - Infiltration rate is high when soil water content (SWC) is below this threshold and low when SWC is  above this threshold',
-            'THRinfLH_val' => 'Required values between 0 and 100',
-            'INFlr' => 'Infiltration rate at low SWC - Infiltration rate when SWC is lower than THRinfLH (i.e. high infiltration rate)',
-            'INFlr_val' => 'Required values greater that or equal to 0',
-            'INFhr' => 'Infiltration rate at high SWC - Infiltration rate when SWC is higher than THRinfLH (i.e. low infiltration rate)',
-            'INFhr_val' => 'Required values greater that or equal to 0',
-            'THRdraHL' => 'Threshold for SWC to switch drainage from high to low rate - Drainage rate is high when soil water content (SWC) is above this threshold and low when SWC is below this threshold',
-            'THRdraHL_val' => 'Required values between 1 and 100',
-            'DRAlr' => 'Drainage rate at low SWC - Drainage rate when SWC is lower than THRdraHL (i.e. low drainage rate)',
-            'DRAlr_val' => 'Required values greater that or equal to 0',
-            'DRAhr' => 'Drainage rate at high SWC - Drainage rate when SWC is higher than THRdraHL (i.e. high drainage rate)',
-            'DRAhr_val' => 'Required values greater that or equal to 0',
-            'THRswstd' => 'SWC threshold for stopping drainage - Drainage stops when the SWC is below this threshold. This corresponds to dry soil conditions when drainage is expected to cease',
-            'THRswstd_val' => 'Required values between 1 and 100',
-            'THRtstd' => 'Air temperature threshold for stopping drainage - Drainage stops when the air temperature is below this threshold. This is considered to be a reasonable proxy for simulating frozen soil conditions. THRtstd is generally lower than the actual soil temperature',
-            'THRtstd_val' => 'Required values between -20 and 10',
-            'CFeidr' => 'Drainage boost correction factor, excess infiltration - Forces a proportion of water from excess infiltration to be re-routed to drainage instead of surface runoff. Use of non-zero CFeidr forces the model to bypass SWC calculation. Hence, CFeidr starting values should be zero, and should be adjusted only if model calibration using other parameters is not satisfactory',
-            'CFeidr_val' => 'Required values between 0 and 1',
-            'CFosdr' => 'Drainage boost correction factor, oversaturation - Forces a proportion of water from oversaturation (i.e. when SWC > PORe) to be re-routed to drainage instead of surface runoff. Use of CFosdr forces the model to bypass SWC calculation. CFosdr starting values should be zero, and should be adjusted only if model calibration using other parameters is not satisfactory',
-            'CFosdr_val' => 'Required values between 0 and 1',                 
-            'THRets' => 'SWC threshold for stopping soil evapotranspiration - Forces evapotranspiration to stop when SWC is below this value',
-            'THRets_val' => 'Required values between 1 and 100',
-            'THRlw' => 'Threshold for low SWC state - Threshold for considering the soil to be in a low SWC state. This is used only for counting the number of days when the soil is in this SWC state and can be used for example for estimating the number of days that require irrigation or number of days with water deficit',
-            'THRlw_val' => 'Required values between 1 and 100',
-            'THRhw' => 'Threshold for high SWC state - Threshold for considering the soil to be in a high SWC state. This is used only for counting the number of days when the soil is in this SWC state and can be used for example for estimating the number of days with excess water present in the soil',
-            'THRhw_val' => 'Required values between 1 and 100',
-            // soil output
-            'INFcap' => 'Infiltration capacity - Maximum allowed daily infiltration. INFcap is based on either INFlr (low infiltration rate) or INFhr (high infiltration rate) as triggered by THRinfLH. Excess water is transferred to surface runoff when WATisrf > INFcap',
-            'INFact' => 'Actual infiltration - Actual infiltration as constrained by WATisrf and INFcap. WATisrf that is in excess of INFcap is re-routed to surface runoff. INFact incorporates all adjustments relative to the infiltration process and is considered a key output parameter',
-            'DRAcap' => 'Drainage capacity - Maximum allowed daily drainage. DRAcap is based on either DRAlr (low infiltration rate) or DRAhr (high infiltration rate) as triggered by THRdraLH',
-            'DRAfre' => 'Drainage with frozen soil conditions - DRAcap corrected for frozen soil conditions as triggered by THRtstd. Drainage stops when soil temperature is lower than THRtstd',
-            'DRAfin' => 'Drainage with dry soil correction - DRAfre corrected for dry soil conditions as trigerred by THRswstd. Drainage stops when SWC is lower than THRtstd. DRAfin represents the drainage before surface runoff boost (if any) is applied',
-            'DRAbinf' => 'Drainage boost from excess infiltration - Excess water is transferred to surface runoff when WATisrf > INFcap. For these cases, drainage can be set to receive a proportion of the water directly from surface runoff, as triggered by CFeidr.  Use of non-zero CFeidr forces the model to bypass SWC calculation. Hence, CFeidr starting values should be zero, and should be adjusted only if model calibration using other parameters is not satisfactory',
-            'DRAoss' => 'Drainage boost from oversaturated soil - When soil becomes oversaturated, excess water is transferred to surface runoff. For these cases, drainage can be set to receive a proportion of the water directly from surface runoff, as triggered by CFosdr.  Use of non-zero CFosdr forces the model to bypass SWC calculation. Hence, CFosdr starting values should be zero, and should be adjusted only if model calibration using other parameters is not satisfactory',
-            'DRAact' => 'Actual drainage - Actual drainage. DRAact incorporates all adjustments relative to the drainage processes and is considered a key output parameter',
-            'ETisi' => 'Soil ET before correction for dry soil correction - Portion of evapotranspiration that occurs in the soil. The assumption is that a portion of evapotranspiration occurs in the soil and the reminder occurs above the soil via processes such as canopy interception and/or water ponding at the soil surface. The proportion of Etisi is controlled by CFets. This is an intermediate result that is adjusted via subsequent calculations',
-            'ETcds' => 'Soil ET corrected for dry soil - Evapotranspiration from soil ceases under dry soil conditions (controlled by THRets). ETcds is equal to ETisi when the soil is not under dry conditions and zero on the days with dry soil conditions',
-            'SWCint' => 'Soil water content - intermediate - SWC after integrating infiltration, drainage and evapotranspiration processes. This is an intermediate result that is adjusted via subsequent calculations',
-            'SWCfinmm' => 'Soil water content - corrected for saturated soil - SWC after SWCint is corrected for saturated soil conditions as set by PORe. SWCfinmm incorporates all adjustments relative to the SWC and is a key output parameter',
-            'SWCfin' => 'Soil water content - corrected for saturated soil - SWC after SWCint is corrected for saturated soil conditions as set by PORe. SWCfin incorporates all adjustments relative to the SWC and is a key output parameter',
-            'SReinf' => 'Surface runoff due to excess infiltration - Surface runoff due to excess water available for infiltration. Excess water is transferred to surface runoff when WATisrf > INFcap',
-            'SReinfDB' => 'Surface runoff due to excess infiltration after removing drainage boost - Surface runoff due to excess water available for infiltration (WATisrf > INFcap) after a portion (controlled by CFeidr) has been re-routed to drainage (DRAbinf)',
-            'SResas' => 'Surface runoff due to saturated soil - Surface runoff due to soil oversaturation (SWC > PORe). When soil becomes oversaturated, excess water is transferred to surface runoff',
-            'SResasDB' => 'Surface runoff due to saturated soil after removing drainage boost - Surface runoff due to soil oversaturation (SWC > PORe) after a portion (controlled by CFosdr) has been re-routed to drainage (DRAoss)',
-            'SRTint' => 'Total surface runoff before removing drainage boost - Total surface runoff, including all adjustments except for removing drainage boost (DRAbinf and DRAoss). This is an intermediate result that is adjusted via subsequent calculations',
-            'SRTact' => 'Total surface runoff after removing drainage boost - SRTact is SRTint after removing drainage boost (DRAbinf and DRAoss). SRTact incorporates all adjustments relative to the surface runoff processes and is considered a key output parameter',
-            'SWCgain' => 'Net SWC gain - Soil layer gains water when SWCfinmm on day i+1 is higher than on day i. SWCgain similar to SWCloss over the long-term indicates that the soil water storage is in equilibrium',
-            'SWCloss' => 'Net SWC loss - Soil layer losses water when SWCfinmm on day i+1 is lower than on day i. SWCgain similar to SWCloss over the long-term indicates that the soil water storage is in equilibrium',
-            'SWClow' => 'Days with low soil water content - Count for days in low SWC state (triggered by THRlw). This is used only for counting the number of days when the soil is in this SWC state and can be used for example for estimating the number of days that require irrigation or number of days with water deficit',
-            'SWChigh' => 'Days with high soil water content - Count for days in high SWC state (triggered by THRlw). This is used only for counting the number of days when the soil is in this SWC state and can be used for example for estimating the number of days with excess water present in the soil'
+            // params
+            
+            // output
+            'SNOW_MM' => 'Snow fall amount (mm)',
+            'SNOW_CM' => 'Snow fall amount (cm)',
+            'RAIN_MM' => 'Rain amount (mm)',            
         );
     }
 
@@ -4255,7 +4143,7 @@ class Utils
             }
 
             if(strcmp($key, 'precip') == 0){
-                return 'TOTPP (mm)';
+                return 'PRECIP (mm)';
             }
 
             if(strcmp($key, 'rain') == 0){
