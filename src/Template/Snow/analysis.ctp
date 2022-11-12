@@ -38,22 +38,42 @@
 
                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                         <div class="card-body">
-                           
-                        <div class="form-group">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text label-addon text-center limit-txt-width" id="param1-addon">
-                                            <span data-toggle="tooltip" title="<?= $tooltips['PRECIP_TO_SNOW'] ?>">PRECIP_TO_SNOW</span>
-                                            <div class="accepted-units-tooltip">
-                                                <i class="fas fa-exclamation-circle" data-toggle="tooltip" title="<?= $tooltips['PRECIP_TO_SNOW_val'] ?>"></i>
-                                            </div>
-                                        </span>
+                            <div class="form-group" id="precip-to-snow-group">
+                                <div class="row">                                    
+                                    <div class="col col-3 offset-2">
+                                        <span data-toggle="tooltip" title="<?= $tooltips['PRECIP_TO_SNOW'] ?>">T lower bound</span>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="&ge; 0" aria-label="Param1" aria-describedby="param1-addon" name="precip_to_snow" value="<?= !empty($paramData['precip_to_snow']) ? $paramData['precip_to_snow'] : 25.0; ?>">
+
+                                    <div class="col col-3">
+                                        <span data-toggle="tooltip" title="<?= $tooltips['PRECIP_TO_SNOW'] ?>">T upper bound</span>
+                                    </div>
+
+                                    <div class="col col-4">
+                                        <span data-toggle="tooltip" title="<?= $tooltips['PRECIP_TO_SNOW'] ?>">Conversion factor</span>                                        
+                                    </div>
                                 </div>
+
+                                <div class="row">
+                                    <div class="col col-2 add-param-col">
+                                        <button type="button" class="btn btn-success add-precip-to-snow-row" data-toggle="tooltip" title="Add interval"><i class="fas fa-plus"></i></button>
+                                    </div>
+                                    <div class="col col-3">
+                                        <input type="text" class="form-control" placeholder="e.g. -25" name="precipToSnow_lt[]" value="<?= !empty($paramData['precipToSnow_lt']) ? $paramData['precipToSnow_lt'] : -25; ?>">
+                                    </div>
+
+                                    <div class="col col-3">
+                                        <input type="text" class="form-control" placeholder="e.g. 5" name="precipToSnow_ht[]" value="<?= !empty($paramData['precipToSnow_ht']) ? $paramData['precipToSnow_ht'] : 2; ?>">
+                                    </div>
+
+                                    <div class="col col-4">
+                                        <input type="text" class="form-control" placeholder="&ge; 0" name="precipToSnow_factor[]" value="<?= !empty($paramData['precipToSnow_factor']) ? $paramData['precipToSnow_factor'] : 30; ?>">
+                                        <div class="accepted-units-tooltip">
+                                            <i class="fas fa-exclamation-circle" data-toggle="tooltip" title="<?= $tooltips['PRECIP_TO_SNOW_val'] ?>"></i>
+                                        </div>
+                                    </div>
+                                </div>                            
                             </div>                            
                         </div>
-
                     </div>
                 </div>
 
@@ -68,23 +88,43 @@
                     </div>
 
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                        <div class="card-body">                           
-                            
-                        <div class="form-group">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text label-addon text-center limit-txt-width" id="param2-addon">
-                                            <span data-toggle="tooltip" title="<?= $tooltips['SNOW_MM_TO_CM'] ?>">SNOW_MM_TO_CM</span>
-                                            <div class="accepted-units-tooltip">
-                                                <i class="fas fa-exclamation-circle" data-toggle="tooltip" title="<?= $tooltips['SNOW_MM_TO_CM_val'] ?>"></i>
-                                            </div>
-                                        </span>
+                        <div class="card-body">   
+                            <div class="form-group" id="snow-mm-to-cm-group">
+                                <div class="row">                                    
+                                    <div class="col col-3 offset-2">
+                                        <span data-toggle="tooltip" title="<?= $tooltips['SNOW_MM_TO_CM'] ?>">T lower bound</span>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="&ge; 0" aria-label="Param2" aria-describedby="param2-addon" name="snow_mm_to_cm" value="<?= !empty($paramData['snow_mm_to_cm']) ? $paramData['snow_mm_to_cm'] : 0.0; ?>">
-                                </div>
-                            </div>                             
-                        </div>
 
+                                    <div class="col col-3">
+                                        <span data-toggle="tooltip" title="<?= $tooltips['SNOW_MM_TO_CM'] ?>">T upper bound</span>
+                                    </div>
+
+                                    <div class="col col-4">
+                                        <span data-toggle="tooltip" title="<?= $tooltips['SNOW_MM_TO_CM'] ?>">Conversion factor</span>                                        
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col col-2 add-param-col">
+                                        <button type="button" class="btn btn-success add-snow-mm-to-cm-row" data-toggle="tooltip" title="Add interval"><i class="fas fa-plus"></i></button>
+                                    </div>
+                                    <div class="col col-3">
+                                        <input type="text" class="form-control" placeholder="e.g. -25" name="snowMmToCm_lt[]" value="<?= !empty($paramData['snowMmToCm_lt']) ? $paramData['snowMmToCm_lt'] : -25; ?>">
+                                    </div>
+
+                                    <div class="col col-3">
+                                        <input type="text" class="form-control" placeholder="e.g. 5" name="snowMmToCm_ht[]" value="<?= !empty($paramData['snowMmToCm_ht']) ? $paramData['snowMmToCm_ht'] : 2; ?>">
+                                    </div>
+
+                                    <div class="col col-4">
+                                        <input type="text" class="form-control" placeholder="&ge; 0" name="snowMmToCm_factor[]" value="<?= !empty($paramData['snowMmToCm_factor']) ? $paramData['snowMmToCm_factor'] : 0.3; ?>">
+                                        <div class="accepted-units-tooltip">
+                                            <i class="fas fa-exclamation-circle" data-toggle="tooltip" title="<?= $tooltips['SNOW_MM_TO_CM_val'] ?>"></i>
+                                        </div>
+                                    </div>
+                                </div>                            
+                            </div>     
+                        </div>                                                                   
                     </div>
                 </div>  
 
@@ -166,7 +206,47 @@
 
 <script src="https://www.google.com/recaptcha/api.js?render=6Lf-FlYgAAAAACb4jxIZTEifVXANttZUt1245r5e"></script>
 <script type="module">
-    //import {getCookie} from "../js/project.js";           
+    //import {getCookie} from "../js/project.js";     
+    
+    var precipToSnowRowTemplate = `<div class="row mt-2">
+                                    <div class="col col-2 add-param-col">
+                                        <button type="button" class="btn btn-danger rm-precip-to-snow-row" data-toggle="tooltip" title="Remove interval"><i class="fas fa-minus"></i></button>
+                                    </div>
+                                    <div class="col col-3">
+                                        <input type="text" class="form-control" placeholder="e.g. -25" name="precipToSnow_lt[]" value="<?= !empty($paramData['precipToSnow_lt']) ? $paramData['precipToSnow_lt'] : -25; ?>">
+                                    </div>
+
+                                    <div class="col col-3">
+                                        <input type="text" class="form-control" placeholder="e.g. 5" name="precipToSnow_ht[]" value="<?= !empty($paramData['precipToSnow_ht']) ? $paramData['precipToSnow_ht'] : 2; ?>">
+                                    </div>
+
+                                    <div class="col col-4">
+                                        <input type="text" class="form-control" placeholder="&ge; 0" name="precipToSnow_factor[]" value="<?= !empty($paramData['precipToSnow_factor']) ? $paramData['precipToSnow_factor'] : 0.3; ?>">
+                                        <div class="accepted-units-tooltip">
+                                            <i class="fas fa-exclamation-circle" data-toggle="tooltip" title="<?= $tooltips['PRECIP_TO_SNOW_val'] ?>"></i>
+                                        </div>
+                                    </div>
+                                </div>`; 
+
+    var snowMmToCmRowTemplate = `<div class="row mt-2">
+                                    <div class="col col-2 add-param-col">
+                                        <button type="button" class="btn btn-danger rm-snow-mm-to-cm-row" data-toggle="tooltip" title="Remove interval"><i class="fas fa-minus"></i></button>
+                                    </div>
+                                    <div class="col col-3">
+                                        <input type="text" class="form-control" placeholder="e.g. -25" name="snowMmToCm_lt[]" value="<?= !empty($paramData['snowMmToCm_lt']) ? $paramData['snowMmToCm_lt'] : -25; ?>">
+                                    </div>
+
+                                    <div class="col col-3">
+                                        <input type="text" class="form-control" placeholder="e.g. 5" name="snowMmToCm_ht[]" value="<?= !empty($paramData['snowMmToCm_ht']) ? $paramData['snowMmToCm_ht'] : 2; ?>">
+                                    </div>
+
+                                    <div class="col col-4">
+                                        <input type="text" class="form-control" placeholder="&ge; 0" name="snowMmToCm_factor[]" value="<?= !empty($paramData['snowMmToCm_factor']) ? $paramData['snowMmToCm_factor'] : 0.3; ?>">
+                                        <div class="accepted-units-tooltip">
+                                            <i class="fas fa-exclamation-circle" data-toggle="tooltip" title="<?= $tooltips['SNOW_MM_TO_CM_val'] ?>"></i>
+                                        </div>
+                                    </div>
+                                </div>`;
 
     function validateParamsForm() {
         if (!$('#uploadParamsForm').find(':input[name=inputDataFile]').val()){
@@ -182,22 +262,24 @@
         $('#analysisForm').find(':input[type=submit]').prop('disabled', true);
         $('#analysisForm').find(':input[type=submit]').addClass('disabled');
 
-        var field1Value = $('#analysisForm').find(':input[name=precip_to_snow]').val();
-        var field2Value = $('#analysisForm').find(':input[name=snow_mm_to_cm]').val();
+        var field1Value = $('#analysisForm').find(':input[name=precipToSnow_factor]').val();
+        // console.log(field1Value);
+        var field2Value = $('#analysisForm').find(':input[name=snowMmToCm_factor]').val();
+        // console.log(field2Value);
 
         if (field1Value && field2Value) {
          
             if (field1Value < 0) {
-                $('#analysisForm').find(':input[name=precip_to_snow]').val(0);
+                $('#analysisForm').find(':input[name=precipToSnow_factor]').val(0);
             }
 
             if (field1Value > 100) {
-                $('#analysisForm').find(':input[name=precip_to_snow]').val(100);
+                $('#analysisForm').find(':input[name=precipToSnow_factor]').val(100);
             }
 
             if (field2Value < 0) {
-                $('#analysisForm').find(':input[name=snow_mm_to_cm]').val(0);
-            }            
+                $('#analysisForm').find(':input[name=snowMmToCm_factor]').val(0);
+            }                           
             
             $('#analysisForm').find(':input[type=submit]').prop('disabled', false);
             $('#analysisForm').find(':input[type=submit]').removeClass('disabled');
@@ -206,9 +288,63 @@
 
     $(document).ready(function() {
         var csrfToken = <?= json_encode($this->request->getParam('_csrfToken')) ?>;
-        validateParamsForm();
-        validateForm();       
-        
+        // validateParamsForm();
+        // validateForm();       
+
+        $('.add-precip-to-snow-row').click(function(e) {
+            // console.log(e.currentTarget.parentElement.parentElement);  
+            $('#precip-to-snow-group').append(precipToSnowRowTemplate);
+        });
+
+        $('#precip-to-snow-group').on('click', '.rm-precip-to-snow-row', function(e) {
+            // console.log(e.currentTarget.parentElement);  
+            e.currentTarget.parentElement.parentElement.remove();
+        });        
+
+        $('.add-snow-mm-to-cm-row').click(function(e) {
+            // console.log(e.currentTarget.parentElement.parentElement);  
+            $('#snow-mm-to-cm-group').append(snowMmToCmRowTemplate);
+        });
+
+        $('#snow-mm-to-cm-group').on('click', '.rm-snow-mm-to-cm-row', function(e) {
+            // console.log(e.currentTarget.parentElement);  
+            e.currentTarget.parentElement.parentElement.remove();
+        });  
+
+        $('#analysisForm').on('change', ':input', function(e) {
+            console.log(e.currentTarget.name);
+            switch(e.currentTarget.name) {
+                case 'precipToSnow_lt[]':
+                    break;
+                case 'precipToSnow_ht[]':
+                    break;
+                case 'precipToSnow_factor[]':
+                    if ($(this).val() < 0) {
+                        $(this).val(0);
+                    }
+
+                    if ($(this).val() > 100) {
+                        $(this).val(100);
+                    }
+                    break;
+            }
+        });
+
+        $('#analysisForm').on('change', ':input', function(e) {
+            console.log(e.currentTarget.name);
+            switch(e.currentTarget.name) {
+                case 'snowMmToCm_lt[]':
+                    break;
+                case 'snowMmToCm_ht[]':
+                    break;
+                case 'snowMmToCm_factor[]':
+                    if ($(this).val() < 0) {
+                        $(this).val(0);
+                    }
+                    break;
+            }
+        });
+             
         $('#uploadParamsForm').find(':input[name=inputDataFile]').change(function(){     
             // alert($('#uploadParamsForm').find(':input[name=inputDataFile]').val());
             if ($('#uploadParamsForm').find(':input[name=inputDataFile]').val()){
@@ -229,7 +365,8 @@
             }
         });
 
-        $('#analysisForm').find(':input[name=precip_to_snow]').change(function() {
+        /*
+        $('#analysisForm').find(':input[name=precipToSnow_factor]').change(function() {
             if ($(this).val() < 0) {
                 $(this).val(0);
             }
@@ -241,13 +378,14 @@
             validateForm();
         });     
 
-        $('#analysisForm').find(':input[name=snow_mm_to_cm]').change(function() {
+        $('#analysisForm').find(':input[name=snowMmToCm_factor]').change(function() {
             if ($(this).val() < 0) {
                 $(this).val(0);
             }
 
             validateForm();
-        });           
+        });
+        */      
 
         $("#uploadParamsForm").submit(async function(e){
             $("#mySpinnerContainer").show();

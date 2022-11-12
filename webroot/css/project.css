@@ -445,9 +445,15 @@ td.validation-col {
 }
 
 /* input fields */
+.add-param-col{
+    align-self: center;
+    text-align: center;
+}
+
 .accepted-units-tooltip{
     position:absolute;
     right:-20px;
+    bottom: 0.5rem;
 }
 
 .limit-txt-width{

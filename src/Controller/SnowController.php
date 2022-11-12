@@ -398,7 +398,7 @@ class SnowController extends AppController
 
         // form params
         $formData = $this->request->getData();
-        // Log::debug('form: ' . json_encode($formData));                
+        Log::debug('form: ' . json_encode($formData));                
 
         try {                 
             // throw new Exception('test error');
@@ -425,6 +425,7 @@ class SnowController extends AppController
 
             // save new analysis params
             // Log::debug('params: ' . json_encode($formData));   
+            Utils::removeParamsDataset();
             Utils::writeParamsToDb($formData, 'snow');           
             
             //perform snow analysis
@@ -458,7 +459,7 @@ class SnowController extends AppController
                 $response = array(
                     'success' => true
                 );            
-            }                        
+            }                          
         } catch (Exception $e){
             $this->Flash->error(__('Error performing analysis! Error: ' . $e->getMessage()));
             // return $this->redirect(['action' => 'analysis']);

@@ -158,11 +158,37 @@ class SnowAnalysisEngine
         $outputArray['ucd2'] = $inputData['ucd2'];
         $outputArray['ucd3'] = $inputData['ucd3'];
 
-        $outputArray['snow_mm'] = ($this->params['precip_to_snow']*$inputData['precip'])/100;
-        $outputArray['snow_cm'] = $outputArray['snow_mm']*$this->params['snow_mm_to_cm'];
+        $outputArray['snow_mm'] = ($this->getPrecipToSnowFactor($inputData['temp'])*$inputData['precip'])/100;
+        $outputArray['snow_cm'] = $this->getSnowMmToCmFactor($inputData['temp'])*$outputArray['snow_mm'];
         $outputArray['rain_mm'] = $outputArray['precip']-$outputArray['snow_mm'];
 
         return $outputArray;
+    }
+
+    private function getPrecipToSnowFactor($temp) {
+        $factor = 0;
+
+        $paramsCount = $this->params['precipToSnow_count'];
+        for ($i = 0; $i < $paramsCount; $i++) {
+            if (($temp <= $this->params['precipToSnow_ht_'.$i]) && ($temp > $this->params['precipToSnow_lt_'.$i])) {
+                $factor = $this->params['precipToSnow_factor_'.$i];
+            }
+        }        
+
+        return $factor;
+    }
+
+    private function getSnowMmToCmFactor($temp) {
+        $factor = 0;
+
+        $paramsCount = $this->params['snowMmToCm_count'];
+        for ($i = 0; $i < $paramsCount; $i++) {
+            if (($temp <= $this->params['snowMmToCm_ht_'.$i]) && ($temp > $this->params['snowMmToCm_lt_'.$i])) {
+                $factor = $this->params['snowMmToCm_factor_'.$i];
+            }
+        } 
+
+        return $factor;
     }
 
     private function formatOutputDataRow($outputDataRow)

@@ -3097,16 +3097,37 @@ class Utils
 
         // write new Params
         $paramsData = array();
-        foreach ($formData as $formDataKey => $formDataValue) {
-            $newParam = array(
-                'dataset' => self::getCurrentDataset(),
-                'param_name' => $formDataKey,
-                'param_value' => $formDataValue,
-                'param_type' => $type
-            );
+        foreach ($formData as $formDataKey => $formDataCollection) {
+            $index = 0;
+            foreach ($formDataCollection as $itemValue) {            
+                $newParam = array(
+                    'dataset' => self::getCurrentDataset(),
+                    'param_name' => $formDataKey . '_' . $index++,
+                    'param_value' => $itemValue,
+                    'param_type' => $type
+                );
 
-            $paramsData[] = $newParam;
-        }
+                $paramsData[] = $newParam;
+            }
+
+            if (strcmp(explode("_", $formDataKey)[0], "precipToSnow") == 0) {
+                $paramsData[] = array(
+                    'dataset' => self::getCurrentDataset(),
+                    'param_name' => 'precipToSnow_count',
+                    'param_value' => $index,
+                    'param_type' => $type
+                );
+            }
+
+            if (strcmp(explode("_", $formDataKey)[0], "snowMmToCm") == 0) {
+                $paramsData[] = array(
+                    'dataset' => self::getCurrentDataset(),
+                    'param_name' => 'snowMmToCm_count',
+                    'param_value' => $index,
+                    'param_type' => $type
+                );
+            }
+        }        
 
         foreach ($paramsData as $item) {
             $item['found'] = true;
@@ -3149,7 +3170,7 @@ class Utils
         // self::removeCalibMapDataset();
         // self::resetUcdAvg();
 
-        // self::removeSnowDataset();
+        self::removeSnowDataset();
         // self::removeSoilWaterDataset();                
 
         self::resetUserData();
@@ -3195,7 +3216,6 @@ class Utils
     public static function removeSnowDataset($id = null)
     {
         self::removeDatasetFromTable('SnowDataOverlay', $id);
-
         self::removeDatasetFromTable('SnowData', $id);        
 
         // self::removeSnowAveragingDataset($id);
@@ -3714,7 +3734,7 @@ class Utils
         self::removeInputDataset($id);
         self::removeParamsDataset($id);
         self::removeSnowDataset($id);
-        self::removeSoilWaterDataset($id);
+        // self::removeSoilWaterDataset($id);
 
         self::resetUserDataById($id);
     }
@@ -3729,8 +3749,9 @@ class Utils
 
         if ($user instanceof User) {
             $user->data_loaded = 0;
-            $user->snow = 0;
-            $user->soil_water = 0;
+            $user->output_ready = 0;
+            $user->admin_access = 0;
+            $user->stop_analysis_flag = 0;
             $userTable->save($user);
         } else {
             throw new Exception('Cannot find User!');
@@ -4254,7 +4275,7 @@ class Utils
      */
     public static function calculateBivariableStats($type, $timeStep, $startIndex = null, $endIndex = null)
     {                                        
-        // Log::debug('*** ' . $type . ' bivariableStatsCalc ' . $timeStep . ' from ' . $startIndex . ' to ' . $endIndex);   
+        Log::debug('*** ' . $type . ' bivariableStatsCalc ' . $timeStep . ' from ' . $startIndex . ' to ' . $endIndex);   
 
         switch ($type) {
             case 'SnowCalibration':
