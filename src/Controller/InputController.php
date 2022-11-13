@@ -321,8 +321,11 @@ class InputController extends AppController
             // Utils::validateGrowthSeasonParams($paramData);
             Utils::writeParamsToDb($paramData, 'input');
 
-            // die(json_encode($formData['inputDataFile']));
+            // also write default params to db
+            Utils::writeDefaultParamsToDb(Utils::getSnowDefaultParams(), 'snow');
+            Utils::writeSnowCalMapToDb(Utils::getSnowDefaultCalibMap());   
 
+            // die(json_encode($formData['inputDataFile']));
             // upload file
             if (!$usingTestFile){ // user input file
                 $uploadedFile = Utils::uploadFile($formData['inputDataFile']);                    

@@ -30,7 +30,7 @@
                     <div class="card-header myAccordionHeader" id="headingOne">
                         <h5 class="mb-0">
                             <button data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="d-flex justify-content-between" type="button">
-                                <span>Precipitation to Snowfall conversion (mm) based on temperature</span>
+                                <span>Precipitation (mm) to Snowfall (mm) conversion factor based on temperature</span>
                                 <i class="fa fa-chevron-down" aria-hidden="true"></i>
                             </button>
                         </h5>
@@ -53,25 +53,36 @@
                                     </div>
                                 </div>
 
-                                <div class="row">
+                                <?php for($i=0; $i<$paramData['precipToSnow_count']; $i++) { ?>
+                                <div class="row mt-2">
                                     <div class="col col-2 add-param-col">
+                                        <?php if ($i==0) { ?>
                                         <button type="button" class="btn btn-success add-precip-to-snow-row" data-toggle="tooltip" title="Add interval"><i class="fas fa-plus"></i></button>
+                                        <?php } else { ?>
+                                        <button type="button" class="btn btn-danger rm-precip-to-snow-row" data-toggle="tooltip" title="Remove interval"><i class="fas fa-minus"></i></button>
+                                        <?php } ?>
                                     </div>
                                     <div class="col col-3">
-                                        <input type="text" class="form-control" placeholder="e.g. -25" name="precipToSnow_lt[]" value="<?= !empty($paramData['precipToSnow_lt']) ? $paramData['precipToSnow_lt'] : -25; ?>">
+                                        <input type="text" class="form-control" placeholder="e.g. -25" name="precipToSnow_lt[]" value="<?= $paramData['precipToSnow_lt_' . $i] ?>">
                                     </div>
 
                                     <div class="col col-3">
-                                        <input type="text" class="form-control" placeholder="e.g. 5" name="precipToSnow_ht[]" value="<?= !empty($paramData['precipToSnow_ht']) ? $paramData['precipToSnow_ht'] : 2; ?>">
+                                        <input type="text" class="form-control" placeholder="e.g. 5" name="precipToSnow_ht[]" value="<?= $paramData['precipToSnow_ht_' . $i] ?>">
                                     </div>
 
                                     <div class="col col-4">
-                                        <input type="text" class="form-control" placeholder="&ge; 0" name="precipToSnow_factor[]" value="<?= !empty($paramData['precipToSnow_factor']) ? $paramData['precipToSnow_factor'] : 30; ?>">
+                                        <input type="text" class="form-control" placeholder="&ge; 0" name="precipToSnow_factor[]" value="<?= $paramData['precipToSnow_factor_' . $i] ?>">
                                         <div class="accepted-units-tooltip">
                                             <i class="fas fa-exclamation-circle" data-toggle="tooltip" title="<?= $tooltips['PRECIP_TO_SNOW_val'] ?>"></i>
                                         </div>
                                     </div>
-                                </div>                            
+                                </div>  
+                                <?php } ?>    
+                                <div class="row mt-4">
+                                    <div class="col col-11 offset-1 alert-warning">
+                                        <span>* Data points not covered by any interval will have a conversion factor of 0.</span>
+                                    </div>                                    
+                                </div>                      
                             </div>                            
                         </div>
                     </div>
@@ -81,7 +92,7 @@
                     <div class="card-header myAccordionHeader" id="headingTwo">
                         <h5 class="mb-0">
                             <button data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" class="d-flex justify-content-between collapsed" type="button">
-                                <span>Snowfall conversion (mm to cm) based on temperature</span>
+                                <span>Snowfall conversion factor (mm to cm) based on temperature</span>
                                 <i class="fa fa-chevron-down" aria-hidden="true"></i>
                             </button>
                         </h5>
@@ -104,25 +115,36 @@
                                     </div>
                                 </div>
 
-                                <div class="row">
+                                <?php for($i=0; $i<$paramData['snowMmToCm_count']; $i++) { ?>
+                                <div class="row mt-2">
                                     <div class="col col-2 add-param-col">
-                                        <button type="button" class="btn btn-success add-snow-mm-to-cm-row" data-toggle="tooltip" title="Add interval"><i class="fas fa-plus"></i></button>
+                                        <?php if ($i==0) { ?>
+                                            <button type="button" class="btn btn-success add-snow-mm-to-cm-row" data-toggle="tooltip" title="Add interval"><i class="fas fa-plus"></i></button>
+                                        <?php } else { ?>
+                                        <button type="button" class="btn btn-danger rm-snow-mm-to-cm-row" data-toggle="tooltip" title="Remove interval"><i class="fas fa-minus"></i></button>
+                                        <?php } ?>
                                     </div>
                                     <div class="col col-3">
-                                        <input type="text" class="form-control" placeholder="e.g. -25" name="snowMmToCm_lt[]" value="<?= !empty($paramData['snowMmToCm_lt']) ? $paramData['snowMmToCm_lt'] : -25; ?>">
+                                        <input type="text" class="form-control" placeholder="e.g. -25" name="snowMmToCm_lt[]" value="<?= $paramData['snowMmToCm_lt_' . $i] ?>">
                                     </div>
 
                                     <div class="col col-3">
-                                        <input type="text" class="form-control" placeholder="e.g. 5" name="snowMmToCm_ht[]" value="<?= !empty($paramData['snowMmToCm_ht']) ? $paramData['snowMmToCm_ht'] : 2; ?>">
+                                        <input type="text" class="form-control" placeholder="e.g. 5" name="snowMmToCm_ht[]" value="<?= $paramData['snowMmToCm_ht_' . $i] ?>">
                                     </div>
 
                                     <div class="col col-4">
-                                        <input type="text" class="form-control" placeholder="&ge; 0" name="snowMmToCm_factor[]" value="<?= !empty($paramData['snowMmToCm_factor']) ? $paramData['snowMmToCm_factor'] : 0.3; ?>">
+                                        <input type="text" class="form-control" placeholder="&ge; 0" name="snowMmToCm_factor[]" value="<?= $paramData['snowMmToCm_factor_' . $i] ?>">
                                         <div class="accepted-units-tooltip">
                                             <i class="fas fa-exclamation-circle" data-toggle="tooltip" title="<?= $tooltips['SNOW_MM_TO_CM_val'] ?>"></i>
                                         </div>
                                     </div>
-                                </div>                            
+                                </div>                                   
+                                <?php } ?>                                   
+                                <div class="row mt-4">
+                                    <div class="col col-11 offset-1 alert-warning">
+                                        <span>* Data points not covered by any interval will have a conversion factor of 0.</span>
+                                    </div>                                    
+                                </div>   
                             </div>     
                         </div>                                                                   
                     </div>
@@ -213,15 +235,15 @@
                                         <button type="button" class="btn btn-danger rm-precip-to-snow-row" data-toggle="tooltip" title="Remove interval"><i class="fas fa-minus"></i></button>
                                     </div>
                                     <div class="col col-3">
-                                        <input type="text" class="form-control" placeholder="e.g. -25" name="precipToSnow_lt[]" value="<?= !empty($paramData['precipToSnow_lt']) ? $paramData['precipToSnow_lt'] : -25; ?>">
+                                        <input type="text" class="form-control" placeholder="e.g. -25" name="precipToSnow_lt[]">
                                     </div>
 
                                     <div class="col col-3">
-                                        <input type="text" class="form-control" placeholder="e.g. 5" name="precipToSnow_ht[]" value="<?= !empty($paramData['precipToSnow_ht']) ? $paramData['precipToSnow_ht'] : 2; ?>">
+                                        <input type="text" class="form-control" placeholder="e.g. 5" name="precipToSnow_ht[]">
                                     </div>
 
                                     <div class="col col-4">
-                                        <input type="text" class="form-control" placeholder="&ge; 0" name="precipToSnow_factor[]" value="<?= !empty($paramData['precipToSnow_factor']) ? $paramData['precipToSnow_factor'] : 0.3; ?>">
+                                        <input type="text" class="form-control" placeholder="&ge; 0" name="precipToSnow_factor[]">
                                         <div class="accepted-units-tooltip">
                                             <i class="fas fa-exclamation-circle" data-toggle="tooltip" title="<?= $tooltips['PRECIP_TO_SNOW_val'] ?>"></i>
                                         </div>
@@ -233,15 +255,15 @@
                                         <button type="button" class="btn btn-danger rm-snow-mm-to-cm-row" data-toggle="tooltip" title="Remove interval"><i class="fas fa-minus"></i></button>
                                     </div>
                                     <div class="col col-3">
-                                        <input type="text" class="form-control" placeholder="e.g. -25" name="snowMmToCm_lt[]" value="<?= !empty($paramData['snowMmToCm_lt']) ? $paramData['snowMmToCm_lt'] : -25; ?>">
+                                        <input type="text" class="form-control" placeholder="e.g. -25" name="snowMmToCm_lt[]">
                                     </div>
 
                                     <div class="col col-3">
-                                        <input type="text" class="form-control" placeholder="e.g. 5" name="snowMmToCm_ht[]" value="<?= !empty($paramData['snowMmToCm_ht']) ? $paramData['snowMmToCm_ht'] : 2; ?>">
+                                        <input type="text" class="form-control" placeholder="e.g. 5" name="snowMmToCm_ht[]">
                                     </div>
 
                                     <div class="col col-4">
-                                        <input type="text" class="form-control" placeholder="&ge; 0" name="snowMmToCm_factor[]" value="<?= !empty($paramData['snowMmToCm_factor']) ? $paramData['snowMmToCm_factor'] : 0.3; ?>">
+                                        <input type="text" class="form-control" placeholder="&ge; 0" name="snowMmToCm_factor[]">
                                         <div class="accepted-units-tooltip">
                                             <i class="fas fa-exclamation-circle" data-toggle="tooltip" title="<?= $tooltips['SNOW_MM_TO_CM_val'] ?>"></i>
                                         </div>
@@ -312,7 +334,7 @@
         });  
 
         $('#analysisForm').on('change', ':input', function(e) {
-            console.log(e.currentTarget.name);
+            // console.log(e.currentTarget.name);
             switch(e.currentTarget.name) {
                 case 'precipToSnow_lt[]':
                     break;
@@ -331,7 +353,7 @@
         });
 
         $('#analysisForm').on('change', ':input', function(e) {
-            console.log(e.currentTarget.name);
+            // console.log(e.currentTarget.name);
             switch(e.currentTarget.name) {
                 case 'snowMmToCm_lt[]':
                     break;

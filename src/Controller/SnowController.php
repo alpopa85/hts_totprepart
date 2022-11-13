@@ -53,7 +53,7 @@ class SnowController extends AppController
     public function beforeFilter(Event $event)
     {            
         if (!Utils::isInputDataLoaded()){
-            $this->Flash->error(__("Please load data before accessing the 'Snow' module!"));
+            $this->Flash->error(__("Please load data before accessing the 'Analysis' module!"));
 
             $this->response = $this->redirect('/input/load-data'); 
             return $this->response;
@@ -398,7 +398,7 @@ class SnowController extends AppController
 
         // form params
         $formData = $this->request->getData();
-        Log::debug('form: ' . json_encode($formData));                
+        // Log::debug('form: ' . json_encode($formData));                
 
         try {                 
             // throw new Exception('test error');

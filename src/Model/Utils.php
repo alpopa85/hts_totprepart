@@ -3151,6 +3151,45 @@ class Utils
         }
     }
 
+    public static function writeDefaultParamsToDb($formData, $type)
+    {
+        $paramsTable = TableRegistry::getTableLocator()->get('Params');
+
+        // write new Params
+        $paramsData = array();
+        foreach ($formData as $formDataKey => $formDataValue) {
+            $newParam = array(
+                'dataset' => self::getCurrentDataset(),
+                'param_name' => $formDataKey,
+                'param_value' => floatval(str_replace(',','',$formDataValue)),
+                'param_type' => $type
+            );
+
+            $paramsData[] = $newParam;
+        }       
+
+        foreach ($paramsData as $item) {
+            $item['found'] = true;
+            $paramEntity = $paramsTable->findOrCreate(
+                [
+                    'dataset' => $item['dataset'],
+                    'param_name' => $item['param_name']
+                ],
+                function ($entity) use ($item) { // creation callback
+                    $entity->param_value = $item['param_value'];
+                    $entity->param_type = $item['param_type'];
+                    $item['found'] = false;
+                }
+            );
+
+            if ($item['found']) {
+                $paramEntity->param_value = $item['param_value'];
+                $paramEntity->param_type = $item['param_type'];
+                $paramsTable->save($paramEntity);
+            }
+        }
+    }
+
     public static function isSetGrowthSeason()
     {
         $params = self::getParams();
@@ -3782,10 +3821,8 @@ class Utils
             $query->select([
                 'test_input' => $query->func()->sum('test_input'),
                 'input' => $query->func()->sum('input'),
-                'snow' => $query->func()->sum('snow'),
-                'export_snow' => $query->func()->sum('export_snow'),
-                'soil_water' => $query->func()->sum('soil_water'),
-                'export_soil_water' => $query->func()->sum('export_soil_water')                
+                'output' => $query->func()->sum('output'),
+                'export_output' => $query->func()->sum('export_output'),
             ]);
             $query->where([
                 'date_added >=' => $startDate,
@@ -3801,10 +3838,8 @@ class Utils
             $query->select([
                 'test_input' => $query->func()->sum('test_input'),
                 'input' => $query->func()->sum('input'),
-                'snow' => $query->func()->sum('snow'),
-                'export_snow' => $query->func()->sum('export_snow'),
-                'soil_water' => $query->func()->sum('soil_water'),
-                'export_soil_water' => $query->func()->sum('export_soil_water')  
+                'output' => $query->func()->sum('output'),
+                'export_output' => $query->func()->sum('export_output'),
             ]);
             $usageStatsData = $query->toArray();
         }
@@ -3814,10 +3849,8 @@ class Utils
             $data[] = array(
                 $item->test_input,
                 $item->input,
-                $item->snow,
-                $item->export_snow,
-                $item->soil_water,
-                $item->export_soil_water                
+                $item->output,
+                $item->export_output,                           
             );
         }
 
@@ -4275,7 +4308,7 @@ class Utils
      */
     public static function calculateBivariableStats($type, $timeStep, $startIndex = null, $endIndex = null)
     {                                        
-        Log::debug('*** ' . $type . ' bivariableStatsCalc ' . $timeStep . ' from ' . $startIndex . ' to ' . $endIndex);   
+        // Log::debug('*** ' . $type . ' bivariableStatsCalc ' . $timeStep . ' from ' . $startIndex . ' to ' . $endIndex);   
 
         switch ($type) {
             case 'SnowCalibration':
@@ -4750,6 +4783,7 @@ class Utils
         // Log::debug('nrmsd_minmax: ' . $statsData['nrmsd_minmax']);
 
         // calculate nrmse_irq = RMSD / (Quartile3 - Quartile1) ***VERIFIED***
+        // Log::debug($ucdField);
         if ($datasetLen >= 3) {
             $q1OffsetFloor = round(0.25*$datasetLen);  
             if ($q1OffsetFloor > 0) { // offset of the first element in results is 0, not 1
@@ -4798,6 +4832,11 @@ class Utils
 
     private static function getQuartileValue($targetTable, $fieldName, $startIndex, $endIndex, $quartileOffsetFloor, $quartileOffsetCeil)
     {
+        // Log::debug($fieldName);
+        // Log::debug($startIndex);
+        // Log::debug($endIndex);
+        // Log::debug($quartileOffsetFloor);
+        // Log::debug($quartileOffsetCeil);
         $table = TableRegistry::getTableLocator()->get($targetTable);    
 
         $whereCondition = function (QueryExpression $exp, Query $query) use ($startIndex, $endIndex) {
@@ -4815,6 +4854,7 @@ class Utils
         $query->offset($quartileOffsetFloor);
         $query->limit(1);
         $resultFloor = $query->first(); 
+        // Log::debug($resultFloor[$fieldName]);
 
         $query = $table->find();
         $query->select($fieldName);        
@@ -4823,6 +4863,7 @@ class Utils
         $query->offset($quartileOffsetCeil);
         $query->limit(1);
         $resultCeil = $query->first(); 
+        // Log::debug($resultCeil[$fieldName]);
 
         return ($resultFloor[$fieldName] + $resultCeil[$fieldName])/2;
     }
@@ -4951,5 +4992,76 @@ class Utils
         // Log::debug('r: ' . $r);
         return $r;
     } 
+
+    public static function getSnowDefaultParams()
+    {
+        $snowDefaultParams = [
+            'precipToSnow_count' => 7,
+            'precipToSnow_lt_0' => -99,
+            'precipToSnow_ht_0' => -5,
+            'precipToSnow_factor_0' => 100,
+            'precipToSnow_lt_1' => -5,
+            'precipToSnow_ht_1' => -1,
+            'precipToSnow_factor_1' => 80,
+            'precipToSnow_lt_2' => -1,
+            'precipToSnow_ht_2' => 0,
+            'precipToSnow_factor_2' => 70,
+            'precipToSnow_lt_3' => 0,
+            'precipToSnow_ht_3' => 1,
+            'precipToSnow_factor_3' => 30,
+            'precipToSnow_lt_4' => 1,
+            'precipToSnow_ht_4' => 2,
+            'precipToSnow_factor_4' => 20,
+            'precipToSnow_lt_5' => 2,
+            'precipToSnow_ht_5' => 3,
+            'precipToSnow_factor_5' => 10,
+            'precipToSnow_lt_6' => 3,
+            'precipToSnow_ht_6' => 99,
+            'precipToSnow_factor_6' => 0,
+            'snowMmToCm_count' => 8,
+            'snowMmToCm_lt_0' => -99,
+            'snowMmToCm_ht_0' => -29,
+            'snowMmToCm_factor_0' => 10,
+            'snowMmToCm_lt_1' => -29,
+            'snowMmToCm_ht_1' => -18,
+            'snowMmToCm_factor_1' => 5,
+            'snowMmToCm_lt_2' => -18,
+            'snowMmToCm_ht_2' => -13,
+            'snowMmToCm_factor_2' => 4,
+            'snowMmToCm_lt_3' => -13,
+            'snowMmToCm_ht_3' => -10,
+            'snowMmToCm_factor_3' => 3,
+            'snowMmToCm_lt_4' => -10,
+            'snowMmToCm_ht_4' => -7,
+            'snowMmToCm_factor_4' => 2,
+            'snowMmToCm_lt_5' => -7,
+            'snowMmToCm_ht_5' => 1,
+            'snowMmToCm_factor_5' => 1,
+            'snowMmToCm_lt_6' => 1,
+            'snowMmToCm_ht_6' => 5,
+            'snowMmToCm_factor_6' => 0.5,
+            'snowMmToCm_lt_7' => 5,
+            'snowMmToCm_ht_7' => 99,
+            'snowMmToCm_factor_7' => 0,
+        ];
+        
+        return $snowDefaultParams;
+    }   
+
+    public static function getSnowDefaultCalibMap()
+    {
+        $calibrationData = [
+            [ // pair 1
+                'output' => 'snow_mm',
+                'ucd' => 'ucd1'
+            ],
+            [ // pair 2
+                'output' => 'rain_mm',
+                'ucd' => 'ucd3'
+            ]
+        ];
+
+        return $calibrationData;
+    }
        
 }

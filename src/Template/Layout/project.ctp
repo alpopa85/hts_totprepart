@@ -137,7 +137,7 @@
                     'id' => 'reset-ucd',
                     'data-toggle' => 'modal',
                     'data-target' => '#ucdModalReset']) : ''; ?> -->    
-                <?= $this->Html->link('Snow', [
+                <?= $this->Html->link('Analysis', [
                     'controller' => 'snow',
                     'action' => 'index'], [
                         'class' => 'nav-link',

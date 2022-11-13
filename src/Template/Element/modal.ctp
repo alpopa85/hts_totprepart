@@ -442,7 +442,7 @@
   <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="snowAnalysisModalTitle">Performing Snow Analysis...</h5>
+        <h5 class="modal-title" id="snowAnalysisModalTitle">Performing Analysis...</h5>
         <div float="right">
           <h5 class="modal-title" id="analysisCompletionRate">0 %</h5>
         </div>

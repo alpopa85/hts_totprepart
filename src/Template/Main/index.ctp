@@ -7,7 +7,7 @@
             <h3>Online Tool</h3>
         </div>        
     </div>
-<!--
+<?php /*
     <div class="intro-content swib-maintext">
 
         <table class="table table-sm table-hover table-borderless text-center pb-5" id="contents">
@@ -1551,5 +1551,5 @@
         </ul>                
     </div>    
 
-    -->
+    */?>
 </div>
