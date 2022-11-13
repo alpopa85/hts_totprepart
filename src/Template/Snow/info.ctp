@@ -2,7 +2,7 @@
     
     <div class="intro-content swib-maintext my-5">      
         <div class="swib-title text-center mb-5">
-            <h2>Snow Module</h2>
+            <h2>Analysis Module</h2>
         </div>
 
         <div class="table-responsive text-left">

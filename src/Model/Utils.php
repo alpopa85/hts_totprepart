@@ -218,7 +218,7 @@ class Utils
             case 'export_output':
                 $data = array(
                     'user_id' => self::getCurrentDataset(),
-                    'export_snow' => 1
+                    'export_output' => 1
                 );
                 break;                
         }
