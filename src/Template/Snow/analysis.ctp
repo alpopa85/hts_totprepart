@@ -77,13 +77,14 @@
                                         </div>
                                     </div>
                                 </div>  
-                                <?php } ?>    
-                                <div class="row mt-4">
-                                    <div class="col col-11 offset-1 alert-warning">
-                                        <span>* Data points not covered by any interval will have a conversion factor of 0.</span>
-                                    </div>                                    
-                                </div>                      
-                            </div>                            
+                                <?php } ?>                                                      
+                            </div>            
+                            
+                            <div class="row mt-4">
+                                <div class="col col-11 offset-1 alert-warning">
+                                    <span>* Data points not covered by any interval will have a conversion factor of 0.</span>
+                                </div>                                    
+                            </div>    
                         </div>
                     </div>
                 </div>
@@ -139,13 +140,14 @@
                                         </div>
                                     </div>
                                 </div>                                   
-                                <?php } ?>                                   
-                                <div class="row mt-4">
-                                    <div class="col col-11 offset-1 alert-warning">
-                                        <span>* Data points not covered by any interval will have a conversion factor of 0.</span>
-                                    </div>                                    
-                                </div>   
+                                <?php } ?>                                                                  
                             </div>     
+
+                            <div class="row mt-4">
+                                <div class="col col-11 offset-1 alert-warning">
+                                    <span>* Data points not covered by any interval will have a conversion factor of 0.</span>
+                                </div>                                    
+                            </div>   
                         </div>                                                                   
                     </div>
                 </div>  
@@ -321,6 +323,22 @@
         $('#precip-to-snow-group').on('click', '.rm-precip-to-snow-row', function(e) {
             // console.log(e.currentTarget.parentElement);  
             e.currentTarget.parentElement.parentElement.remove();
+
+            // also remove tooltips
+                let tooltips = $('body > .tooltip');
+                if (tooltips.length === 0) {
+                    // no tooltips
+                    return;
+                }
+                
+                // Loop through tooltips
+                tooltips.each((i,tooltip) => {
+                    // Do tooltip has its initiator?
+                    if ($(`[aria-describedby="${tooltip.id}"]`).length === 0) {
+                        // No. It is dead tooltip, remove it.
+                        tooltip.remove();
+                    }
+                });
         });        
 
         $('.add-snow-mm-to-cm-row').click(function(e) {
@@ -331,6 +349,22 @@
         $('#snow-mm-to-cm-group').on('click', '.rm-snow-mm-to-cm-row', function(e) {
             // console.log(e.currentTarget.parentElement);  
             e.currentTarget.parentElement.parentElement.remove();
+
+            // also remove tooltips
+                let tooltips = $('body > .tooltip');
+                if (tooltips.length === 0) {
+                    // no tooltips
+                    return;
+                }
+                
+                // Loop through tooltips
+                tooltips.each((i,tooltip) => {
+                    // Do tooltip has its initiator?
+                    if ($(`[aria-describedby="${tooltip.id}"]`).length === 0) {
+                        // No. It is dead tooltip, remove it.
+                        tooltip.remove();
+                    }
+                });
         });  
 
         $('#analysisForm').on('change', ':input', function(e) {

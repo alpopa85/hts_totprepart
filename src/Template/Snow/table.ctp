@@ -218,9 +218,11 @@
             <table class="table display cell-border compact text-center" id="calibDataTable">
                 <thead>
                     <tr>                        
-                        <th scope="col">Statistic</th>                        
+                    <th scope="col">Statistic</th>                        
                         <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips[$calibration['output1_field']] ?>"><?= $calibration['output1_field']?></span> vs <span data-toggle="tooltip" title="<?= $tooltips[$calibration['ucd1_field']] ?>"><?= $calibration['ucd1_field']?></span></th> 
+                        <?php if (!empty($calibration['output2_field']) && !empty($calibration['ucd2_field'])) { ?>
                         <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips[$calibration['output2_field']] ?>"><?= $calibration['output2_field']?></span> vs <span data-toggle="tooltip" title="<?= $tooltips[$calibration['ucd2_field']] ?>"><?= $calibration['ucd2_field']?></span></th>                       
+                        <?php } ?>
                     </tr>
                 </thead>
             </table>

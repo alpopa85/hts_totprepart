@@ -209,10 +209,8 @@ class AdminController extends AppController
             'organization',
             'sample_data',
             'user_data',
-            'run_snow',
-            'export_snow',            
-            'run_water_balance',
-            'export_water_balance'           
+            'run_output',
+            'export_output'           
         ]);
         $csvData .= PHP_EOL;
 
@@ -260,10 +258,8 @@ class AdminController extends AppController
                 'organization' => $locationData['organization'],
                 'sample_data' => $row['test_input'],
                 'user_data' => $row['input'],
-                'run_snow' => $row['snow'],
-                'export_snow' => $row['export_snow'],
-                'run_water_balance' => $row['soil_water'],
-                'export_water_balance' => $row['export_soil_water']                
+                'run_output' => $row['output'],
+                'export_output' => $row['export_output']
             ];
             $csvData .= implode(',', $parsedData) . PHP_EOL;
         }
@@ -272,7 +268,7 @@ class AdminController extends AppController
         $response = $response->withStringBody($csvData);
 
         $response = $response->withType('csv');
-        $response = $response->withDownload('swib_fullusage_stats.csv');
+        $response = $response->withDownload('sbuddy_fullusage_stats.csv');
         return $response;
     }
 }

@@ -119,6 +119,7 @@ class SnowController extends AppController
             $calibFieldNames[$key] = explode(' ', Utils::transformKey($value))[0];
         }
         $this->set('calibration', $calibFieldNames);
+        // Log::debug($calibFieldNames);
 
         $analysisParams = Utils::getParams();
         $this->set('analysisParams', $analysisParams);

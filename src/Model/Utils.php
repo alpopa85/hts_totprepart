@@ -1531,6 +1531,7 @@ class Utils
             ->fetch();
 
         $inputDataStats[0]->std_dev = $std[0];
+        // Log::debug($inputDataStats);
 
         return $inputDataStats;
     }
@@ -4147,115 +4148,7 @@ class Utils
 
             if(strcmp($key, 'gs_end_month') == 0){
                 return 'GS_end_month';
-            }
-
-            if(strcmp($key, 'thr_rs') == 0){
-                return 'THRrs (deg C)';
-            }
-
-            if(strcmp($key, 'thr_sm') == 0){
-                return 'THRsm (deg C)';
-            }
-
-            if(strcmp($key, 'cft_sm') == 0){
-                return 'CFTsm (mm)';
-            }
-
-            if(strcmp($key, 'cfp_sm') == 0){
-                return 'CFRsm (mm)';
-            }
-
-            if(strcmp($key, 'cfs_mc') == 0){
-                return 'CFSmc (mm)';
-            }
-
-            if(strcmp($key, 'cf_ets') == 0){
-                return 'CFets (mm)';
-            }
-
-            if(strcmp($key, 'snwt_init') == 0){
-                return 'SNWTinit (cm)';
-            }
-
-            if(strcmp($key, 'snwm_init') == 0){
-                return 'SNWMinit (mm)';
             }            
-
-            if(strcmp($key, 'thkn') == 0){
-                return 'THKN (mm)';
-            }
-
-            if(strcmp($key, 'por_e') == 0){
-                return 'PORe (%)';
-            }
-
-            if(strcmp($key, 'thr_inf_lh') == 0){
-                return 'THRinfLH (%)';
-            }
-
-            if(strcmp($key, 'inf_lr') == 0){
-                return 'INFlr (mm/hr)';
-            }
-
-            if(strcmp($key, 'inf_hr') == 0){
-                return 'INFhr (mm/hr)';
-            }
-
-            if(strcmp($key, 'thr_inf_hl') == 0){
-                return 'THRdraHL (%)';
-            }
-
-            if(strcmp($key, 'dra_lr') == 0){
-                return 'DRAlr (mm/hr)';
-            }
-
-            if(strcmp($key, 'dra_hr') == 0){
-                return 'DRAhr (mm/hr)';
-            }  
-            
-            if(strcmp($key, 'thr_swsd') == 0){
-                return 'THRswstd (%)';
-            }
-
-            if(strcmp($key, 'thr_tsd') == 0){
-                return 'THRtstd (deg C)';
-            } 
-
-            if(strcmp($key, 'cf_eidr') == 0){
-                return 'CFeidr';
-            }
-
-            if(strcmp($key, 'cf_osdr') == 0){
-                return 'CFosdr';
-            } 
-
-            if(strcmp($key, 'thr_ets') == 0){
-                return 'THRets (%)';
-            }
-
-            if(strcmp($key, 'thr_lw') == 0){
-                return 'THRlw (%)';
-            } 
-
-            if(strcmp($key, 'thr_hw') == 0){
-                return 'THRhw (%)';
-            }
-
-            if(strcmp($key, 'swc_init') == 0){
-                return 'SWCinit (mm)';
-            }
-
-            if(strcmp($key, 'sr_init') == 0){
-                return 'SRinit (mm)';
-            }
-
-            if(strcmp($key, 'ng_init') == 0){
-                return 'NGinit (mm)';
-            }
-
-            if(strcmp($key, 'nl_init') == 0){
-                return 'NLinit (mm)';
-            }
 
         return $key;
     }    
