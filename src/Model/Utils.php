@@ -433,24 +433,27 @@ class Utils
             $paramsCollection = array();
             
             $fieldTypeIndex = 2;
-            $fieldRawNameIndex = 3;
+            $fieldNameIndex = 0;
             $fieldValueIndex = 1;                        
 
             $typeHeaderRow = true;
             $tableHeaderRow = true;
+
+            $precipToSnow_l_counter = 0;
+            $precipToSnow_h_counter = 0;
+            $precipToSnow_factor_counter = 0;
+
+            $snowMmToCm_l_counter = 0;
+            $snowMmToCm_h_counter = 0;
+            $snowMmToCm_factor_counter = 0;
             while (($data = fgetcsv($readHandle, 1000, ",")) !== FALSE) {                
 
                 // skip type header row
                 if ($typeHeaderRow) {
-                    switch ($type){
-                        case 'wb':
-                            if (strcmp($data[0], 'WATER_BALANCE_CONFIGURATION') !== 0) {
-                                throw new Exception('Wrong configuration file! Please upload a WATER BALANCE configuration file.', 13);
-                            }
-                            break;
+                    switch ($type){                       
                         case 'snow':
-                            if (strcmp($data[0], 'SNOW_CONFIGURATION') !== 0) {
-                                throw new Exception('Wrong configuration file! Please upload a SNOW configuration file.', 13);
+                            if (strcmp($data[0], 'SBUDDY_CONFIGURATION') !== 0) {
+                                throw new Exception('Wrong configuration file! Please upload a sbuddy configuration file.', 13);
                             }
                             break;
                     }                    
@@ -469,17 +472,99 @@ class Utils
                 if (strcmp(explode('_', $data[$fieldTypeIndex])[1], 'param') != 0) {
                     continue;
                 }
-
-                $newData = array(
-                    'dataset' => Utils::getCurrentDataset(),
-                    'param_name' => $data[$fieldRawNameIndex],
-                    'param_value' => $data[$fieldValueIndex]
-                );       
                 
-                $paramsCollection[] = $newData;               
+                switch($data[$fieldNameIndex]) {
+                    case 'precipToSnow_l':                        
+                        $newData = array(
+                            'dataset' => Utils::getCurrentDataset(),
+                            'param_name' => $data[$fieldNameIndex] . '_' . $precipToSnow_l_counter,
+                            'param_value' => $data[$fieldValueIndex],
+                            'param_type' => 'sbuddy'
+                        );       
+                        $precipToSnow_l_counter++;
+                        break;
+                    case 'precipToSnow_h':
+                        $newData = array(
+                            'dataset' => Utils::getCurrentDataset(),
+                            'param_name' => $data[$fieldNameIndex] . '_' . $precipToSnow_h_counter,
+                            'param_value' => $data[$fieldValueIndex],
+                            'param_type' => 'sbuddy'
+                        );       
+                        $precipToSnow_h_counter++;
+                        break;
+                    case 'precipToSnow_factor':
+                        $newData = array(
+                            'dataset' => Utils::getCurrentDataset(),
+                            'param_name' => $data[$fieldNameIndex] . '_' . $precipToSnow_factor_counter,
+                            'param_value' => $data[$fieldValueIndex],
+                            'param_type' => 'sbuddy'
+                        );       
+                        $precipToSnow_factor_counter++;
+                        break;
+                    case 'snowMmToCm_l':                        
+                        $newData = array(
+                            'dataset' => Utils::getCurrentDataset(),
+                            'param_name' => $data[$fieldNameIndex] . '_' . $snowMmToCm_l_counter,
+                            'param_value' => $data[$fieldValueIndex],
+                            'param_type' => 'sbuddy'
+                        );       
+                        $snowMmToCm_l_counter++;
+                        break;
+                    case 'snowMmToCm_h':
+                        $newData = array(
+                            'dataset' => Utils::getCurrentDataset(),
+                            'param_name' => $data[$fieldNameIndex] . '_' . $snowMmToCm_h_counter,
+                            'param_value' => $data[$fieldValueIndex],
+                            'param_type' => 'sbuddy'
+                        );       
+                        $snowMmToCm_h_counter++;
+                        break;
+                    case 'snowMmToCm_factor':
+                        $newData = array(
+                            'dataset' => Utils::getCurrentDataset(),
+                            'param_name' => $data[$fieldNameIndex] . '_' . $snowMmToCm_factor_counter,
+                            'param_value' => $data[$fieldValueIndex],
+                            'param_type' => 'sbuddy'
+                        );       
+                        $snowMmToCm_factor_counter++;
+                        break;
+                    default: 
+                        $newData = null;
+                        break;
+                }                
+                
+                if ($newData) {
+                    $paramsCollection[] = $newData;   
+                }                            
             }
             fclose($readHandle);
 
+            // verify and add precipToSnow counter
+            // Log::debug('precipToSnow_l_counter: ' . $precipToSnow_l_counter);
+            // Log::debug('precipToSnow_h_counter: ' . $precipToSnow_h_counter);
+            // Log::debug('precipToSnow_factor_counter: ' . $precipToSnow_factor_counter);
+            if (($precipToSnow_l_counter != $precipToSnow_h_counter) || ($precipToSnow_l_counter != $precipToSnow_factor_counter) || ($precipToSnow_h_counter != $precipToSnow_factor_counter))  {
+                throw new Exception('Erroneous configuration file! Make sure to specify lower bound, upper bound and convertion factor for each interval.', 13);
+            }
+            $paramsCollection[] = array(
+                'dataset' => Utils::getCurrentDataset(),
+                'param_name' => 'precipToSnow_count',
+                'param_value' => $precipToSnow_l_counter,
+                'param_type' => 'sbuddy'
+            );     
+
+            // verify and add snowMmToCm counter
+            if (($snowMmToCm_l_counter != $snowMmToCm_h_counter) || ($snowMmToCm_l_counter != $snowMmToCm_factor_counter) || ($snowMmToCm_h_counter != $snowMmToCm_factor_counter))  {
+                throw new Exception('Erroneous configuration file! Make sure to specify lower bound, upper bound and convertion factor for each interval.', 13);
+            }
+            $paramsCollection[] = array(
+                'dataset' => Utils::getCurrentDataset(),
+                'param_name' => 'snowMmToCm_count',
+                'param_value' => $snowMmToCm_l_counter,
+                'param_type' => 'sbuddy'
+            ); 
+
+            self::removeParamsDataset();
             foreach ($paramsCollection as $item) {
                 $item['found'] = true;
                 $paramEntity = $paramsDataTable->findOrCreate(
@@ -489,12 +574,14 @@ class Utils
                     ],
                     function ($entity) use ($item) { // creation callback
                         $entity->param_value = $item['param_value'];
+                        $entity->param_type = $item['param_type'];
                         $item['found'] = false;
                     }
                 );
     
                 if ($item['found']) {
                     $paramEntity->param_value = $item['param_value'];
+                    $paramEntity->param_type = $item['param_type'];
                     $paramsDataTable->save($paramEntity);
                 }
             }
@@ -529,7 +616,7 @@ class Utils
                 }           
                 
                 // skip non calibration field
-                if (strcmp($data[$fieldTypeIndex], 'snow_calib_map') != 0) {
+                if (strcmp($data[$fieldTypeIndex], 'sbuddy_calib_map') != 0) {
                     continue;
                 }
 
@@ -4124,7 +4211,15 @@ class Utils
 
             if(strcmp($key, 'ucd3') == 0){
                 return 'UCD3';
-            }       
+            }  
+            
+            if(strcmp($key, 'ucd4') == 0){
+                return 'UCD4';
+            }
+
+            if(strcmp($key, 'ucd5') == 0){
+                return 'UCD5';
+            }  
             
         // snow
             if(strcmp($key, 'snow_mm') == 0){

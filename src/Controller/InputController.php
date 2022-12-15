@@ -279,7 +279,7 @@ class InputController extends AppController
         $response = $response->withStringBody($data);
 
         $response = $response->withType('csv');
-        $response = $response->withDownload($this->exportPrefix . 'globalConfig' . $this->exportSuffix);        
+        $response = $response->withDownload($this->exportPrefix . 'config' . $this->exportSuffix);        
         return $response;
     } 
 
