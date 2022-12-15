@@ -477,7 +477,7 @@ class Utils
                     case 'precipToSnow_l':                        
                         $newData = array(
                             'dataset' => Utils::getCurrentDataset(),
-                            'param_name' => $data[$fieldNameIndex] . '_' . $precipToSnow_l_counter,
+                            'param_name' => 'precipToSnow_lt' . '_' . $precipToSnow_l_counter,
                             'param_value' => $data[$fieldValueIndex],
                             'param_type' => 'sbuddy'
                         );       
@@ -486,7 +486,7 @@ class Utils
                     case 'precipToSnow_h':
                         $newData = array(
                             'dataset' => Utils::getCurrentDataset(),
-                            'param_name' => $data[$fieldNameIndex] . '_' . $precipToSnow_h_counter,
+                            'param_name' => 'precipToSnow_ht' . '_' . $precipToSnow_h_counter,
                             'param_value' => $data[$fieldValueIndex],
                             'param_type' => 'sbuddy'
                         );       
@@ -504,7 +504,7 @@ class Utils
                     case 'snowMmToCm_l':                        
                         $newData = array(
                             'dataset' => Utils::getCurrentDataset(),
-                            'param_name' => $data[$fieldNameIndex] . '_' . $snowMmToCm_l_counter,
+                            'param_name' => 'snowMmToCm_lt' . '_' . $snowMmToCm_l_counter,
                             'param_value' => $data[$fieldValueIndex],
                             'param_type' => 'sbuddy'
                         );       
@@ -513,7 +513,7 @@ class Utils
                     case 'snowMmToCm_h':
                         $newData = array(
                             'dataset' => Utils::getCurrentDataset(),
-                            'param_name' => $data[$fieldNameIndex] . '_' . $snowMmToCm_h_counter,
+                            'param_name' => 'snowMmToCm_ht' . '_' . $snowMmToCm_h_counter,
                             'param_value' => $data[$fieldValueIndex],
                             'param_type' => 'sbuddy'
                         );       
