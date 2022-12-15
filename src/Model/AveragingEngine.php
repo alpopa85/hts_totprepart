@@ -240,7 +240,7 @@ class AveragingEngine
                     $outputDataRow['precip'] = $item['precip'];
                     $outputDataRow['snow_mm'] = $item['snow_mm'];
                     $outputDataRow['snow_cm'] = $item['snow_cm'];          
-                    $outputDataRow['rain_mm'] = $item['rain_cm'];   
+                    $outputDataRow['rain_mm'] = $item['rain_mm'];   
                     $outputDataRow['ucd1'] = $item['ucd1'];
                     $outputDataRow['ucd2'] = $item['ucd2'];
                     $outputDataRow['ucd3'] = $item['ucd3'];
@@ -300,7 +300,7 @@ class AveragingEngine
                     $outputDataRow['precip'] = $item['precip'];
                     $outputDataRow['snow_mm'] = $item['snow_mm'];
                     $outputDataRow['snow_cm'] = $item['snow_cm'];          
-                    $outputDataRow['rain_mm'] = $item['rain_cm'];               
+                    $outputDataRow['rain_mm'] = $item['rain_mm'];               
                     $outputDataRow['ucd1'] = $item['ucd1'];
                     $outputDataRow['ucd2'] = $item['ucd2'];
                     $outputDataRow['ucd3'] = $item['ucd3'];
@@ -359,7 +359,7 @@ class AveragingEngine
                     $outputDataRow['precip'] = $item['precip'];
                     $outputDataRow['snow_mm'] = $item['snow_mm'];
                     $outputDataRow['snow_cm'] = $item['snow_cm'];          
-                    $outputDataRow['rain_mm'] = $item['rain_cm'];                       
+                    $outputDataRow['rain_mm'] = $item['rain_mm'];                       
                     $outputDataRow['ucd1'] = $item['ucd1'];
                     $outputDataRow['ucd2'] = $item['ucd2'];
                     $outputDataRow['ucd3'] = $item['ucd3'];
@@ -418,7 +418,7 @@ class AveragingEngine
                     $outputDataRow['precip'] = $item['precip'];
                     $outputDataRow['snow_mm'] = $item['snow_mm'];
                     $outputDataRow['snow_cm'] = $item['snow_cm'];          
-                    $outputDataRow['rain_mm'] = $item['rain_cm'];                   
+                    $outputDataRow['rain_mm'] = $item['rain_mm'];                   
                     $outputDataRow['ucd1'] = $item['ucd1'];
                     $outputDataRow['ucd2'] = $item['ucd2'];
                     $outputDataRow['ucd3'] = $item['ucd3'];
@@ -477,7 +477,7 @@ class AveragingEngine
                     $outputDataRow['precip'] = $item['precip'];
                     $outputDataRow['snow_mm'] = $item['snow_mm'];
                     $outputDataRow['snow_cm'] = $item['snow_cm'];          
-                    $outputDataRow['rain_mm'] = $item['rain_cm'];                
+                    $outputDataRow['rain_mm'] = $item['rain_mm'];                
                     $outputDataRow['ucd1'] = $item['ucd1'];
                     $outputDataRow['ucd2'] = $item['ucd2'];
                     $outputDataRow['ucd3'] = $item['ucd3'];
@@ -543,7 +543,7 @@ class AveragingEngine
                     $outputDataRow['precip'] = $item['precip'] + $decemberAverages['precip'];
                     $outputDataRow['snow_mm'] = $item['snow_mm'];
                     $outputDataRow['snow_cm'] = $item['snow_cm'];          
-                    $outputDataRow['rain_mm'] = $item['rain_cm'];   
+                    $outputDataRow['rain_mm'] = $item['rain_mm'];   
                     $outputDataRow['ucd1'] = self::getAverageOfTwo($item['ucd1'], $decemberAverages['ucd1'], $this->ucd1AvgMethod);
                     $outputDataRow['ucd2'] = self::getAverageOfTwo($item['ucd2'], $decemberAverages['ucd2'], $this->ucd2AvgMethod);
                     $outputDataRow['ucd3'] = self::getAverageOfTwo($item['ucd3'], $decemberAverages['ucd3'], $this->ucd3AvgMethod);
@@ -793,7 +793,7 @@ class AveragingEngine
                     $outputDataRow['precip'] = $item['precip'];
                     $outputDataRow['snow_mm'] = $item['snow_mm'];
                     $outputDataRow['snow_cm'] = $item['snow_cm'];          
-                    $outputDataRow['rain_mm'] = $item['rain_cm'];              
+                    $outputDataRow['rain_mm'] = $item['rain_mm'];              
                     $outputDataRow['ucd1'] = $item['ucd1'];
                     $outputDataRow['ucd2'] = $item['ucd2'];
                     $outputDataRow['ucd3'] = $item['ucd3'];
@@ -859,7 +859,7 @@ class AveragingEngine
                     $outputDataRow['precip'] = $item['precip'];
                     $outputDataRow['snow_mm'] = $item['snow_mm'];
                     $outputDataRow['snow_cm'] = $item['snow_cm'];          
-                    $outputDataRow['rain_mm'] = $item['rain_cm'];          
+                    $outputDataRow['rain_mm'] = $item['rain_mm'];          
                     $outputDataRow['ucd1'] = $item['ucd1'];
                     $outputDataRow['ucd2'] = $item['ucd2'];
                     $outputDataRow['ucd3'] = $item['ucd3'];
@@ -919,7 +919,7 @@ class AveragingEngine
                     $outputDataRow['precip'] = $item['precip'];
                     $outputDataRow['snow_mm'] = $item['snow_mm'];
                     $outputDataRow['snow_cm'] = $item['snow_cm'];          
-                    $outputDataRow['rain_mm'] = $item['rain_cm'];                   
+                    $outputDataRow['rain_mm'] = $item['rain_mm'];                   
                     $outputDataRow['ucd1'] = $item['ucd1'];
                     $outputDataRow['ucd2'] = $item['ucd2'];
                     $outputDataRow['ucd3'] = $item['ucd3'];
@@ -978,7 +978,7 @@ class AveragingEngine
                     $outputDataRow['precip'] = $item['precip'];
                     $outputDataRow['snow_mm'] = $item['snow_mm'];
                     $outputDataRow['snow_cm'] = $item['snow_cm'];          
-                    $outputDataRow['rain_mm'] = $item['rain_cm'];      
+                    $outputDataRow['rain_mm'] = $item['rain_mm'];      
                     $outputDataRow['ucd1'] = $item['ucd1'];
                     $outputDataRow['ucd2'] = $item['ucd2'];
                     $outputDataRow['ucd3'] = $item['ucd3'];
@@ -1037,7 +1037,7 @@ class AveragingEngine
                     $outputDataRow['precip'] = $item['precip'];
                     $outputDataRow['snow_mm'] = $item['snow_mm'];
                     $outputDataRow['snow_cm'] = $item['snow_cm'];          
-                    $outputDataRow['rain_mm'] = $item['rain_cm'];           
+                    $outputDataRow['rain_mm'] = $item['rain_mm'];           
                     $outputDataRow['ucd1'] = $item['ucd1'];
                     $outputDataRow['ucd2'] = $item['ucd2'];
                     $outputDataRow['ucd3'] = $item['ucd3'];
@@ -1096,7 +1096,7 @@ class AveragingEngine
                     $outputDataRow['precip'] = $item['precip'];
                     $outputDataRow['snow_mm'] = $item['snow_mm'];
                     $outputDataRow['snow_cm'] = $item['snow_cm'];          
-                    $outputDataRow['rain_mm'] = $item['rain_cm'];            
+                    $outputDataRow['rain_mm'] = $item['rain_mm'];            
                     $outputDataRow['ucd1'] = $item['ucd1'];
                     $outputDataRow['ucd2'] = $item['ucd2'];
                     $outputDataRow['ucd3'] = $item['ucd3'];
@@ -1155,7 +1155,7 @@ class AveragingEngine
                     $outputDataRow['precip'] = $item['precip'];
                     $outputDataRow['snow_mm'] = $item['snow_mm'];
                     $outputDataRow['snow_cm'] = $item['snow_cm'];          
-                    $outputDataRow['rain_mm'] = $item['rain_cm'];                  
+                    $outputDataRow['rain_mm'] = $item['rain_mm'];                  
                     $outputDataRow['ucd1'] = $item['ucd1'];
                     $outputDataRow['ucd2'] = $item['ucd2'];
                     $outputDataRow['ucd3'] = $item['ucd3'];

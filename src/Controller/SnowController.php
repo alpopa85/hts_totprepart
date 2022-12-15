@@ -448,8 +448,8 @@ class SnowController extends AppController
                 );
             } else { 
                 // calculate averaging data
-                // $averagingEngine = new AveragingEngine(AveragingEngine::SNOW_AVERAGING);
-                // $averagingEngine->run();            
+                $averagingEngine = new AveragingEngine(AveragingEngine::SNOW_AVERAGING);
+                $averagingEngine->run();            
     
                 Utils::setUserOutputReady(1);
                 // Utils::setUserSoilWater(0);                        

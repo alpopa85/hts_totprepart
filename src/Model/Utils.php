@@ -3254,7 +3254,7 @@ class Utils
         self::removeDatasetFromTable('SnowDataOverlay', $id);
         self::removeDatasetFromTable('SnowData', $id);        
 
-        // self::removeSnowAveragingDataset($id);
+        self::removeSnowAveragingDataset($id);
 
         self::setUserOutputReady(0);
     }

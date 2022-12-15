@@ -7,14 +7,16 @@
         <button id="stats_btn" class="btn btn-large btn-secondary w-100"><i class="fa fa-search" aria-hidden="true"></i> Stats</button>        
     </div> 
     
-    <div class="col-4">
-        <button id="calib_btn" class="btn btn-large btn-secondary w-100"><i class="fa fa-calculator" aria-hidden="true"></i> Calibration Stats</button>        
-    </div> 
+    <?php if ($nValidationColumns) { ?>
+        <div class="col-4">
+            <button id="calib_btn" class="btn btn-large btn-secondary w-100"><i class="fa fa-calculator" aria-hidden="true"></i> Calibration Stats</button>        
+        </div> 
+    <?php } ?>
 </div>
 
 <div class="row py-1 pt-3 px-5 field-buttons">
     <div class="col-12 d-flex justify-content-left">            
-        <a class="btn btn-outline-dark btn-sm col-hide-button toggle-vis" data-column="2"><span data-toggle="tooltip" title="<?= $tooltips['TEMP'] ?>">TEMP</span></a>
+        <a class="btn btn-outline-danger btn-sm active col-hide-button toggle-vis" data-column="2"><span data-toggle="tooltip" title="<?= $tooltips['TEMP'] ?>">TEMP</span></a>
         <a class="btn btn-outline-danger btn-sm active col-hide-button toggle-vis" data-column="3"><span data-toggle="tooltip" title="<?= $tooltips['PRECIP'] ?>">PRECIP</span></a>
     </div>
 </div>
@@ -55,19 +57,19 @@
             <div class="mb-1 pl-1">Select time step below:</div>
             <select class="custom-select" id="graph_source">
                 <option selected value="1">Snow - Daily</option>
-                <!-- <option value="2">Snow - Monthly</option>
+                <option value="2">Snow - Monthly</option>
                 <option value="10">Snow - Seasons</option>
-                <?php if ($this->isSetGrowthSeason->getFlag()) { ?>
-                    <option value="11">Snow - Growing Season</option>
-                <?php } ?>
-                <option value="3">Snow - Yearly</option>
+                <?php /* if ($this->isSetGrowthSeason->getFlag()){ ?>
+                <option value="11">Snow - Growing Season</option>
+            <?php } */ ?>
+                <option value="3">Snow - Yearly</option>                                
                 <option value="21">Snow - Typical Year Daily</option>
                 <option value="22">Snow - Typical Year Monthly</option>
                 <option value="24">Snow - Typical Year Seasons</option>
-                <?php if ($this->isSetGrowthSeason->getFlag()) { ?>
-                    <option value="25">Snow - Typical Year Growing Season</option>
-                <?php } ?>
-                <option value="23">Snow - Typical Year Average</option> -->
+            <?php /* if ($this->isSetGrowthSeason->getFlag()){ ?>
+                <option value="25">Snow - Typical Year Growing Season</option>
+            <?php } */ ?>
+                <option value="23">Snow - Typical Year Average</option>
             </select>
         </div>
     </div>
@@ -196,19 +198,19 @@
             <div class="mb-1 pl-1">Select time step for calibration stats:</div>
             <select class="custom-select" id="calib_type">
                 <option selected value="1">Daily</option>
-                <!-- <option value="2">Monthly</option>                    
+                <option value="2">Monthly</option>                    
                 <option value="10">Seasons</option>
-                <?php if ($this->isSetGrowthSeason->getFlag()) { ?>
+                <?php /* if ($this->isSetGrowthSeason->getFlag()) { ?>
                     <option value="11">Growing Season</option>
-                <?php } ?>
+                <?php } */ ?>
                 <option value="3">Yearly</option>
                 <option value="21">Typical Year Daily</option>
                 <option value="22">Typical Year Monthly</option>
-                <option value="24">Typical Year Seasons</option> -->
-                <!-- <?php if ($this->isSetGrowthSeason->getFlag()) { ?>
+                <option value="24">Typical Year Seasons</option>
+                <?php /* if ($this->isSetGrowthSeason->getFlag()) { ?>
                     <option value="25">Typical Year Growing Season</option>
-                <?php } ?>
-                <option value="23">Typical Year Average</option>                        -->
+                <?php } */ ?>
+                <option value="23">Typical Year Average</option>
             </select>
         </div>
     </div>
@@ -240,6 +242,27 @@
         var statsTableStart = null;
         var statsTableEnd = null;
 
+        var validationColumnsCount = <?= $nValidationColumns ?>;
+        var mainDisplayColumnsCondition;
+        var statsDisplayColumnsCondition;
+        
+        switch (validationColumnsCount) {
+            case 3:
+                mainDisplayColumnsCondition = [7, 8, 9]
+                statsDisplayColumnsCondition = [6, 7, 8];
+                break;
+            case 2:
+                mainDisplayColumnsCondition = [7, 8];
+                statsDisplayColumnsCondition = [6, 7];
+            case 1: 
+                mainDisplayColumnsCondition = [7];
+                statsDisplayColumnsCondition = [6];
+            case 0:
+            default:
+                mainDisplayColumnsCondition = [];
+                statsDisplayColumnsCondition = [];
+        }   
+
         $(".stats_interval_details").text(' (complete dataset)');
 
         var mainTable = $('#mainDataTable').DataTable({
@@ -267,7 +290,7 @@
                     className: "dt-head-center dt-body-center" // fixed-width-table-row
                 },
                 {
-                    targets: [2, 7, 8, 9],
+                    targets: mainDisplayColumnsCondition,
                     visible: false
                 }
             ],
@@ -323,7 +346,7 @@
                     className: "dt-head-center dt-body-center"
                 },
                 {
-                    targets: [1, 6, 7, 8],
+                    targets: statsDisplayColumnsCondition,
                     visible: false
                 }
             ],

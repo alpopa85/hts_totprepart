@@ -7,9 +7,11 @@
         <button id="stats_btn" class="btn btn-large btn-secondary w-100"><i class="fa fa-search" aria-hidden="true"></i> Stats</button>        
     </div> 
     
-    <div class="col-4">
-        <button id="calib_btn" class="btn btn-large btn-secondary w-100"><i class="fa fa-calculator" aria-hidden="true"></i> Calibration Stats</button>        
-    </div> 
+    <?php if ($nValidationColumns) { ?>
+        <div class="col-4">
+            <button id="calib_btn" class="btn btn-large btn-secondary w-100"><i class="fa fa-calculator" aria-hidden="true"></i> Calibration Stats</button>        
+        </div> 
+    <?php } ?>
 </div>
 
 <div id="graph_content">
@@ -18,19 +20,19 @@
             <div class="mb-1 pl-1">Select time step below:</div>
             <select class="custom-select" id="graph_source">
                 <option selected value="1">Snow - Daily</option>
-                <!-- <option value="2">Snow - Monthly</option>
+                <option value="2">Snow - Monthly</option>
                 <option value="10">Snow - Seasons</option>
-                <?php if ($this->isSetGrowthSeason->getFlag()){ ?>
+                <?php /* if ($this->isSetGrowthSeason->getFlag()){ ?>
                 <option value="11">Snow - Growing Season</option>
-            <?php } ?>
+            <?php } */ ?>
                 <option value="3">Snow - Yearly</option>                                
                 <option value="21">Snow - Typical Year Daily</option>
                 <option value="22">Snow - Typical Year Monthly</option>
                 <option value="24">Snow - Typical Year Seasons</option>
-            <?php if ($this->isSetGrowthSeason->getFlag()){ ?>
+            <?php /* if ($this->isSetGrowthSeason->getFlag()){ ?>
                 <option value="25">Snow - Typical Year Growing Season</option>
-            <?php } ?>
-                <option value="23">Snow - Typical Year Average</option> -->
+            <?php } */ ?>
+                <option value="23">Snow - Typical Year Average</option>
             </select>
         </div>
     </div>
@@ -322,19 +324,19 @@
             <div class="mb-1 pl-1">Select time step for calibration stats:</div>
             <select class="custom-select" id="calib_type">
                 <option selected value="1">Daily</option>
-                <!-- <option value="2">Monthly</option>                    
+                <option value="2">Monthly</option>                    
                 <option value="10">Seasons</option>
-                <?php if ($this->isSetGrowthSeason->getFlag()) { ?>
+                <?php /* if ($this->isSetGrowthSeason->getFlag()) { ?>
                     <option value="11">Growing Season</option>
-                <?php } ?>
+                <?php } */ ?>
                 <option value="3">Yearly</option>
                 <option value="21">Typical Year Daily</option>
                 <option value="22">Typical Year Monthly</option>
-                <option value="24">Typical Year Seasons</option> -->
-                <!-- <?php if ($this->isSetGrowthSeason->getFlag()) { ?>
+                <option value="24">Typical Year Seasons</option>
+                <?php /* if ($this->isSetGrowthSeason->getFlag()) { ?>
                     <option value="25">Typical Year Growing Season</option>
-                <?php } ?>
-                <option value="23">Typical Year Average</option>                     -->
+                <?php } */ ?>
+                <option value="23">Typical Year Average</option>
             </select>
         </div>
     </div>
@@ -497,7 +499,7 @@
                     return 'UCD3';                
                 case 'snow_mm':
                     return 'SNOW_MM (mm)';
-                case 'snow_mm': 
+                case 'snow_cm': 
                     return 'SNOW_CM (cm)';
                 case 'rain_mm': 
                     return 'RAIN_MM (mm)';                   
@@ -836,6 +838,22 @@
         var statsTableStart = null;
         var statsTableEnd = null;
 
+        var validationColumnsCount = <?= $nValidationColumns ?>;
+        var displayColumnsCondition;
+
+        switch (validationColumnsCount) {
+            case 3:
+                displayColumnsCondition = [1, 2, 6, 7, 8];
+                break;
+            case 2:
+                displayColumnsCondition = [1, 2, 6, 7];
+            case 1: 
+                displayColumnsCondition = [1, 2, 6];
+            case 0:
+            default:
+                displayColumnsCondition = [1, 2];
+        }   
+
         $("#calib_btn").click((e)=>{    
             const elem = $(e.target);    
 
@@ -955,7 +973,7 @@
                     className: "dt-head-center dt-body-center"
                 },
                 {
-                    targets: [1, 2, 6, 7, 8],
+                    targets: displayColumnsCondition,
                     visible: false
                 }
             ],
