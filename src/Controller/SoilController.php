@@ -46,7 +46,7 @@ class SoilController extends AppController
             'ucd5' => Utils::getUcdAvgMethod('ucd5'),
         ));
         
-        $this->exportPrefix = 'SNOW BUDDY_';        
+        $this->exportPrefix = 'SBUDDY_';        
         $now = Time::now();
         $this->exportSuffix = '_' . $now->toTimeString() . '.csv';
 

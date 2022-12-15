@@ -1345,7 +1345,7 @@
                     extend: 'csv',
                     filename: () => {         
                         var now = Date.now();               
-                        return 'SNOW BUDDY_snowStats_' + now;
+                        return 'SBUDDY_snowStats_' + now;
                     }
                 },
                 // {
@@ -1383,7 +1383,7 @@
                     extend: 'csv',
                     filename: () => {         
                         var now = Date.now();               
-                        return 'SNOW BUDDY_soilCalib_' + now;
+                        return 'SBUDDY_soilCalib_' + now;
                     }
                 }             
             ],

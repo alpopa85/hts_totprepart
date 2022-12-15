@@ -132,11 +132,11 @@
                     'action' => 'index'], [
                         'class' => 'nav-link',
                         'id' => 'input']); ?>  
-                <!-- <?= (isset($ucdFields) && $ucdFields['total']) ? $this->Html->link('UCD', "#ucd", [
+                <?= (isset($ucdFields) && $ucdFields['total']) ? $this->Html->link('UCD', "#ucd", [
                     'class' => ['nav-link', 'orange-ucd'],
                     'id' => 'reset-ucd',
                     'data-toggle' => 'modal',
-                    'data-target' => '#ucdModalReset']) : ''; ?> -->    
+                    'data-target' => '#ucdModalReset']) : ''; ?>
                 <?= $this->Html->link('Analysis', [
                     'controller' => 'snow',
                     'action' => 'index'], [

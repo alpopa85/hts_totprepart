@@ -832,7 +832,7 @@
                     extend: 'csv',
                     filename: () => {
                         var now = Date.now();
-                        return 'SNOW BUDDY_inputStats_' + now;
+                        return 'SBUDDY_inputStats_' + now;
                     }
                 },
                 // {

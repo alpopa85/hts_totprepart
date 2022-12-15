@@ -683,7 +683,7 @@ class ExportEngine
         $dataCollection = [];
 
         $header = new stdClass();
-        $header->header = 'GLOBAL_CONFIGURATION';
+        $header->header = 'SBUDDY_CONFIGURATION';
         $dataCollection[] = $header;
 
         $query = $this->paramsTable->find('all');        
@@ -704,7 +704,7 @@ class ExportEngine
         $snowCalibCollection = $query->toArray();
         $snowCalibCollection = array_map(function($row) {
             // Log::debug(get_class($row));
-            $row->param_type = 'snow_calib_map';            
+            $row->param_type = 'sbuddy_calib_map';            
             $row->raw_name = $row->output_field;
             $row->param_fullname = '';
             $row->param_range = '';
@@ -712,6 +712,7 @@ class ExportEngine
             return $row;
         }, $snowCalibCollection);
 
+        /*
         $query = $this->soilCalibMap->find('all', ['fields' => ['output_field', 'ucd_field']]);        
         $query->where(['dataset' => Utils::getCurrentDataset()]);
         $soilCalibCollection = $query->toArray();
@@ -723,9 +724,10 @@ class ExportEngine
             $row->param_range = '';
             // Log::debug(json_encode($row)); 
             return $row;
-        }, $soilCalibCollection);
+        }, $soilCalibCollection);*/
 
-        $dataCollection = array_merge($dataCollection, $paramsCollection, $snowCalibCollection, $soilCalibCollection);
+        //$dataCollection = array_merge($dataCollection, $paramsCollection, $snowCalibCollection, $soilCalibCollection);
+        $dataCollection = array_merge($dataCollection, $paramsCollection, $snowCalibCollection);
         
         return $this->formatCsvMetadata($dataCollection);
     }
@@ -844,12 +846,7 @@ class ExportEngine
             }
             if(isset($row['time_year'])){
                 unset($row['time_year']);
-            }
-
-            // also take out watisri from snow
-            if(isset($row['watisri'])){
-                unset($row['watisri']);
-            }
+            }           
 
             if ($firstRow){
                 // keys
@@ -908,8 +905,9 @@ class ExportEngine
             if(isset($row['dataset'])){
                 unset($row['dataset']);
             }
-            Log::debug($rowIndex . ' ' . json_encode($row));    
+            // Log::debug($rowIndex . ' ' . json_encode($row));    
             
+            $skipRow = false;
             if ($rowIndex == 0){
                 $csvRow = [];
                 
@@ -938,7 +936,11 @@ class ExportEngine
                 foreach($row as $key => $value){                        
                     switch ($key) {
                         case 'param_name':                        
-                        case 'output_field':                        
+                        case 'output_field':  
+                            if ((strcmp($value, 'precipToSnow_count') == 0) || (strcmp($value, 'snowMmToCm_count') == 0)) {
+                                $skipRow = true;
+                            }
+
                             $colName = $value;
                             $value = $this->transformKey($value);
                             $csvRow[] = '"' . $value . '"';                                                                    
@@ -967,7 +969,9 @@ class ExportEngine
                     }                    
                 }                         
             }                                 
-            $csvRowCollection[] = implode(',', $csvRow);                        
+            if (!$skipRow) {                             
+                $csvRowCollection[] = implode(',', $csvRow);                        
+            }                        
         }        
 
         return implode(PHP_EOL, $csvRowCollection);

@@ -45,7 +45,7 @@ class SnowController extends AppController
             // 'ucd5' => Utils::getUcdAvgMethod('ucd5'),
         ));
 
-        $this->exportPrefix = 'SNOW BUDDY_';        
+        $this->exportPrefix = 'SBUDDY_';        
         $now = Time::now();
         $this->exportSuffix = '_' . $now->toTimeString() . '.csv';
     }
@@ -427,7 +427,7 @@ class SnowController extends AppController
             // save new analysis params
             // Log::debug('params: ' . json_encode($formData));   
             Utils::removeParamsDataset();
-            Utils::writeParamsToDb($formData, 'snow');           
+            Utils::writeParamsToDb($formData, 'sbuddy');           
             
             //perform snow analysis
             $analysis = new SnowAnalysisEngine();   

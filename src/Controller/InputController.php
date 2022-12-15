@@ -44,7 +44,7 @@ class InputController extends AppController
             // 'ucd5' => Utils::getUcdAvgMethod('ucd5'),
         ));
         
-        $this->exportPrefix = 'SNOW BUDDY_';        
+        $this->exportPrefix = 'SBUDDY_';        
         $now = Time::now();
         $this->exportSuffix = '_' . $now->toTimeString() . '.csv';
     }
@@ -322,8 +322,8 @@ class InputController extends AppController
             Utils::writeParamsToDb($paramData, 'input');
 
             // also write default params to db
-            Utils::writeDefaultParamsToDb(Utils::getSnowDefaultParams(), 'snow');
-            Utils::writeSnowCalMapToDb(Utils::getSnowDefaultCalibMap());   
+            Utils::writeDefaultParamsToDb(Utils::getDefaultParams(), 'sbuddy');
+            Utils::writeSnowCalMapToDb(Utils::getDefaultCalibMap());   
 
             // die(json_encode($formData['inputDataFile']));
             // upload file

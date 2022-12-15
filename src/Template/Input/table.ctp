@@ -14,18 +14,18 @@
             <div class="mb-1 pl-1">Select time step below:</div>
             <select class="custom-select" id="graph_source">
                 <option selected value="1">Input Data - Daily</option>
-                <!-- <option value="2">Input Data - Monthly</option>
+                <option value="2">Input Data - Monthly</option>
                 <option value="10">Input Data - Seasons</option>
-                <?php if ($this->isSetGrowthSeason->getFlag()) { ?>
+                <!-- <?php if ($this->isSetGrowthSeason->getFlag()) { ?>
                     <option value="11">Input Data - Growing Season</option>
-                <?php } ?>
+                <?php } ?> -->
                 <option value="3">Input Data - Yearly</option>
                 <option value="21">Input Data - Typical Year Daily</option>
                 <option value="22">Input Data - Typical Year Monthly</option>
                 <option value="24">Input Data - Typical Year Seasons</option>
-                <?php if ($this->isSetGrowthSeason->getFlag()) { ?>
+                <!-- <?php if ($this->isSetGrowthSeason->getFlag()) { ?>
                     <option value="25">Input Data - Typical Year Growing Season</option>
-                <?php } ?>
+                <?php } ?> -->
                 <option value="23">Input Data - Typical Year Average</option> -->
             </select>
         </div>
@@ -162,7 +162,7 @@
                     extend: 'csv',
                     filename: () => {         
                         var now = Date.now();               
-                        return 'SNOW BUDDY_inputData_' + now;
+                        return 'SBUDDY_inputData_' + now;
                     }                   
                 },
                 // {
@@ -205,7 +205,7 @@
                     extend: 'csv',
                     filename: () => {         
                         var now = Date.now();               
-                        return 'SNOW BUDDY_inputStats_' + now;
+                        return 'SBUDDY_inputStats_' + now;
                     }
                 },
                 // {

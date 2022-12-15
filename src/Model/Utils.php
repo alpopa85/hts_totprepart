@@ -723,10 +723,6 @@ class Utils
     public static function getUcdAvgMethod($fieldName)
     {   
         // Log::debug(json_encode($fieldName));
-
-        // skip for now
-        return 1;
-
         $table = TableRegistry::getTableLocator()->get('UcdAverages');
 
         $ucdAvg = $table->find('all', [
@@ -3219,7 +3215,7 @@ class Utils
     public static function removeInputDataset($id = null)
     {
         self::removeDatasetFromTable('InputData', $id);
-        // self::removeInputAveragingDataset($id);
+        self::removeInputAveragingDataset($id);
     }
 
     public static function removeInputAveragingDataset($id = null)
@@ -3231,9 +3227,9 @@ class Utils
         self::removeDatasetFromTable('InputDataFall', $id);
         self::removeDatasetFromTable('InputDataWinter', $id);
         self::removeDatasetFromTable('InputDataSeasons', $id);
-        self::removeDatasetFromTable('InputDataGrowthSeasonIn', $id);
-        self::removeDatasetFromTable('InputDataGrowthSeasonOut', $id);
-        self::removeDatasetFromTable('InputDataGrowingSeasons', $id);
+        // self::removeDatasetFromTable('InputDataGrowthSeasonIn', $id);
+        // self::removeDatasetFromTable('InputDataGrowthSeasonOut', $id);
+        // self::removeDatasetFromTable('InputDataGrowingSeasons', $id);
 
         self::removeDatasetFromTable('InputDataTypical', $id);
         self::removeDatasetFromTable('InputDataTypicalMonthly', $id);
@@ -3243,9 +3239,9 @@ class Utils
         self::removeDatasetFromTable('InputDataTypicalFall', $id);
         self::removeDatasetFromTable('InputDataTypicalWinter', $id);
         self::removeDatasetFromTable('InputDataTypicalSeasons', $id);
-        self::removeDatasetFromTable('InputDataTypicalGrowthSeasonIn', $id);
-        self::removeDatasetFromTable('InputDataTypicalGrowthSeasonOut', $id);
-        self::removeDatasetFromTable('InputDataTypicalGrowingSeasons', $id);
+        // self::removeDatasetFromTable('InputDataTypicalGrowthSeasonIn', $id);
+        // self::removeDatasetFromTable('InputDataTypicalGrowthSeasonOut', $id);
+        // self::removeDatasetFromTable('InputDataTypicalGrowingSeasons', $id);
     }
 
     public static function removeParamsDataset($id = null)
@@ -3272,9 +3268,9 @@ class Utils
         self::removeDatasetFromTable('SnowDataFall', $id);
         self::removeDatasetFromTable('SnowDataWinter', $id);
         self::removeDatasetFromTable('SnowDataSeasons', $id);
-        self::removeDatasetFromTable('SnowDataGrowthSeasonIn', $id);
-        self::removeDatasetFromTable('SnowDataGrowthSeasonOut', $id);
-        self::removeDatasetFromTable('SnowDataGrowingSeasons', $id);
+        // self::removeDatasetFromTable('SnowDataGrowthSeasonIn', $id);
+        // self::removeDatasetFromTable('SnowDataGrowthSeasonOut', $id);
+        // self::removeDatasetFromTable('SnowDataGrowingSeasons', $id);
 
         self::removeDatasetFromTable('SnowDataTypical', $id);
         self::removeDatasetFromTable('SnowDataTypicalMonthly', $id);
@@ -3284,9 +3280,9 @@ class Utils
         self::removeDatasetFromTable('SnowDataTypicalFall', $id);
         self::removeDatasetFromTable('SnowDataTypicalWinter', $id);
         self::removeDatasetFromTable('SnowDataTypicalSeasons', $id);
-        self::removeDatasetFromTable('SnowDataTypicalGrowthSeasonIn', $id);
-        self::removeDatasetFromTable('SnowDataTypicalGrowthSeasonOut', $id);
-        self::removeDatasetFromTable('SnowDataTypicalGrowingSeasons', $id);
+        // self::removeDatasetFromTable('SnowDataTypicalGrowthSeasonIn', $id);
+        // self::removeDatasetFromTable('SnowDataTypicalGrowthSeasonOut', $id);
+        // self::removeDatasetFromTable('SnowDataTypicalGrowingSeasons', $id);
     }
 
     public static function removeSoilWaterDataset($id = null)
@@ -4069,23 +4065,33 @@ class Utils
         return array(
             'TEMP' => 'Air temperature',
             'PRECIP' => 'Total precipitation',
+            'SNOW_MM' => 'Snow fall amount (mm)',
+            'SNOW_CM' => 'Snow fall amount (cm)',
+            'RAIN_MM' => 'Rain amount (mm)',       
             'UCD' => 'User calibration data',
             'UCD1' => 'User calibration data',
             'UCD2' => 'User calibration data',
-            'UCD3' => 'User calibration data',
-            'GS_start_day' => 'Growth Season Start Day',
-            'GS_start_month' => 'Growth Season Start Month',
-            'GS_end_day' => 'Growth Season End Day',
-            'GS_end_month' => 'Growth Season End Month',
+            'UCD3' => 'User calibration data',            
             // params
             'PRECIP_TO_SNOW' => 'Percentage of precipitation converted to snowfall (mm) based on temperature',
             'PRECIP_TO_SNOW_val' => 'Values between 0 and 100',
             'SNOW_MM_TO_CM' => 'Snowfall (mm) to snowfall (cm) conversion factor based on temperature',
             'SNOW_MM_TO_CM_val' => 'Values between 0 and 10',
-            // output
-            'SNOW_MM' => 'Snow fall amount (mm)',
-            'SNOW_CM' => 'Snow fall amount (cm)',
-            'RAIN_MM' => 'Rain amount (mm)',            
+            // export params                       
+            'precipToSnow_l' => 'Interval lower bound', 
+            'precipToSnow_l_val' => 'Numerical value', 
+            'precipToSnow_h' => 'Interval upper bound',
+            'precipToSnow_h_val' => 'Numerical value',
+            'precipToSnow_factor' => 'Percentage of precipitation converted to snowfall (mm) based on temperature',
+            'precipToSnow_factor_val' => 'Numerical value',
+            'precipToSnow_count' => 'Number of intervals for precipitation conversion',
+            'snowMmToCm_l' => 'Interval lower bound', 
+            'snowMmToCm_l_val' => 'Numerical value', 
+            'snowMmToCm_h' => 'Interval upper bound',
+            'snowMmToCm_h_val' => 'Numerical value',
+            'snowMmToCm_factor' => 'Snowfall (mm) to snowfall (cm) conversion factor based on temperature',
+            'snowMmToCm_factor_val' => 'Numerical value',
+            'snowMmToCm_count' => 'Number of intervals for snowfall transformation'
         );
     }
 
@@ -4148,7 +4154,32 @@ class Utils
 
             if(strcmp($key, 'gs_end_month') == 0){
                 return 'GS_end_month';
-            }            
+            }   
+        
+        // export config params
+            if (strpos($key, 'precipToSnow_l') !== false) {
+                return 'precipToSnow_l';
+            }
+
+            if (strpos($key, 'precipToSnow_h') !== false) {
+                return 'precipToSnow_h';
+            }
+
+            if (strpos($key, 'precipToSnow_factor') !== false) {
+                return 'precipToSnow_factor';
+            }       
+            
+            if (strpos($key, 'snowMmToCm_l') !== false) {
+                return 'snowMmToCm_l';
+            }
+
+            if (strpos($key, 'snowMmToCm_h') !== false) {
+                return 'snowMmToCm_h';
+            }
+
+            if (strpos($key, 'snowMmToCm_factor') !== false) {
+                return 'snowMmToCm_factor';
+            } 
 
         return $key;
     }    
@@ -4886,7 +4917,7 @@ class Utils
         return $r;
     } 
 
-    public static function getSnowDefaultParams()
+    public static function getDefaultParams()
     {
         $snowDefaultParams = [
             'precipToSnow_count' => 7,
@@ -4941,7 +4972,7 @@ class Utils
         return $snowDefaultParams;
     }   
 
-    public static function getSnowDefaultCalibMap()
+    public static function getDefaultCalibMap()
     {
         $calibrationData = [
             [ // pair 1
