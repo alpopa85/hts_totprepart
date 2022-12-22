@@ -39,7 +39,7 @@
                     <div class="card-header myAccordionHeader" id="headingOne">
                         <h5 class="mb-0">
                             <button data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="d-flex justify-content-between" type="button">
-                                <span>Precipitation (mm) to Snowfall (mm) conversion factor based on temperature</span>
+                                <span>Precipitation (mm) to Snowfall (mm) conversion factor</span>
                                 <i class="fa fa-chevron-down" aria-hidden="true"></i>
                             </button>
                         </h5>
@@ -50,11 +50,11 @@
                             <div class="form-group" id="precip-to-snow-group">
                                 <div class="row">                                    
                                     <div class="col col-3 offset-2">
-                                        <span data-toggle="tooltip" title="<?= $tooltips['PRECIP_TO_SNOW'] ?>">T lower bound</span>
+                                        <span data-toggle="tooltip" title="<?= $tooltips['PRECIP_TO_SNOW'] ?>">TEMP lower bound</span>
                                     </div>
 
                                     <div class="col col-3">
-                                        <span data-toggle="tooltip" title="<?= $tooltips['PRECIP_TO_SNOW'] ?>">T upper bound</span>
+                                        <span data-toggle="tooltip" title="<?= $tooltips['PRECIP_TO_SNOW'] ?>">TEMP upper bound</span>
                                     </div>
 
                                     <div class="col col-4">
@@ -96,12 +96,14 @@
                             </div>
                             
                             <div class="row mt-4" id="overlapError1" style="display:none">
-                                <div class="col col-11 offset-1 alert-danger text-center">
-                                    <h4>Fix the intervals before running the analysis:</h4><br/>
-                                    <h5>- the intervals must be numeric<br/>
-                                    - the intervals must not overlap<br/>
-                                    - the lower bound must be smaller than the higher bound<br/>                                    
-                                    - the conversion factor must be between 0 and 100</h5>
+                                <div class="col col-11 offset-1 alert-danger text-left">
+                                    <div class="text-center">
+                                        <h4>Invalid parameters! Requirements:</h4>
+                                    </div>                                    
+                                    <h5>- all values must be numeric<br/>
+                                    - TEMP intervals should not overlap<br/>                                    
+                                    - the TEMP lower bound should be smaller than the TEMP upper bound for each layer<br/>
+                                    - the conversion factor should be between 0 and 1</h5>
                                 </div>                                    
                             </div>    
                         </div>
@@ -112,7 +114,7 @@
                     <div class="card-header myAccordionHeader" id="headingTwo">
                         <h5 class="mb-0">
                             <button data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" class="d-flex justify-content-between collapsed" type="button">
-                                <span>Snowfall conversion factor (mm to cm) based on temperature</span>
+                                <span>Snowfall conversion factor (mm to cm)</span>
                                 <i class="fa fa-chevron-down" aria-hidden="true"></i>
                             </button>
                         </h5>
@@ -123,11 +125,11 @@
                             <div class="form-group" id="snow-mm-to-cm-group">
                                 <div class="row">                                    
                                     <div class="col col-3 offset-2">
-                                        <span data-toggle="tooltip" title="<?= $tooltips['SNOW_MM_TO_CM'] ?>">T lower bound</span>
+                                        <span data-toggle="tooltip" title="<?= $tooltips['SNOW_MM_TO_CM'] ?>">TEMP lower bound</span>
                                     </div>
 
                                     <div class="col col-3">
-                                        <span data-toggle="tooltip" title="<?= $tooltips['SNOW_MM_TO_CM'] ?>">T upper bound</span>
+                                        <span data-toggle="tooltip" title="<?= $tooltips['SNOW_MM_TO_CM'] ?>">TEMP upper bound</span>
                                     </div>
 
                                     <div class="col col-4">
@@ -169,13 +171,15 @@
                             </div>
                             
                             <div class="row mt-4" id="overlapError2" style="display:none">
-                                <div class="col col-11 offset-1 alert-danger text-center">
-                                    <h4>Fix the intervals before running the analysis:</h4><br/>
-                                    <h5>- the intervals must be numeric<br/>
-                                    - the intervals must not overlap<br/>
-                                    - the lower bound must be smaller than the higher bound<br/>                                    
-                                    - the conversion factor must be between 0 and 10</h5>
-                                </div>                                    
+                                <div class="col col-11 offset-1 alert-danger text-left">
+                                    <div class="text-center">
+                                        <h4>Invalid parameters! Requirements:</h4>
+                                    </div>                                    
+                                    <h5>- all values must be numeric<br/>
+                                    - TEMP intervals should not overlap<br/>                                    
+                                    - the TEMP lower bound should be smaller than the TEMP upper bound for each layer<br/>
+                                    - the conversion factor should be between 0 and 100</h5>                                  
+                                </div>
                             </div>  
                         </div>                                                                   
                     </div>
@@ -249,16 +253,22 @@
             <!-- CAKE FORM FIELDS !-->
             <input type="hidden" name="_method" value="POST" />
             <input type="hidden" name="_csrfToken" autocomplete="off" value="<?= $this->request->getParam('_csrfToken') ?>" />
-            <!-- END OF CAKE FORM FIELDS !-->
+            <!-- END OF CAKE FORM FIELDS !-->            
             <div class="mt-5">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col text-right">
-                            <button type="button" id="validateButton" class="btn btn-primary">Validate</button>
+                            <button type="button" id="validateButton" style="min-width:50%" class="btn btn-primary">Validate</button>
                         </div>
 
                         <div class="col text-left">
-                            <button type="submit" class="btn btn-success">Run Analysis</button>            
+                            <button type="button" class="btn btn-danger" id="reset-to-default" style="min-width:50%">Reset to Default</button>
+                        </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="col-6 offset-3 text-center">
+                            <button type="submit" class="btn btn-success" style="min-width:50%">Run Analysis</button>            
                         </div>
                     </div>
                 </div>                                
@@ -332,6 +342,12 @@
                 // console.log('non numeric element', elem);
                 validPrecipToSnow = false;
             }
+            if (elem.value < -70 ) {
+                elem.value = -70;
+            }
+            if (elem.value > 50 ) {
+                elem.value = 50;
+            }
             lowBoundaryPrecipToSnow.push(parseFloat(elem.value));
         }); 
         lowBoundaryPrecipToSnow.sort(function(a,b) {
@@ -344,6 +360,12 @@
             if (isNaN(parseFloat(elem.value))) {
                 // console.log('non numeric element', elem);
                 validPrecipToSnow = false;
+            }
+            if (elem.value < -70 ) {
+                elem.value = -70;
+            }
+            if (elem.value > 50 ) {
+                elem.value = 50;
             }
             highBoundaryPrecipToSnow.push(parseFloat(elem.value));
         });
@@ -361,8 +383,8 @@
                     elem.value = 0;
                 }
 
-                if (elem.value > 100) {
-                    elem.value = 100;
+                if (elem.value > 1) {
+                    elem.value = 1;
                 }
             }            
         });
@@ -386,6 +408,12 @@
                 // console.log('non numeric element', elem);
                 validSnowMmToCm = false;
             }
+            if (elem.value < -70 ) {
+                elem.value = -70;
+            }
+            if (elem.value > 50 ) {
+                elem.value = 50;
+            }
             lowBoundarySnowMmToCm.push(parseFloat(elem.value));
         }); 
         lowBoundarySnowMmToCm.sort(function(a,b) {
@@ -398,6 +426,12 @@
             if (isNaN(parseFloat(elem.value))) {
                 // console.log('non numeric element', elem);
                 validSnowMmToCm = false;
+            }
+            if (elem.value < -70 ) {
+                elem.value = -70;
+            }
+            if (elem.value > 50 ) {
+                elem.value = 50;
             }
             highBoundarySnowMmToCm.push(parseFloat(elem.value));
         });
@@ -415,8 +449,8 @@
                     elem.value = 0;
                 }
 
-                if (elem.value > 10) {
-                    elem.value = 10;
+                if (elem.value > 100) {
+                    elem.value = 100;
                 }
             }            
         });
@@ -553,7 +587,31 @@
                 event.preventDefault();
                 return false;
             }
-        });       
+        });      
+        
+        $('#reset-to-default').click(() => {
+            async function resetToDefault() {
+                return $.ajax({
+                    url: 'reset-params-to-default',
+                    type: 'post',                    
+                    headers: {
+                        'X-CSRF-Token': csrfToken 
+                    },
+                    cache: false,
+                    contentType: false,
+                    processData: false               
+                });
+            };
+
+            var redirectUrl = "<?= $this->Url->build([
+                    'controller' => 'snow',
+                    'action' => 'analysis'
+                ], true); ?>"; 
+
+            resetToDefault().finally(function(){                
+                window.location.href = redirectUrl;
+            });       
+        });
 
         $("#uploadParamsForm").submit(async function(e){
             $("#mySpinnerContainer").show();

@@ -158,7 +158,7 @@ class SnowAnalysisEngine
         $outputArray['ucd2'] = $inputData['ucd2'];
         $outputArray['ucd3'] = $inputData['ucd3'];
 
-        $outputArray['snow_mm'] = ($this->getPrecipToSnowFactor($inputData['temp'])*$inputData['precip'])/100;
+        $outputArray['snow_mm'] = $this->getPrecipToSnowFactor($inputData['temp'])*$inputData['precip'];
         $outputArray['snow_cm'] = $this->getSnowMmToCmFactor($inputData['temp'])*$outputArray['snow_mm'];
         $outputArray['rain_mm'] = $outputArray['precip']-$outputArray['snow_mm'];
 

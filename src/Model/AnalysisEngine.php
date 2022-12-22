@@ -119,7 +119,7 @@ class AnalysisEngine
         $this->requiredInputData = $this->getRequiredInputData();
         
         // delete previous output
-        Utils::removeWaterBalanceDataset();
+        Utils::removeSnowDataset();
         // Utils::removeSoilWaterDataset();   
 
         // aux parameters (avoid reading in DB when not needed)

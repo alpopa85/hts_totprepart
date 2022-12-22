@@ -315,7 +315,40 @@ class SnowController extends AppController
     } 
     
     /* OTHER ACTIONS */
-    /*****************/        
+    /*****************/       
+    public function resetParamsToDefault()
+    {
+        $this->request->allowMethod(['post']);
+        $this->viewBuilder()->setClassName('Json');   
+               
+        $formData = $this->request->getData();  
+
+        try {                        
+            // reset params
+            Utils::writeDefaultParamsToDb(Utils::getDefaultParams(), 'sbuddy');
+            // reset calib            
+            Utils::writeSnowCalMapToDb(Utils::getDefaultCalibMap());  
+
+            // also reset output because id doesn't match the params aymore
+            Utils::removeSnowDataset();    
+            
+            $this->Flash->success(__('The analysis parameters have been succesfully reset!')); 
+            
+            $response = array(
+                'success' => true                
+            );
+        } catch (Exception $e) {
+            $this->Flash->error(__('Error resetting params! ' . $e->getMessage()));
+
+            $response = array(
+                'success' => false
+            ); 
+        }   
+        
+        $this->set('response', $response);
+        $this->set('_serialize', 'response');    
+    }
+
     public function uploadParamFile()
     {
         set_time_limit(0);
