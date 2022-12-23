@@ -61,7 +61,7 @@
                 </tr>                 
 
                 <tr class="table-info no-wrap-table-row">                        
-                    <td width="10%"><a href="#chapter_5">&rarr; 4.</a></td>
+                    <td width="10%"><a href="#chapter_4">&rarr; 4.</a></td>
                     <td class="text-left"  colspan="2"><a href="#chapter_4">Limitations</a></td>    
                 </tr> 
 
@@ -71,7 +71,7 @@
                 </tr> 
 
                 <tr class="table-info no-wrap-table-row">                        
-                    <td width="10%"><a href="#chapter_7">&rarr; 6.</a></td>
+                    <td width="10%"><a href="#chapter_6">&rarr; 6.</a></td>
                     <td class="text-left"  colspan="2"><a href="#chapter_6">Contact</a></td>    
                 </tr> 
             </tbody>
