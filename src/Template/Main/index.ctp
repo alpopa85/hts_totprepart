@@ -181,11 +181,7 @@
 
                     <li>
                         <h5>Perform snowfall amount calculations: enter required coefficients and select Run Analysis [ANALYSIS module - Analysis tab]. The calibration of the tool is conducted by adjusting the coefficients available on this page (i.e., precipitation [mm] to snowfall [mm] conversion factors; snowfall conversion factors [mm to cm]); and the lower and upper bounds for the temperature intervals associated with each conversion factor. The Analysis is performed in conjunction with the information displayed in the Calibration overlay window launched by using the Run Analysis button;</h5>
-                    </li>
-
-                    <li>
-                        <h5>Perform WATER BALANCE module calculations: enter required coefficients and select Run Water Balance Analysis [Water Balance - Analysis]. The calibration of the model is conducted by adjusting the coefficients available on this page in conjunction with the information displayed in the Calibration overlay window, which is launched by using the Run Water Analysis button;</h5>
-                    </li>
+                    </li>                  
 
                     <li>
                         <h5>Investigate Results and Export Data: review SNOWFALL BUDDY output from each module [Table View and/or Graphical View] and export results [Export Data button available under each data entry and calculation modules or the CSV button available under the Stats and Calibration Stats of the Graphical View or under the Table, Stats and Calibration Stats of the Table View].</h5>
