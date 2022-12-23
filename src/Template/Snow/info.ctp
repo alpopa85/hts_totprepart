@@ -7,98 +7,18 @@
 
         <div class="table-responsive text-left">
 
-            <h5>On the Analysis Tab the user must provide the following:</h5>                
-<?/*
-            <table class="table table-bordered text-center my-3">
-                <thead class="thead-dark">
-                    <tr class="table-primary" style="font-style:italic">
-                        <th colspan="4" scope="row">STARTING VALUES</th>                                    
-                    </tr>
-                    <tr class="table-primary" style="font-style:italic">
-                        <td>NAME</td>
-                        <td>LONG NAME</td>
-                        <td>DEFINITION</td>
-                        <td>VALUES</td>                                    
-                    </tr>                                
-                    <tr class="table-info">
-                        <td><span data-toggle="tooltip" title="<?= $tooltips['SNWTinit'] ?>">SNWTinit</span></td>
-                        <td>Initial snow layer thickness (cm)</td>
-                        <td>Thickness of the snow layer on the first day of the analysis. This is converted into mm for subsequent calculations using 1/CFSmc</td>
-                        <td>&ge; 0</td>                                                                      
-                    </tr>                                
-                    <tr class="table-info">
-                        <td><span data-toggle="tooltip" title="<?= $tooltips['SNWMinit'] ?>">SNWMinit</span></td>
-                        <td>Initial snowmelt (mm)</td>
-                        <td>Amount of snow melted on the first day of the analysis</td>
-                        <td>&ge; 0</td>                                                                      
-                    </tr>                                
-                </thead>
-                <tbody>        
-                </tbody>
-            </table>
+            <h5>On the Analysis Tab the user must first provide the coefficients required by the tool in the "Precipitation (mm) to Snowfall (mm) conversion factor", "Snowfall conversion factor (mm to cm)" and "Calibration mapping" sections of this page. The values of the coefficients can be entered manually using the collapsible menus available under the Analysis Tab or can be uploaded as a set using the "Import configuration file" button available in the same tab. The configuration file can be downloaded using the "Export Configuration File" button under the Analysis Tab (including either default values of the coefficients if the first tool run has not been completed or values of the coefficient as set for the last available run of the tool if the analysis has been completed at least once) or by using "Export Configuration" in the "Export Results" menu (available after one successful run of the module). If needed, the users can also reset all the values of the coefficients to default values by using the "Reset to Default" button available at the bottom at the bottom of the page in the Analysis tab.</h5>          
+                
+            <h5>In the "Precipitation (mm) to Snowfall (mm) conversion factor" section of the page the user have to enter the lower and upper bound air temperature for each air temperature interval as well as the conversion factor of total precipitation (TOTP) to snowfall (SNOF[mm]) associated with each interval. The number of air temperature intervals can be expanded or reduced using the "+" or "-" buttons at the left of coefficient fields. Air temperature values between -70 and 50 oC are allowed. When entering values in the air temperature fields, the user have to check that the intervals do not overlap and the lower bound temperature is smaller than the upper bound temperature for each interval. For the conversion factor (CTMM - air temperature coefficient for conversion of total precipitation to snowfall), the values have to be between 0 and 1.</h5>
 
-            <table class="table table-bordered text-center my-3 mt-1">
-                <thead class="thead-dark">
-                    <tr class="table-primary" style="font-style:italic">
-                        <th colspan="4" scope="row">COEFFICIENTS</th>                                    
-                    </tr>
-                    <tr class="table-primary" style="font-style:italic">
-                        <td>NAME</td>
-                        <td>LONG NAME</td>
-                        <td>DEFINITION</td>
-                        <td>VALUES</td>                                    
-                    </tr>                                
-                    <tr class="table-info">
-                        <td><span data-toggle="tooltip" title="<?= $tooltips['THRrs'] ?>">THRrs</span></td>
-                        <td>Air temperature threshold for rain to be accumulated as snow (&deg; C)</td>
-                        <td>Precipitation falling as rain is treated as snow when air temperature is below this threshold. This results in the respective rain amount to be added to the snow layer instead of infiltrating and/or becoming surface runoff</td>
-                        <td>-20 to 10</td>                                                                      
-                    </tr>                                
-                    <tr class="table-info">
-                        <td><span data-toggle="tooltip" title="<?= $tooltips['THRsm'] ?>">THRsm</span></td>
-                        <td>Air temperature threshold for initiating snowmelt (&deg; C)</td>
-                        <td>Melting of the snow occurs on days with air temperature above this threshold</td>
-                        <td>-20 to 10</td>                                                                         
-                    </tr>  
-                    <tr class="table-info">
-                        <td><span data-toggle="tooltip" title="<?= $tooltips['CFTsm'] ?>">CFTsm</span></td>
-                        <td>Correction factor - snowmelt due to air temperature (mm)</td>
-                        <td>The amount of snow that is melted for each degree of air temperature above THRsm</td>
-                        <td>&ge; 0</td>                                                                      
-                    </tr>
-                    <tr class="table-info">
-                        <td><span data-toggle="tooltip" title="<?= $tooltips['CFRsm'] ?>">CFRsm</span></td>
-                        <td>Correction factor - snowmelt due to rain (mm)</td>
-                        <td>The amount of snow that is melted for each mm of rain that is not accumulated in the snow layer</td>
-                        <td>&ge; 0</td>                                                                      
-                    </tr>
-                    <tr class="table-info">
-                        <td><span data-toggle="tooltip" title="<?= $tooltips['CFSmc'] ?>">CFSmc</span></td>
-                        <td>Correction factor - snow as mm water to cm snow</td>
-                        <td>Factor for converting calculated snow layer thickness from mm water (as calculated by the model) to cm of snow</td>
-                        <td>&ge; 0</td>                                                                      
-                    </tr>
-                    <tr class="table-info">
-                        <td><span data-toggle="tooltip" title="<?= $tooltips['CFets'] ?>">CFets</span></td>
-                        <td>Correction factor - portion of evapotranspiration occurring in the soil</td>
-                        <td>Factor for estimating the portion of actual evapotranspiration (ET) that occurs in the soil. The remainder of ET is considered to occur before water enters the soil (e.g., canopy interception; water ponding at the soil surface, etc.)</td>
-                        <td>0 to 1</td>                                                                      
-                    </tr>
-                </thead>
-                <tbody>        
-                </tbody>
-            </table>
+            <h5>In the "Snowfall conversion factor (mm to cm)" section of the page the user have to enter the lower and upper bound air temperature for each air temperature interval as well as the conversion factor of the snowfall amount in mm (SNF[mm]) to the snowfall amount in cm (SNF [cm)]) for each temperature interval. The number of air temperature intervals can be expanded or reduced using the "+" or "-" buttons at the left of coefficient fields. Air temperature values between -70 and 50 oC are allowed. When entering values in the air temperature fields, the user have to check that the intervals do not overlap and the lower bound temperature is smaller than the upper bound temperature for each interval. For the conversion factor (CTCM - air temperature coefficient for conversion of total precipitation to snowfall), the values have to be between 0 and 100.</h5>
+
+            <h5>In the "Calibration mapping" section of the page the users have to select the pairs of tool output and user calibration data that will be used during the calibration of the tool. The "Calibration Mapping" fields can be ignored if the UCD data is not available in the Input Data file.</h5>
+
+            <h5>SNOWFALL BUDDY starts the snowfall amount calculations once the values of the required coefficients are set and the user clicks on the Run Analysis button at the bottom of the page.</h5>
 
             <br/>
-            <h5>Once the values for Starting values and Coefficients are set and the user selects the pairs to be used during the calibration (i.e. Calibration mapping menu), the user can click on the Run Snow Analysis button and the Calibration overlay window will be displayed. Both the Starting values and the Coefficients can be subsequently adjusted during the calibration procedure, with calibration being considered final once no further improvement in the model fitness is observed (see section <a href="<?= $this->Url->build('/main/index#chapter_3.6');?>">3.6.</a> for details regarding the calibration procedure). Upon completion of the calibration procedure the view switches to Graphical View. See section <a href="<?= $this->Url->build('/main/index#chapter_3.6');?>">3.6.</a> for instructions regarding the calibration of the model and section <a href="<?= $this->Url->build('/main/index#chapter_4.6');?>">4.6.</a> for instructions regarding the inspection of datasets using tables and graphs as well as for the various options available for exporting the data.</h5>                                                    
-
-            <br/>
-            <h5>The user can click on the Water Balance menu entry at the top of the page to advance to the next calculation module.</h5>
-
-            <br/>
-            <h5>Consult section <a href="<?= $this->Url->build('/main/index#chapter_3.3');?>">3.3.</a> and section <a href="<?= $this->Url->build('/main/index#chapter_3.4');?>">3.4.</a> for more details.</h5>
+            <h5>Consult section <a href="<?= $this->Url->build('/main/index#chapter_3.4');?>">3.4.</a> and section <a href="<?= $this->Url->build('/main/index#chapter_3.5');?>">3.5.</a> for more details.</h5>
         </div> 
-    </div>
-    */ ?>
-   
+    </div>       
 </div>

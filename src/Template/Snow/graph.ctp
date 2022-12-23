@@ -49,7 +49,7 @@
 
                     <optgroup label="Input Data">
                         <option selected value="temp">TEMP</option>
-                        <option value="precip">PRECIP</option>
+                        <option value="precip">TOTP</option>
                     </optgroup>                                        
 
                     <optgroup label="Output Data">          
@@ -85,7 +85,7 @@
                     
                     <optgroup label="Input Data">
                         <option value="temp">TEMP</option>
-                        <option value="precip">PRECIP</option>
+                        <option value="precip">TOTP</option>
                     </optgroup>                                        
 
                     <optgroup label="Output Data">          
@@ -121,7 +121,7 @@
                     
                     <optgroup label="Input Data">
                         <option value="temp">TEMP</option>
-                        <option value="precip">PRECIP</option>
+                        <option value="precip">TOTP</option>
                     </optgroup>                                        
 
                     <optgroup label="Output Data">          
@@ -157,7 +157,7 @@
                     
                     <optgroup label="Input Data">
                         <option value="temp">TEMP</option>
-                        <option value="precip">PRECIP</option>
+                        <option value="precip">TOTP</option>
                     </optgroup>                                        
 
                     <optgroup label="Output Data">          
@@ -226,7 +226,7 @@
             <div class="row py-1 pt-3">
                 <div class="col-12 d-flex justify-content-left">            
                     <a class="btn btn-outline-dark btn-sm col-hide-button toggle-vis" data-column="2"><span data-toggle="tooltip" title="<?= $tooltips['TEMP'] ?>">TEMP</span></a>
-                    <a class="btn btn-outline-dark btn-sm col-hide-button toggle-vis" data-column="3"><span data-toggle="tooltip" title="<?= $tooltips['PRECIP'] ?>">PRECIP</span></a>
+                    <a class="btn btn-outline-dark btn-sm col-hide-button toggle-vis" data-column="3"><span data-toggle="tooltip" title="<?= $tooltips['PRECIP'] ?>">TOTP</span></a>
                 </div>
             </div>
 
@@ -267,7 +267,7 @@
                     <tr>
                         <th scope="col">Statistic<br /><span id="stat_type"></th>
                         <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['TEMP'] ?>">TEMP</span> (&deg;C)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['PRECIP'] ?>">PRECIP</span> (mm)</th>
+                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['PRECIP'] ?>">TOTP</span> (mm)</th>
                         <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['SNOW_MM'] ?>">SNOW_MM</span> (mm)</th>                
                         <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['SNOW_CM'] ?>">SNOW_CM</span> (cm)</th>
                         <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['RAIN_MM'] ?>">RAIN_MM</span> (mm)</th>                        
@@ -490,7 +490,7 @@
                 case 'temp':
                     return 'TEMP (&deg;C)';                
                 case 'precip':
-                    return 'PRECIP (mm)';               
+                    return 'TOTP (mm)';               
                 case 'ucd1': 
                     return 'UCD1';
                 case 'ucd2': 

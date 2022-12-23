@@ -298,7 +298,7 @@ class ExportEngine
         $statsData[] = array(
             'Statistic',
             'TEMP (C)',
-            'PRECIP (mm)',
+            'TOTP (mm)',
             'UCD1',
             'UCD2',
             'UCD3'
@@ -364,7 +364,7 @@ class ExportEngine
         $newDataLine = array(
             'Statistic',
             'TEMP (C)',
-            'PRECIP (mm)',
+            'TOTP (mm)',
             'SNOW (mm)',                                   
             'SNOW (cm)',                                   
             'RAIN (mm)'                                                          

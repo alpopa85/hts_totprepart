@@ -432,6 +432,11 @@ td.validation-col {
     width: auto;
 }
 
+.set-h-20{
+    height: 20px;
+    width: auto;
+}
+
 #googleMapWrapper{
 	height:500px;
     width:100%;

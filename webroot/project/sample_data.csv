@@ -1,4 +1,4 @@
-Date/Time,INP - TEMP (°C),INP - TOTPP (mm),OUTP - SNOWF est (mm),OUTP - SNOWF est (cm),OUTP - RAIN (mm),UCD1 SNOWF meas (mm),UCD2 SNOWF meas (cm),UCD3 RAIN meas (mm)
+Date/Time,INP - TEMP (°C),INP - TOTP (mm),OUTP - SNOWF est (mm),OUTP - SNOWF est (cm),OUTP - RAIN (mm),UCD1 SNOWF meas (mm),UCD2 SNOWF meas (cm),UCD3 RAIN meas (mm)
 2016-01-01,-10.0,0.4,0.4,1.2,0.0,0.4,0.6,0.0
 2016-01-02,-3.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
 2016-01-03,-1.8,2.4,1.9,1.9,0.5,2.4,6.4,0.0

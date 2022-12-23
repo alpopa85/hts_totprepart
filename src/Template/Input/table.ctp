@@ -39,7 +39,7 @@
                         <th scope="col">Index</th>
                         <th scope="col" class="date-col">Date</th>                
                         <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['TEMP'] ?>">TEMP</span> (&deg;C)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['PRECIP'] ?>">PRECIP</span> (mm)</th>
+                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['PRECIP'] ?>">TOTP</span> (mm)</th>
                         <?php for ($i = 0; $i < $nValidationColumns; $i++) {
                             switch ($i) {
                                 case 0:
@@ -94,7 +94,7 @@
                     <tr>
                         <th scope="col">Statistic</th>
                         <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['TEMP'] ?>">TEMP</span> (&deg;C)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['PRECIP'] ?>">PRECIP</span> (mm)</th>
+                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['PRECIP'] ?>">TOTP</span> (mm)</th>
                         <?php for ($i = 0; $i < $nValidationColumns; $i++) {
                             switch ($i) {
                                 case 0:

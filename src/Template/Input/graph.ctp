@@ -43,7 +43,7 @@
                     
                     <optgroup label="Input Data">
                         <option selected value="temp">TEMP</option>
-                        <option value="precip">PRECIP</option>                        
+                        <option value="precip">TOTP</option>                        
                     </optgroup>
                     
                     <?php if ($nValidationColumns > 0) { ?>
@@ -73,7 +73,7 @@
                     
                     <optgroup label="Input Data">
                         <option value="temp">TEMP</option>
-                        <option value="precip">PRECIP</option>
+                        <option value="precip">TOTP</option>
                     </optgroup>
                     
                     <?php if ($nValidationColumns > 0) { ?>
@@ -103,7 +103,7 @@
                     
                     <optgroup label="Input Data">
                         <option value="temp">TEMP</option>
-                        <option value="precip">PRECIP</option>
+                        <option value="precip">TOTP</option>
                     </optgroup>
                     
                     <?php if ($nValidationColumns > 0) { ?>
@@ -133,7 +133,7 @@
                     
                     <optgroup label="Input Data">
                         <option value="temp">TEMP</option>
-                        <option value="precip">PRECIP</option>
+                        <option value="precip">TOTP</option>
                     </optgroup>
                     
                     <?php if ($nValidationColumns > 0) { ?>
@@ -198,7 +198,7 @@
                     <tr>
                         <th scope="col">Statistic</th>
                         <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['TEMP'] ?>">TEMP</span> (&deg;C)</th>
-                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['PRECIP'] ?>">PRECIP</span> (mm)</th>
+                        <th scope="col"><span data-toggle="tooltip" title="<?= $tooltips['PRECIP'] ?>">TOTP</span> (mm)</th>
                         <?php for ($i = 0; $i < $nValidationColumns; $i++) {
                             switch ($i) {
                                 case 0:
@@ -353,7 +353,7 @@
                 case 'temp':
                     return 'TEMP (&deg;C)';                
                 case 'precip':
-                    return 'PRECIP (mm)';                
+                    return 'TOTP (mm)';                
                 case 'ucd1': 
                     return 'UCD1';
                 case 'ucd2': 

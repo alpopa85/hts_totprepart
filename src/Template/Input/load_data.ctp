@@ -31,24 +31,24 @@
             <tr class="table-primary">
                 <th scope="row">Columns</th>
                 <td>DATE</td>
-                <td><span data-toggle="tooltip" title="<?= $tooltips['TEMP'] ?>">TEMP</span></td>
-                <td><span data-toggle="tooltip" title="<?= $tooltips['PRECIP'] ?>">PRECIP</span></td>
+                <td><span data-toggle="tooltip" title="<?= $tooltips['TEMP'] ?>">TEMP</span></td>   
+                <td><span data-toggle="tooltip" title="<?= $tooltips['PRECIP'] ?>">TOTP</span></td>                                                             
                 <td class="validation-col"><span data-toggle="tooltip" title="<?= $tooltips['UCD'] ?>">UCD</span> (max. 3 columns)</td>
             </tr>
             <tr class="table-info no-wrap-table-row">
                 <th scope="row">Units</th>
-                <td>yyyy-mm-dd</td>
+                <td>yyyy-mm-dd</td>                                
                 <td>&deg;C</td>
                 <td>mm</td>               
                 <td>user choice</td>    
             </tr> 
             <tr class="table-info no-wrap-table-row">
                 <th scope="row">Values</th>
-                <td>eg. 2021-12-24</td>
-                <td>-90 to 60</td>
-                <td>0 to 1800</td>                
+                <td>eg. 2021-12-24</td>                                
+                <td>-70 to 50</td>     
+                <td>0 to 1800</td>                                           
                 <td>user choice</td>    
-            </tr> 
+            </tr>   
         </thead>
         <tbody>        
         </tbody>

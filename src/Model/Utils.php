@@ -4198,7 +4198,7 @@ class Utils
             }
 
             if(strcmp($key, 'precip') == 0){
-                return 'PRECIP (mm)';
+                return 'TOTP (mm)';
             }          
 
             if(strcmp($key, 'ucd1') == 0){
