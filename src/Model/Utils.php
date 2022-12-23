@@ -5015,53 +5015,45 @@ class Utils
     public static function getDefaultParams()
     {
         $snowDefaultParams = [
-            'precipToSnow_count' => 7,
+            'precipToSnow_count' => 5,
+
             'precipToSnow_lt_0' => -70,
             'precipToSnow_ht_0' => -5,
             'precipToSnow_factor_0' => 1,
+            
             'precipToSnow_lt_1' => -5,
-            'precipToSnow_ht_1' => -1,
+            'precipToSnow_ht_1' => 1,
             'precipToSnow_factor_1' => 0.8,
-            'precipToSnow_lt_2' => -1,
-            'precipToSnow_ht_2' => 0,
-            'precipToSnow_factor_2' => 0.7,
-            'precipToSnow_lt_3' => 0,
-            'precipToSnow_ht_3' => 1,
-            'precipToSnow_factor_3' => 0.3,
-            'precipToSnow_lt_4' => 1,
-            'precipToSnow_ht_4' => 2,
-            'precipToSnow_factor_4' => 0.2,
-            'precipToSnow_lt_5' => 2,
-            'precipToSnow_ht_5' => 3,
-            'precipToSnow_factor_5' => 0.1,
-            'precipToSnow_lt_6' => 3,
-            'precipToSnow_ht_6' => 50,
-            'precipToSnow_factor_6' => 0,
-            'snowMmToCm_count' => 8,
+            
+            'precipToSnow_lt_2' => 1,
+            'precipToSnow_ht_2' => 2,
+            'precipToSnow_factor_2' => 0.2,
+            
+            'precipToSnow_lt_3' => 2,
+            'precipToSnow_ht_3' => 3,
+            'precipToSnow_factor_3' => 0.1,
+            
+            'precipToSnow_lt_4' => 3,
+            'precipToSnow_ht_4' => 50,
+            'precipToSnow_factor_4' => 0,           
+            
+            'snowMmToCm_count' => 4,
+            
             'snowMmToCm_lt_0' => -70,
-            'snowMmToCm_ht_0' => -29,
-            'snowMmToCm_factor_0' => 10,
-            'snowMmToCm_lt_1' => -29,
-            'snowMmToCm_ht_1' => -18,
-            'snowMmToCm_factor_1' => 5,
-            'snowMmToCm_lt_2' => -18,
-            'snowMmToCm_ht_2' => -13,
-            'snowMmToCm_factor_2' => 4,
-            'snowMmToCm_lt_3' => -13,
-            'snowMmToCm_ht_3' => -10,
-            'snowMmToCm_factor_3' => 3,
-            'snowMmToCm_lt_4' => -10,
-            'snowMmToCm_ht_4' => -7,
-            'snowMmToCm_factor_4' => 2,
-            'snowMmToCm_lt_5' => -7,
-            'snowMmToCm_ht_5' => 1,
-            'snowMmToCm_factor_5' => 1,
-            'snowMmToCm_lt_6' => 1,
-            'snowMmToCm_ht_6' => 5,
-            'snowMmToCm_factor_6' => 0.5,
-            'snowMmToCm_lt_7' => 5,
-            'snowMmToCm_ht_7' => 50,
-            'snowMmToCm_factor_7' => 0
+            'snowMmToCm_ht_0' => -13,
+            'snowMmToCm_factor_0' => 5,
+            
+            'snowMmToCm_lt_1' => -13,
+            'snowMmToCm_ht_1' => -7,
+            'snowMmToCm_factor_1' => 2,
+
+            'snowMmToCm_lt_2' => -7,
+            'snowMmToCm_ht_2' => 3,
+            'snowMmToCm_factor_2' => 1,
+
+            'snowMmToCm_lt_3' => 3,
+            'snowMmToCm_ht_3' => 50,
+            'snowMmToCm_factor_3' => 0           
         ];
         
         return $snowDefaultParams;
