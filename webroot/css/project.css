@@ -106,7 +106,7 @@ sup {
 }
 
 .navbar{
-    background-color:#F1EBDA!important;
+    background-color:#E1E6FA!important;
 }
 
 .navbar-nav a.nav-link:hover{
@@ -124,14 +124,14 @@ sup {
 
 .nav-pills a.nav-link:hover{
     color: #464646;    
-    background-color: #F1EBDA;
+    background-color: #E1E6FA;
 }
 
 a.nav-link.red-reset{
-    color:#F1EBDA!important;
+    color:#E1E6FA!important;
     background: red;  
     border-radius: 0.5rem;  
-    /* background-color: #F1EBDA;  */
+    /* background-color: #E1E6FA;  */
 }
 a.nav-link.red-reset:hover{    
     color: red!important; 
@@ -139,10 +139,10 @@ a.nav-link.red-reset:hover{
 }
 
 a.nav-link.orange-ucd{
-    color:#F1EBDA!important;
+    color:#E1E6FA!important;
     background: goldenrod;  
     border-radius: 0.5rem;  
-    /* background-color: #F1EBDA;  */
+    /* background-color: #E1E6FA;  */
 }
 a.nav-link.orange-ucd:hover{    
     color: goldenrod!important; 
@@ -180,7 +180,7 @@ a.nav-link.orange-ucd:hover{
 .borderedSection{
     padding-bottom: 10px;
     padding-top: 10px;
-    background: #F1EBDA!important;
+    background: #E1E6FA!important;
 }
 
 #mainDataTable{
@@ -331,8 +331,8 @@ a.navbar-brand:hover{
 }*/
 
 .subsectionTitle {    
-    background: rgb(241,235,218);
-    background: linear-gradient(90deg, rgba(241,235,218,1) 0%, rgba(255,255,255,1) 51%);        
+    background: rgb(225,230,250);
+    background: linear-gradient(90deg, rgba(225,230,250,1) 0%, rgba(255,255,255,1) 51%);        
 }
 
 .subsectionTitle > h5{
@@ -474,7 +474,7 @@ input.coverFullDiv{
 .spinner-container {
     position:fixed; 
     z-index:999; 
-    background-color:rgba(241,235,218,0.9);
+    background-color:rgba(225,230,250,0.9);
     width:100%; 
     height:100%; 
     top:0; 
@@ -488,8 +488,8 @@ input.coverFullDiv{
 
 .myAccordionHeader {
     padding: 0px !important;
-    background: rgb(241,235,218);
-    background: linear-gradient(90deg, rgba(241,235,218,1) 0%, rgba(255,255,255,1) 51%); 
+    background: rgb(225,230,250);
+    background: linear-gradient(90deg, rgba(225,230,250,1) 0%, rgba(255,255,255,1) 51%); 
     font-weight:400px;
 }
 

@@ -11,7 +11,7 @@
     <!-- ICONS -->
     <?= $this->Html->meta(
         'favicon.ico',
-        '/favicon.ico',
+        '/favicon.ico?v=2',
         ['type' => 'icon']
     ); ?>
     <?= $this->Html->meta(
@@ -164,7 +164,7 @@
         </div>
 
         <?= $this->Html->link(
-            $this->Html->image('hts_logo_2.png', array('height' => '45', 'width' => 'auto', 'alt' => 'SNOW BUDDY')),
+            $this->Html->image('sbuddy_logo2.png', array('height' => '45', 'width' => 'auto', 'alt' => 'SNOW BUDDY')),
             ['controller' => 'main', 
             'action' => 'index'], [
             'class' => 'navbar-brand',
