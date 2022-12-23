@@ -534,7 +534,7 @@
                     myTickFormat = null;
             }
 
-            var titleVal = 'Snow Data';
+            var titleVal = '';
             var yAxisVal = null;
             var yAxis2Val = null;
 
