@@ -2,8 +2,8 @@
 
     <div class="swib-title my-4">
         <div class="text-center">
-            <h1>Snowfall and Rainfall Estimation Tool</h1>        
-            <h2>SNOWFALL BUDDY</h2>
+            <h1>SNOWFALL BUDDY</h1>    
+            <h2>Snowfall and Rainfall Estimation Tool</h2>                    
             <h3>Online Tool</h3>
         </div>        
     </div>
@@ -37,15 +37,15 @@
                 </tr>  
                 <tr class="table-info no-wrap-table-row">  
                     <td width="30%" colspan="2" class="text-right"><a href="#chapter_3.2">&rarr; 3.2.</td>      
-                    <td class="text-left"><a href="#chapter_3.2">HOME Module</a></td>   
+                    <td class="text-left"><a href="#chapter_3.2">Home Module</a></td>   
                 </tr> 
                 <tr class="table-info no-wrap-table-row">  
                     <td width="30%" colspan="2" class="text-right"><a href="#chapter_3.3">&rarr; 3.3.</td>      
-                    <td class="text-left"><a href="#chapter_3.3">INPUT DATA Module</a></td>   
+                    <td class="text-left"><a href="#chapter_3.3">Input Data Module</a></td>   
                 </tr>    
                 <tr class="table-info no-wrap-table-row">  
                     <td width="30%" colspan="2" class="text-right"><a href="#chapter_3.4">&rarr; 3.4.</td>      
-                    <td class="text-left"><a href="#chapter_3.4">ANALYSIS Module</a></td>   
+                    <td class="text-left"><a href="#chapter_3.4">Analysis Module</a></td>   
                 </tr>   
                 <tr class="table-info no-wrap-table-row">  
                     <td width="30%" colspan="2" class="text-right"><a href="#chapter_3.5">&rarr; 3.5.</td>      
@@ -53,7 +53,7 @@
                 </tr> 
                 <tr class="table-info no-wrap-table-row">  
                     <td width="30%" colspan="2" class="text-right"><a href="#chapter_3.6">&rarr; 3.6.</td>      
-                    <td class="text-left"><a href="#chapter_3.6">CALIBRATION Procedure</a></td>   
+                    <td class="text-left"><a href="#chapter_3.6">Calibration Procedure</a></td>   
                 </tr> 
                 <tr class="table-info no-wrap-table-row">  
                     <td width="30%" colspan="2" class="text-right"><a href="#chapter_3.7">&rarr; 3.7.</td>      
@@ -200,7 +200,7 @@
                 <br/>
                 <br/><h4 class="l2-section" id="chapter_3.3">3.3. Input Data Module</h4><br/>
 
-                <h5>The Input Data menu entry has five tabs at the top of the page: Info, Load Data, Graphical View, Table View and Export Input Data.</h5>
+                <!-- <h5>The Input Data menu entry has five tabs at the top of the page: Info, Load Data, Graphical View, Table View and Export Input Data.</h5> -->
 
                 <h5>The first step in conducting an analysis is to upload the input data file to be used by SNOWFALL. The users can run SNOWFALL BUDDY either by using the test dataset or by uploading a new dataset.</h5>
              
