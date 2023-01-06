@@ -91,7 +91,7 @@
                             
                             <div class="row mt-4">
                                 <div class="col col-11 offset-1 alert-warning">
-                                    <span>* Data points not covered by any interval will have a conversion factor of 0.</span>
+                                    <span><i class="fas fa-exclamation-circle"></i> Data points not covered by any interval will have a conversion factor of 0.</span>                                    
                                 </div>                                    
                             </div>
                             
@@ -101,6 +101,7 @@
                                         <h4>Invalid parameters! Requirements:</h4>
                                     </div>                                    
                                     <h5>- all values must be numeric<br/>
+                                    - TEMP takes values between -70 [&deg;C] and 50 [&deg;C]<br/>
                                     - TEMP intervals should not overlap<br/>                                    
                                     - the TEMP lower bound should be smaller than the TEMP upper bound for each layer<br/>
                                     - the conversion factor should be between 0 and 1</h5>
@@ -166,7 +167,7 @@
 
                             <div class="row mt-4">
                                 <div class="col col-11 offset-1 alert-warning">
-                                    <span>* Data points not covered by any interval will have a conversion factor of 0.</span>
+                                    <span><i class="fas fa-exclamation-circle"></i> Data points not covered by any interval will have a conversion factor of 0.</span>                                    
                                 </div>                                    
                             </div>
                             
@@ -176,6 +177,7 @@
                                         <h4>Invalid parameters! Requirements:</h4>
                                     </div>                                    
                                     <h5>- all values must be numeric<br/>
+                                    - TEMP takes values between -70 [&deg;C] and 50 [&deg;C]<br/>
                                     - TEMP intervals should not overlap<br/>                                    
                                     - the TEMP lower bound should be smaller than the TEMP upper bound for each layer<br/>
                                     - the conversion factor should be between 0 and 100</h5>                                  
@@ -256,21 +258,16 @@
             <!-- END OF CAKE FORM FIELDS !-->            
             <div class="mt-5">
                 <div class="container-fluid">
-                    <div class="row">
+                    <div class="row">                        
                         <div class="col text-right">
                             <button type="button" id="validateButton" style="min-width:50%" class="btn btn-primary">Validate</button>
+                            <button type="submit" id="submitButton" class="btn btn-success" style="min-width:50%; display:none">Run Analysis</button>            
                         </div>
-
+                        
                         <div class="col text-left">
                             <button type="button" class="btn btn-danger" id="reset-to-default" style="min-width:50%">Reset to Default</button>
                         </div>
-                    </div>
-
-                    <div class="row mt-2">
-                        <div class="col-6 offset-3 text-center">
-                            <button type="submit" class="btn btn-success" style="min-width:50%">Run Analysis</button>            
-                        </div>
-                    </div>
+                    </div>                   
                 </div>                                
             </div>  
         </form>
@@ -338,55 +335,52 @@
         // precipToSnow
         var lowBoundaryPrecipToSnow = [];        
         $('#analysisForm').find(':input[name="precipToSnow_lt[]"]').each((index,elem) => {
-            if (isNaN(parseFloat(elem.value))) {
+            if (isNaN(elem.value)) {
                 // console.log('non numeric element', elem);
                 validPrecipToSnow = false;
+            } else {
+                var floatVal = parseFloat(elem.value);
+                if (floatVal < -70 || floatVal > 50) {
+                    validPrecipToSnow = false;
+                } else {
+                    lowBoundaryPrecipToSnow.push(parseFloat(elem.value));
+                }                
             }
-            if (elem.value < -70 ) {
-                elem.value = -70;
-            }
-            if (elem.value > 50 ) {
-                elem.value = 50;
-            }
-            lowBoundaryPrecipToSnow.push(parseFloat(elem.value));
         }); 
         lowBoundaryPrecipToSnow.sort(function(a,b) {
             return(a - b);
         });
-        // console.log('lowBoundary', lowBoundary);  
+        // console.log('lowBoundary p1', lowBoundaryPrecipToSnow);  
 
         var highBoundaryPrecipToSnow = [];
         $('#analysisForm').find(':input[name="precipToSnow_ht[]"]').each((index,elem) => {
-            if (isNaN(parseFloat(elem.value))) {
+            if (isNaN(elem.value)) {
                 // console.log('non numeric element', elem);
                 validPrecipToSnow = false;
-            }
-            if (elem.value < -70 ) {
-                elem.value = -70;
-            }
-            if (elem.value > 50 ) {
-                elem.value = 50;
-            }
-            highBoundaryPrecipToSnow.push(parseFloat(elem.value));
+            } else {
+                var floatVal = parseFloat(elem.value);
+                if (floatVal < -70 || floatVal > 50) {
+                    validPrecipToSnow = false;
+                } else {
+                    highBoundaryPrecipToSnow.push(parseFloat(elem.value));
+                }                       
+            }            
         });
         highBoundaryPrecipToSnow.sort(function(a,b) {
             return(a - b);
         });         
-        // console.log('highBoundary', highBoundary); 
+        // console.log('highBoundary p1', highBoundaryPrecipToSnow); 
 
-        $('#analysisForm').find(':input[name="precipToSnow_factor[]"]').each((index,elem) => {
-            if (isNaN(parseFloat(elem.value))) {
+        $('#analysisForm').find(':input[name="precipToSnow_factor[]"]').each((index,elem) => {             
+            if (isNaN(elem.value)) {
                 // console.log('non numeric element', elem);
                 validPrecipToSnow = false;
             } else {
-                if (elem.value < 0) {
-                    elem.value = 0;
-                }
-
-                if (elem.value > 1) {
-                    elem.value = 1;
-                }
-            }            
+                var floatVal = parseFloat(elem.value);
+                if (floatVal < 0 || floatVal > 1) {
+                    validPrecipToSnow = false;
+                }                
+            }          
         });
 
         for (var i=0; i<lowBoundaryPrecipToSnow.length; i++) {
@@ -403,55 +397,52 @@
 
         // snowMmToCm
         var lowBoundarySnowMmToCm = [];        
-        $('#analysisForm').find(':input[name="snowMmToCm_lt[]"]').each((index,elem) => {
-            if (isNaN(parseFloat(elem.value))) {
+        $('#analysisForm').find(':input[name="snowMmToCm_lt[]"]').each((index,elem) => {            
+            if (isNaN(elem.value)) {
                 // console.log('non numeric element', elem);
                 validSnowMmToCm = false;
-            }
-            if (elem.value < -70 ) {
-                elem.value = -70;
-            }
-            if (elem.value > 50 ) {
-                elem.value = 50;
-            }
-            lowBoundarySnowMmToCm.push(parseFloat(elem.value));
+            } else {
+                var floatVal = parseFloat(elem.value);
+                if (floatVal < -70 || floatVal > 50) {
+                    validSnowMmToCm = false;
+                } else {                
+                    lowBoundarySnowMmToCm.push(parseFloat(elem.value));
+                }
+            }   
         }); 
         lowBoundarySnowMmToCm.sort(function(a,b) {
             return(a - b);
         });
-        // console.log('lowBoundary', lowBoundary);  
+        // console.log('lowBoundary p2', lowBoundarySnowMmToCm);  
 
         var highBoundarySnowMmToCm = [];
-        $('#analysisForm').find(':input[name="snowMmToCm_ht[]"]').each((index,elem) => {
-            if (isNaN(parseFloat(elem.value))) {
+        $('#analysisForm').find(':input[name="snowMmToCm_ht[]"]').each((index,elem) => {            
+            if (isNaN(elem.value)) {
                 // console.log('non numeric element', elem);
                 validSnowMmToCm = false;
-            }
-            if (elem.value < -70 ) {
-                elem.value = -70;
-            }
-            if (elem.value > 50 ) {
-                elem.value = 50;
-            }
-            highBoundarySnowMmToCm.push(parseFloat(elem.value));
+            } else {
+                var floatVal = parseFloat(elem.value);
+                if (floatVal < -70 || floatVal > 50) {
+                    validSnowMmToCm = false;
+                } else {                
+                    highBoundarySnowMmToCm.push(parseFloat(elem.value));
+                }                
+            } 
         });
         highBoundarySnowMmToCm.sort(function(a,b) {
             return(a - b);
         });         
-        // console.log('highBoundary', highBoundary); 
+        // console.log('highBoundary p2', highBoundarySnowMmToCm); 
 
         $('#analysisForm').find(':input[name="snowMmToCm_factor[]"]').each((index,elem) => {
-            if (isNaN(parseFloat(elem.value))) {
+            if (isNaN(elem.value)) {
                 // console.log('non numeric element', elem);
                 validSnowMmToCm = false;
             } else {
-                if (elem.value < 0) {
-                    elem.value = 0;
-                }
-
-                if (elem.value > 100) {
-                    elem.value = 100;
-                }
+                var floatVal = parseFloat(elem.value);
+                if (floatVal < 0 || floatVal > 100) {
+                    validSnowMmToCm = false;
+                }                 
             }            
         });
 
@@ -480,26 +471,20 @@
         }
 
         if (validPrecipToSnow && validSnowMmToCm) {
-            $('#validateButton').prop('disabled', true);
-            $('#validateButton').addClass('disabled');
-
-            $('#analysisForm').find(':input[type=submit]').prop('disabled', false);
-            $('#analysisForm').find(':input[type=submit]').removeClass('disabled');
+            $('#validateButton').hide();
+            $('#submitButton').show();            
         } else {
             $("#overlapError").show();
 
-            $('#validateButton').prop('disabled', false);
-            $('#validateButton').removeClass('disabled');
-
-            $('#analysisForm').find(':input[type=submit]').prop('disabled', true);
-            $('#analysisForm').find(':input[type=submit]').addClass('disabled');
+            $('#validateButton').show();
+            $('#submitButton').hide();            
         }
     }
 
     $(document).ready(function() {
         var csrfToken = <?= json_encode($this->request->getParam('_csrfToken')) ?>;
         validateConfigFileForm();
-        validateParams();       
+        // validateParams();       
 
         $('.add-precip-to-snow-row').click(function(e) {
             // console.log(e.currentTarget.parentElement.parentElement);  
@@ -557,17 +542,16 @@
                 });
 
             validateParams();
-        });  
+        });                   
 
-        $('#analysisForm').on('change', ':input', function(e) {
-            $('#validateButton').prop('disabled', false);
-            $('#validateButton').removeClass('disabled');
-
-            $('#analysisForm').find(':input[type=submit]').prop('disabled', true);
-            $('#analysisForm').find(':input[type=submit]').addClass('disabled');
-
+        $('#analysisForm').on('input', ':input', function(e) {            
+            $('#validateButton').show();
+            $('#submitButton').hide();            
+        });
+        
+        $('#validateButton').click(function(e) {                    
             validateParams();
-        });        
+        });
              
         $('#uploadParamsForm').find(':input[name=inputDataFile]').change(function(){     
             // alert($('#uploadParamsForm').find(':input[name=inputDataFile]').val());
@@ -664,7 +648,7 @@
         }); 
 
         $("#analysisForm").submit(async function(e){
-            e.preventDefault();   
+            e.preventDefault();               
 
             $(this).find(':input[type=submit]').prop('disabled', true);
             $(this).find(':input[type=submit]').addClass('disabled');

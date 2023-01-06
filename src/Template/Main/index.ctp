@@ -208,7 +208,7 @@
 
                 <h5>For using SNOWFALL BUDDY, the users need to upload daily timeseries. The tool accepts source data sets in Comma Separated File (csv) format. The users can use the "Download Sample File" button located on the Upload User Data Page (Load Data) or the "Export Input Data - Daily" menu to obtain a correctly formatted input file that can be used as a model for populating the input data file with user data. The "Export Input Data - Daily" menu becomes available after the test or a user dataset is loaded. The user input file can be uploaded to SNOWFALL BUDDY by using the "Upload user data" button. SNOWFALL BUDDY allows uploading of files with maximum 7500 rows (~20 years of daily data). It is recommended to split the input data set in blocks of 20 years daily timeseries when the intent is to analyze longer time periods. It should be noted that the tool cannot accommodate missing data (i.e., blank rows in required data columns) or erroneous data entries, and hence it is recommended that the integrity of the source data is verified before uploading. An error message will be displayed, and the user will be redirected to the Load Data page if inconsistencies are detected in the user file.</h5>
 
-                <h5>The input data file consists of a tabular file, with the first row dedicated to the parameter names, 1 column dedicated to calendar date, 2 columns dedicated to required input data (TEMP - average daily air temperature [&deg;C] and TOTP - daily total precipitation [mm]) and 3 columns reserved for optional user calibration data (UCD1 to UCD3). The required input data columns have to contain values in all rows, while the optional data columns can be left blank if data is not available. UCD data sets are not restricted to certain parameters and can include time series for any parameter that the user intends to use for comparing with the output from SNOWFALL BUDDY. Although UCD data is optional, it provides critical information for adjusting the various coefficients of the tool during the calibration procedure. Examples of calibration time series datasets include snowfall amount (as mm or cm) and thickness of the snow layer.</h5>
+                <h5>The input data file consists of a tabular file, with the first row dedicated to the parameter names, 1 column dedicated to calendar date, 2 columns dedicated to required input data (TEMP – average daily air temperature [&deg;C] and TOTP – daily total precipitation [mm]) and 3 columns reserved for optional user calibration data (UCD1 to UCD3). The required input data columns have to contain values in all rows, while the optional data columns (i.e., UCD) can be left blank if data is not available. If UCD data is provided, then all the rows in the respective column(s), except for the column headings, must contain numeric values. UCD data sets are not restricted to certain parameters and can include time series for any parameter that the user intends to use for comparing with the output from SNOWFALL BUDDY. Although UCD data is optional, it provides critical information for adjusting the various coefficients of the tool during the calibration procedure. Examples of calibration time series datasets include snowfall amount (as mm or cm) and thickness of the snow layer.</h5>
 
                 <div class="table-responsive text-left pt-2">
 
@@ -251,27 +251,32 @@
                 </div>
 
                 <br/>
-                <h5>Notes:</h5>
+                <h5>Notations:</h5>
 
                 <ul>
                     <li>
                         <h5><span class="underlined">Required data</span>:
                             <br/>DATE - use yyyy-mm-dd format;                             
-                            <br/>TEMP -  daily mean daily air temperature;                                                         
-                            <br/>TOTP - daily total precipitation;
+                            <br/>TEMP -  average daily air temperature [&deg;C];                                                         
+                            <br/>TOTP - daily total precipitation [mm];
                     </li>
 
                     <li>
                         <h5><span class="underlined">Optional data</span>:
                             <br/>UCD - user calibration data (up to three columns; leave blank if no data is available)</h5>
                     </li>
+                </ul>
+
+                <br/>
+                <h5>Notes:</h5>
+                <ul>
 
                     <li>
                         <h5>The tool requires daily data</h5>
                     </li>
 
                     <li>
-                        <h5>The user input data file must be uploaded using a file with one column dedicated to calendar date, two columns dedicated to input data (TEMP, TOTP) and up to three columns reserved for optional user calibration data (UCD1 to UCD3)</h5>
+                        <h5>The user input data file has to be uploaded using a file with 1 column dedicated to calendar date, 2 columns dedicated to required input data (TEMP, TOTP) and 3 columns reserved for optional user calibration data (UCD1 to UCD3)</h5>
                     </li>
 
                     <li>
@@ -482,8 +487,8 @@
                     95 Innovation Rd., Fredericton, NB, E3B 4Z7<br/>
                     Telephone/Téléphone: 506-460-4468<br/>
                     Facsimile/Télécopieur: 506-460-4377<br/>
-                    <a href="mailto:serban.danielescu@ec.gc.ca">serban.danielescu@ec.gc.ca</a><br/>
-                    <a href="mailto:serban.danielescu2@agr.gc.ca">serban.danielescu2@agr.gc.ca</a><br/>               
+                    <!-- <a href="mailto:serban.danielescu@ec.gc.ca">serban.danielescu@ec.gc.ca</a><br/>
+                    <a href="mailto:serban.danielescu2@agr.gc.ca">serban.danielescu2@agr.gc.ca</a><br/>                -->
                     <?= $this->Html->image('email_addresses.png', ['class' => ['img','max-h-300']]); ?>
                 </h5>
                 <div class="text-right"><a href="#contents">&rarr; Table of Contents</a></div>

@@ -1623,9 +1623,9 @@ class AveragingEngine
                 $select = [     
                     'temp' => $query->func()->avg('temp'),
                     'precip' => $query->func()->avg('precip'),
-                    'snow_mm' => $query->func()->sum('snow_mm'),
-                    'snow_cm' => $query->func()->sum('snow_cm'),                               
-                    'rain_mm' => $query->func()->sum('rain_mm'),    
+                    'snow_mm' => $query->func()->avg('snow_mm'),
+                    'snow_cm' => $query->func()->avg('snow_cm'),                               
+                    'rain_mm' => $query->func()->avg('rain_mm'),    
                     'ucd1' => $query->func()->avg('ucd1'),
                     'ucd2' => $query->func()->avg('ucd2'),
                     'ucd3' => $query->func()->avg('ucd3'),

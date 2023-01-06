@@ -620,10 +620,20 @@ class Utils
                     continue;
                 }
 
+                $fieldNameValue = $data[$fieldRawNameIndex];
+                if (!in_array($data[$fieldRawNameIndex], ['snow_mm', 'snow_cm', 'rain_mm'])) {
+                    $fieldNameValue = 'snow_mm';
+                }
+
+                $ucdFieldValue = $data[$fieldValueIndex];
+                if (!in_array($data[$fieldValueIndex], ['ucd1', 'ucd2', 'ucd3'])) {
+                    $ucdFieldValue = 'ucd1';
+                }
+
                 $newData = array(
                     'dataset' => Utils::getCurrentDataset(),
-                    'output_field' => $data[$fieldRawNameIndex],
-                    'ucd_field' => $data[$fieldValueIndex]
+                    'output_field' => $fieldNameValue,
+                    'ucd_field' => $ucdFieldValue
                 );       
                 
                 $calibCollection[] = $newData;               
@@ -5022,12 +5032,12 @@ class Utils
             'precipToSnow_factor_0' => 1,
             
             'precipToSnow_lt_1' => -5,
-            'precipToSnow_ht_1' => 2,
+            'precipToSnow_ht_1' => 1,
             'precipToSnow_factor_1' => 0.8,
             
-            'precipToSnow_lt_2' => 2,
+            'precipToSnow_lt_2' => 1,
             'precipToSnow_ht_2' => 3,
-            'precipToSnow_factor_2' => 0.7,                                                
+            'precipToSnow_factor_2' => 0.2,                                                
             
             'snowMmToCm_count' => 3,
             
@@ -5036,10 +5046,10 @@ class Utils
             'snowMmToCm_factor_0' => 5,
             
             'snowMmToCm_lt_1' => -13,
-            'snowMmToCm_ht_1' => -10,
+            'snowMmToCm_ht_1' => -7,
             'snowMmToCm_factor_1' => 2,
 
-            'snowMmToCm_lt_2' => -10,
+            'snowMmToCm_lt_2' => -7,
             'snowMmToCm_ht_2' => 3,
             'snowMmToCm_factor_2' => 1        
         ];

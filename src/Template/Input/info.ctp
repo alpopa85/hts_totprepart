@@ -46,27 +46,32 @@
             </div>
 
             <br/>
-            <h5>Notes:</h5>
+            <h5>Notations:</h5>
 
             <ul>
                 <li>
                     <h5><span class="underlined">Required data</span>:
                         <br/>DATE - use yyyy-mm-dd format;                             
-                        <br/>TEMP -  daily mean daily air temperature;                                                         
-                        <br/>TOTP - daily total precipitation;
+                        <br/>TEMP -  average daily air temperature [&deg;C];                                                         
+                        <br/>TOTP - daily total precipitation [mm];
                 </li>
 
                 <li>
                     <h5><span class="underlined">Optional data</span>:
                         <br/>UCD - user calibration data (up to three columns; leave blank if no data is available)</h5>
                 </li>
+            </ul>
+
+            <br/>
+            <h5>Notes:</h5>
+            <ul>
 
                 <li>
                     <h5>The tool requires daily data</h5>
                 </li>
 
                 <li>
-                    <h5>The user input data file must be uploaded using a file with one column dedicated to calendar date, two columns dedicated to input data (TEMP, TOTP) and up to three columns reserved for optional user calibration data (UCD1 to UCD3)</h5>
+                    <h5>The user input data file has to be uploaded using a file with 1 column dedicated to calendar date, 2 columns dedicated to required input data (TEMP, TOTP) and 3 columns reserved for optional user calibration data (UCD1 to UCD3)</h5>
                 </li>
 
                 <li>
@@ -76,7 +81,7 @@
                 <li>
                     <h5>SNOWFALL BUDDY includes several input data integrity and quality check routines; however, the user is advised to thoroughly check the input dataset before uploading it to the tool to minimize the risk for erroneous output</h5>
                 </li>                    
-            </ul>        
+            </ul>      
 
             <br/>
             <h5>Consult section <a href="<?= $this->Url->build('/main/index#chapter_3.1');?>">3.1.</a> and section <a href="<?= $this->Url->build('/main/index#chapter_3.3');?>">3.3.</a> for more details.</h5>    
