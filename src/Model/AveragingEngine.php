@@ -1674,10 +1674,10 @@ class AveragingEngine
     private function getAverageOfTwo($one, $two, $method)
     {    
         switch ($method) {
-            case 2:
+            case 1:
                 $output = ($one + $two) / 2;
                 break;
-            case 1:
+            case 2:
             default:
                 $output = $one + $two;
         }
