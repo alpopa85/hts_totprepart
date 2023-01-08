@@ -448,7 +448,7 @@ class Utils
                 }
 
                 $value = filter_var($data[$fieldValueIndex], FILTER_VALIDATE_FLOAT);
-                if ($value == false) {
+                if ($value === false) {
                     throw new Exception('Erroneous configuration file! Value submitted for ' . $data[$fieldNameIndex] . ' is not numeric.', 13);
                 }
                 
