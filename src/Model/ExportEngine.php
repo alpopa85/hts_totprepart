@@ -21,14 +21,27 @@ class ExportEngine
     const SNOW_EXPORT = 3; 
     const WATER_BALANCE_EXPORT = 4; // not used for now    
 
-    private $dailyDataTable, $monthlyDataTable, $yearlyDataTable;
+    private $dailyDataTable;
+    private $monthlyDataTable;
+    private $yearlyDataTable;
     private $seasonsDataTable;
     private $growingDataTable;
-    private $paramsTable;
+
+    private $typicalDailyDataTable;
+    private $typicalMonthlyDataTable;
+    private $typicalYearlyDataTable;
+    private $typicalSeasonsDataTable;
+    private $typicalGrowingDataTable;
+    
+    // private $dataset;
+    private $type;
+    private $paramsTable;        
+    private $snowCalibMap;
+    private $soilCalibMap;
 
     public function __construct($type = null)
     {
-        $this->dataset = Utils::getCurrentDataset();
+        // $this->dataset = Utils::getCurrentDataset();
         $this->type = $type;              
         $this->paramsTable = TableRegistry::getTableLocator()->get('Params');
         $this->snowCalibMap = TableRegistry::getTableLocator()->get('SnowCalibration');
@@ -847,6 +860,12 @@ class ExportEngine
             if(isset($row['time_year'])){
                 unset($row['time_year']);
             }           
+            if(isset($row['ucd4'])){
+                unset($row['ucd4']);
+            } 
+            if(isset($row['ucd5'])){
+                unset($row['ucd5']);
+            }             
 
             if ($firstRow){
                 // keys

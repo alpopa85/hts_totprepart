@@ -102,9 +102,9 @@
                                     </div>                                    
                                     <h5>- all values must be numeric<br/>
                                     - TEMP takes values between -70 [&deg;C] and 50 [&deg;C]<br/>
-                                    - TEMP intervals should not overlap<br/>                                    
-                                    - the TEMP lower bound should be smaller than the TEMP upper bound for each layer<br/>
-                                    - the conversion factor should be between 0 and 1</h5>
+                                    - TEMP intervals cannot overlap<br/>                                    
+                                    - the TEMP lower bound has to be smaller than the TEMP upper bound for each layer<br/>
+                                    - the conversion factor has to be between 0 and 1</h5>
                                 </div>                                    
                             </div>    
                         </div>
@@ -122,7 +122,7 @@
                     </div>
 
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                        <div class="card-body">   
+                        <div class="card-body">
                             <div class="form-group" id="snow-mm-to-cm-group">
                                 <div class="row">                                    
                                     <div class="col col-3 offset-2">
@@ -178,9 +178,9 @@
                                     </div>                                    
                                     <h5>- all values must be numeric<br/>
                                     - TEMP takes values between -70 [&deg;C] and 50 [&deg;C]<br/>
-                                    - TEMP intervals should not overlap<br/>                                    
-                                    - the TEMP lower bound should be smaller than the TEMP upper bound for each layer<br/>
-                                    - the conversion factor should be between 0 and 100</h5>                                  
+                                    - TEMP intervals cannot overlap<br/>                                    
+                                    - the TEMP lower bound has to be smaller than the TEMP upper bound for each layer<br/>
+                                    - the conversion factor has to be between 0 and 100</h5>                                  
                                 </div>
                             </div>  
                         </div>                                                                   
@@ -462,12 +462,14 @@
             $("#overlapError1").hide();
         } else {
             $("#overlapError1").show();
+            $("#collapseOne").collapse('show');
         }
 
         if (validSnowMmToCm) {
             $("#overlapError2").hide();
         } else {
             $("#overlapError2").show();
+            $("#collapseTwo").collapse('show');
         }
 
         if (validPrecipToSnow && validSnowMmToCm) {

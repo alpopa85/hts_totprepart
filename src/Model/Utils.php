@@ -446,6 +446,11 @@ class Utils
                 if (strcmp(explode('_', $data[$fieldTypeIndex])[1], 'param') != 0) {
                     continue;
                 }
+
+                $value = filter_var($data[$fieldValueIndex], FILTER_VALIDATE_FLOAT);
+                if ($value == false) {
+                    throw new Exception('Erroneous configuration file! Value submitted for ' . $data[$fieldNameIndex] . ' is not numeric.', 13);
+                }
                 
                 switch($data[$fieldNameIndex]) {
                     case 'precipToSnow_l':                        
@@ -4137,11 +4142,11 @@ class Utils
             }  
             
             if(strcmp($key, 'ucd4') == 0){
-                return 'UCD4';
+                return '';
             }
 
             if(strcmp($key, 'ucd5') == 0){
-                return 'UCD5';
+                return '';
             }  
             
         // snow
