@@ -288,6 +288,7 @@ class Utils
             // should be in a DataLoader utils method      
             $memorizedRows = 0;
             $memorizedData = array();
+            $previousDate = null;
             while (($data = fgetcsv($readHandle, 1000, ",")) !== FALSE) {
                 $rowCounter++;
 
@@ -298,12 +299,13 @@ class Utils
                     continue;
                 }
 
-                // input data validation
-                if (Utils::validateInput('date', $data[$timeSeriesColIndex]) == false) {
+                // input data validation                
+                if (Utils::validateInput('date', $data[$timeSeriesColIndex], $previousDate) == false) {
                     Utils::removeCompleteDataset();
-                    Log::error('Invalid date format provided! Please use YYYY-MM-DD.');
-                    throw new Exception('Invalid date format provided! Please use YYYY-MM-DD [Line ' . ($rowCounter + 1) . ']');
+                    Log::error('Invalid date! Please use YYYY-MM-DD and ensure the dates are in chronological order.');
+                    throw new Exception('Invalid date! Please use YYYY-MM-DD and ensure the dates are in chronological order [Line ' . ($rowCounter + 1) . ']');
                 }
+                $previousDate = $data[$timeSeriesColIndex];
 
                 if (Utils::validateInput('temp', $data[$tempSeriesColIndex]) == false) {
                     Utils::removeCompleteDataset();
@@ -3594,11 +3596,11 @@ class Utils
         }
     }
 
-    private static function validateInput($type, $data)
+    private static function validateInput($type, $data, $previousDate = false)
     {
         switch ($type) {
             case 'date':
-                return Utils::validateInputDate($data);
+                return Utils::validateInputDate($data, $previousDate);
                 break;
             case 'temp':
                 return Utils::validateInputTemp($data);
@@ -3612,15 +3614,22 @@ class Utils
         }
     }
 
-    private static function validateInputDate($data)
+    private static function validateInputDate($date, $previousDate)
     {
-        if ($data != null) {
-            if (preg_match('/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/', $data)) // YYYY-MM-DD
+        if ($date != null) {
+            if (preg_match('/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/', $date)) // YYYY-MM-DD
             {
-                $year = explode('-', $data)[0];                       
+                $year = explode('-', $date)[0];                       
                 if ($year > 9999) {
                     return false;
                 }
+
+                if ($previousDate !== null) {
+                    if ($date <= $previousDate) {
+                        return false;
+                    }
+                }
+
                 return true;
             }
         }
