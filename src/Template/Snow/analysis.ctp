@@ -335,7 +335,7 @@
         // precipToSnow
         var lowBoundaryPrecipToSnow = [];        
         $('#analysisForm').find(':input[name="precipToSnow_lt[]"]').each((index,elem) => {
-            if (isNaN(elem.value)) {
+            if (isNaN(elem.value) || elem.value.trim() === '') {
                 // console.log('non numeric element', elem);
                 validPrecipToSnow = false;
             } else {
@@ -354,7 +354,7 @@
 
         var highBoundaryPrecipToSnow = [];
         $('#analysisForm').find(':input[name="precipToSnow_ht[]"]').each((index,elem) => {
-            if (isNaN(elem.value)) {
+            if (isNaN(elem.value) || elem.value.trim() === '') {
                 // console.log('non numeric element', elem);
                 validPrecipToSnow = false;
             } else {
@@ -372,7 +372,7 @@
         // console.log('highBoundary p1', highBoundaryPrecipToSnow); 
 
         $('#analysisForm').find(':input[name="precipToSnow_factor[]"]').each((index,elem) => {             
-            if (isNaN(elem.value)) {
+            if (isNaN(elem.value) || elem.value.trim() === '') {
                 // console.log('non numeric element', elem);
                 validPrecipToSnow = false;
             } else {
@@ -398,7 +398,7 @@
         // snowMmToCm
         var lowBoundarySnowMmToCm = [];        
         $('#analysisForm').find(':input[name="snowMmToCm_lt[]"]').each((index,elem) => {            
-            if (isNaN(elem.value)) {
+            if (isNaN(elem.value) || elem.value.trim() === '') {
                 // console.log('non numeric element', elem);
                 validSnowMmToCm = false;
             } else {
@@ -417,7 +417,7 @@
 
         var highBoundarySnowMmToCm = [];
         $('#analysisForm').find(':input[name="snowMmToCm_ht[]"]').each((index,elem) => {            
-            if (isNaN(elem.value)) {
+            if (isNaN(elem.value) || elem.value.trim() === '') {
                 // console.log('non numeric element', elem);
                 validSnowMmToCm = false;
             } else {
@@ -435,7 +435,7 @@
         // console.log('highBoundary p2', highBoundarySnowMmToCm); 
 
         $('#analysisForm').find(':input[name="snowMmToCm_factor[]"]').each((index,elem) => {
-            if (isNaN(elem.value)) {
+            if (isNaN(elem.value) || elem.value.trim() === '') {
                 // console.log('non numeric element', elem);
                 validSnowMmToCm = false;
             } else {
