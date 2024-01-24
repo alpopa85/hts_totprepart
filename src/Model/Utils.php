@@ -3952,9 +3952,22 @@ class Utils
 
     public static function updateLocationData()
     {
-        $userLocationsTable = TableRegistry::getTableLocator()->get('UserLocations');
+        // check if this should run or not
+        $scriptsTable = TableRegistry::getTableLocator()->get('Scripts');
+        $lastChange = $scriptsTable->getIpListScriptOrCreate();
+        if ($lastChange instanceof FrozenTime) {
+            Log::debug('ip_list_update last_change ' . $lastChange);
+            if ($lastChange->wasWithinLast('1 day')) {
+                Log::debug('ip_list_update within last day'); 
+                return [];
+            } else {
+                Log::debug('ip_list_update NOT within last day'); 
+            }          
+        }
 
-        $ipList = self::getIpList();
+        Log::debug('doing IP list update...');
+        $userLocationsTable = TableRegistry::getTableLocator()->get('UserLocations'); 
+        $ipList = self::getIpList();   
 
         foreach ($ipList as $ipItem) {
             // look for ipItem
@@ -3999,6 +4012,8 @@ class Utils
                 Log::error('Cannot add location data to DB for ip ' . $ipItem['ip'] . ': ' . $ex->getMessage());
             }
         }
+
+        $scriptsTable->refreshIpListScript(); 
     }
 
     private static function getDataLoadedFlags($ip)
