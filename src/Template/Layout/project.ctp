@@ -113,6 +113,8 @@
     //]]></script>
     <!-- END OF POSITIVE SSL STUFF -->  
 </head>
+
+<!-- GOOGLE TAG MANAGER -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8VZLZVS8EK"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -120,6 +122,15 @@
   console.log('GoogleAnalytics init');
   gtag('js', new Date());
   gtag('config', 'G-8VZLZVS8EK');
+</script>
+
+<!-- GOOGLE TRANSLATE  -->
+<script async src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script>
+    function googleTranslateElementInit() {
+        console.log('init googleTranslateElement');
+        new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+    }
 </script>
 
 <body>    
@@ -174,6 +185,8 @@
                 </div>
             </div>
         </div>
+
+        <div id="google_translate_element" style="margin-right:10px"></div>
 
         <?= $this->Html->link(
             $this->Html->image('sbuddy_logo2.png', array('height' => '45', 'width' => 'auto', 'alt' => 'SNOW BUDDY')),
