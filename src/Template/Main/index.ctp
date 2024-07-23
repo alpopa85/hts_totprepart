@@ -103,7 +103,7 @@
                 <h5>Depending on the ambient air temperature, precipitation can fall as rain, snow or as a mix of rain and snow. Hence, for cases when the snowfall data is not directly available, the snowfall portion of the total precipitation is estimated using the following formula:</h5>
 
                 <div class="text-center mt-5 pb-2">
-                    <?= $this->Html->image('eq1.png', [
+                    <?= $this->Html->image('eq1_v2.png', [
                         'class' => ['img','set-h-20'],
                         'alt' => 'Snowfall estimation'
                 ]); ?>
