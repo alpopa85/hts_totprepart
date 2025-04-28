@@ -5,7 +5,7 @@ and further allows for conversion of the snowfall amount into centimeters of sno
 and bivariate statistics for optimization of model output.
 
 ## Terms of Use
-    Please check the license tab on the right.
+    Please check the [license](LICENSE.md) tab on the right.
 
 ## Access
-    The tool can be accessed at https://sbuddy.hydrotools.tech/
+    The tool can be accessed at [https://sbuddy.hydrotools.tech/](https://sbuddy.hydrotools.tech/)
