@@ -1193,7 +1193,7 @@
                     extend: 'csv',
                     filename: () => {         
                         var now = Date.now();               
-                        return 'SBUDDY_soilStats_' + now;
+                        return 'totprepart_soilStats_' + now;
                     }
                 },
                 // {
@@ -1247,7 +1247,7 @@
                     extend: 'csv',
                     filename: () => {         
                         var now = Date.now();               
-                        return 'SBUDDY_soilCalib_' + now;
+                        return 'totprepart_soilCalib_' + now;
                     }
                 }             
             ],

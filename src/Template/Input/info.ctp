@@ -14,7 +14,7 @@
                         <tr class="table-primary">
                             <td class="customlegend" colspan=7>
                                 <fieldset>
-                                    <legend>SNOW BUDDY Input data file: format, columns, and units for input and user calibration data (UCD)</legend>
+                                    <legend>TotPrePart Input data file: format, columns, and units for input and user calibration data (UCD)</legend>
                                 </fieldset>
                             </td>
                         </tr>
@@ -79,7 +79,7 @@
                 </li>
 
                 <li>
-                    <h5>SNOWFALL BUDDY includes several input data integrity and quality check routines; however, the user is advised to thoroughly check the input dataset before uploading it to the tool to minimize the risk for erroneous output</h5>
+                    <h5>TotPrePart includes several input data integrity and quality check routines; however, the user is advised to thoroughly check the input dataset before uploading it to the tool to minimize the risk for erroneous output</h5>
                 </li>                    
             </ul>      
 

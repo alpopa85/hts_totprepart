@@ -3,9 +3,9 @@
 <head>
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content='SNOWFALL BUDDY is an online tool that allows for estimation of daily snowfall and rainfall amounts based on user-provided daily timeseries of air temperature and total precipitation. Within the tool, snowfall as millimeters (mm) of water is obtained from total precipitation using adjustable temperature-dependent conversion factors. The amount of snowfall obtained in mm is then converted to centimeters (cm) of snow by using additional adjustable temperature-dependent conversion factors. The rainfall amount is calculated as the difference between total precipitation and snowfall expressed in mm. The tool is free to use and does not require user registration.'>
+    <meta name="description" content='TotPrePart is an online tool that allows for estimation of daily snowfall and rainfall amounts based on user-provided daily timeseries of air temperature and total precipitation. Within the tool, snowfall as millimeters (mm) of water is obtained from total precipitation using adjustable temperature-dependent conversion factors. The amount of snowfall obtained in mm is then converted to centimeters (cm) of snow by using additional adjustable temperature-dependent conversion factors. The rainfall amount is calculated as the difference between total precipitation and snowfall expressed in mm. The tool is free to use and does not require user registration.'>
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://sbuddy.hydrotools.tech" />
+    <link rel="canonical" href="https://totprepart.hydrotools.tech" />
 
     <title>        
         <?= $title ? $title : $this->fetch('title') ?>
@@ -189,7 +189,7 @@
         <div id="google_translate_element" style="margin-right:10px"></div>
 
         <?= $this->Html->link(
-            $this->Html->image('sbuddy_logo2.png', array('height' => '45', 'width' => 'auto', 'alt' => 'SNOW BUDDY')),
+            $this->Html->image('sbuddy_logo2.png', array('height' => '45', 'width' => 'auto', 'alt' => 'TotPrePart')),
             ['controller' => 'main', 
             'action' => 'index'], [
             'class' => 'navbar-brand',

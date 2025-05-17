@@ -428,8 +428,8 @@ class Utils
                 if ($typeHeaderRow) {
                     switch ($type){                       
                         case 'snow':
-                            if (strcmp($data[0], 'SBUDDY_CONFIGURATION') !== 0) {
-                                throw new Exception('Wrong configuration file! Please upload a sbuddy configuration file.', 13);
+                            if (strcmp($data[0], 'totprepart_CONFIGURATION') !== 0) {
+                                throw new Exception('Wrong configuration file! Please upload a totprepart configuration file.', 13);
                             }
                             break;
                     }                    
@@ -597,7 +597,7 @@ class Utils
                 }           
                 
                 // skip non calibration field
-                if (strcmp($data[$fieldTypeIndex], 'sbuddy_calib_map') != 0) {
+                if (strcmp($data[$fieldTypeIndex], 'totprepart_calib_map') != 0) {
                     continue;
                 }
 

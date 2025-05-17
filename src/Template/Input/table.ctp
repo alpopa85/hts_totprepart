@@ -162,7 +162,7 @@
                     extend: 'csv',
                     filename: () => {         
                         var now = Date.now();               
-                        return 'SBUDDY_inputData_' + now;
+                        return 'totprepart_inputData_' + now;
                     }                   
                 },
                 // {
@@ -205,7 +205,7 @@
                     extend: 'csv',
                     filename: () => {         
                         var now = Date.now();               
-                        return 'SBUDDY_inputStats_' + now;
+                        return 'totprepart_inputStats_' + now;
                     }
                 },
                 // {

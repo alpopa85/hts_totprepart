@@ -15,7 +15,7 @@
 
             <h5>In the "Calibration mapping" section of the page the users have to select the pairs of tool output and user calibration data that will be used during the calibration of the tool. The "Calibration Mapping" fields can be ignored if the UCD data is not available in the Input Data file.</h5>
 
-            <h5>SNOWFALL BUDDY starts the snowfall and rainfall amount calculations once the values of the required coefficients are set and the user clicks on the Run Analysis button at the bottom of the page.</h5>
+            <h5>TotPrePart starts the snowfall and rainfall amount calculations once the values of the required coefficients are set and the user clicks on the Run Analysis button at the bottom of the page.</h5>
 
             <br/>
             <h5>Consult section <a href="<?= $this->Url->build('/main/index#chapter_3.4');?>">3.4.</a> and section <a href="<?= $this->Url->build('/main/index#chapter_3.5');?>">3.5.</a> for more details.</h5>

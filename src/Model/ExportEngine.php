@@ -696,7 +696,7 @@ class ExportEngine
         $dataCollection = [];
 
         $header = new stdClass();
-        $header->header = 'SBUDDY_CONFIGURATION';
+        $header->header = 'totprepart_CONFIGURATION';
         $dataCollection[] = $header;
 
         $query = $this->paramsTable->find('all');        

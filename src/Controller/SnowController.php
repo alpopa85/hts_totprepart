@@ -27,7 +27,7 @@ class SnowController extends AppController
 
         $this->viewBuilder()->setLayout('project');
         
-        $this->set('title', 'SNOW BUDDY');
+        $this->set('title', 'TotPrePart');
         $this->set('activeNavbarId', 'snow');
 
         $this->set('hasInputData', Utils::hasInputData());
@@ -45,7 +45,7 @@ class SnowController extends AppController
             // 'ucd5' => Utils::getUcdAvgMethod('ucd5'),
         ));
 
-        $this->exportPrefix = 'SBUDDY_';        
+        $this->exportPrefix = 'totprepart_';        
         $now = Time::now();
         $this->exportSuffix = '_' . $now->toTimeString() . '.csv';
     }

@@ -26,7 +26,7 @@ class InputController extends AppController
 
         $this->viewBuilder()->setLayout('project');
 
-        $this->set('title', 'SNOW BUDDY');
+        $this->set('title', 'TotPrePart');
         $this->set('activeNavbarId', 'input');    
 
         $this->set('hasInputData', Utils::hasInputData());
@@ -44,7 +44,7 @@ class InputController extends AppController
             // 'ucd5' => Utils::getUcdAvgMethod('ucd5'),
         ));
         
-        $this->exportPrefix = 'SBUDDY_';        
+        $this->exportPrefix = 'totprepart_';        
         $now = Time::now();
         $this->exportSuffix = '_' . $now->toTimeString() . '.csv';
     }

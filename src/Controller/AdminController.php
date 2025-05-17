@@ -21,7 +21,7 @@ class AdminController extends AppController
       
         $this->viewBuilder()->setLayout('project');
 
-        $this->set('title', 'SNOW BUDDY');
+        $this->set('title', 'TotPrePart');
         $this->set('activeNavbarId', 'admin');  
                 
         $now = Time::now();     
@@ -268,7 +268,7 @@ class AdminController extends AppController
         $response = $response->withStringBody($csvData);
 
         $response = $response->withType('csv');
-        $response = $response->withDownload('sbuddy_fullusage_stats.csv');
+        $response = $response->withDownload('totprepart_fullusage_stats.csv');
         return $response;
     }
 }

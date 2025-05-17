@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://sbuddy.hydrotools.tech/sitemap.xml
+Sitemap: https://totprepart.hydrotools.tech/sitemap.xml

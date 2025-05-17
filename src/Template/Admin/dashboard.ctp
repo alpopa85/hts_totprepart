@@ -216,7 +216,7 @@
                     extend: 'csv',
                     filename: () => {         
                         var now = Date.now();               
-                        return 'SBUDDY_usageStats_' + now;
+                        return 'totprepart_usageStats_' + now;
                     }                   
                 },                            
             ]                        

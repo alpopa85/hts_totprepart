@@ -2,8 +2,8 @@
 
     <div class="swib-title my-4">
         <div class="text-center">
-            <h1>SNOWFALL BUDDY</h1>    
-            <h2>Snowfall and Rainfall Estimation Tool</h2>                    
+            <h1>TotPrePart</h1>    
+            <h2>Total Precipitation Partitioning Tool</h2>                    
             <h3>Online Tool</h3>
         </div>        
     </div>
@@ -19,7 +19,7 @@
             <tbody>  
                 <tr class="table-info no-wrap-table-row">                        
                     <td width="10%"><a href="#chapter_1">&rarr;  1.</a></td>
-                    <td class="text-left" colspan="2"><a href="#chapter_1">About SNOWFALL BUDDY</a></td>                        
+                    <td class="text-left" colspan="2"><a href="#chapter_1">About TotPrePart</a></td>                        
                 </tr> 
 
                 <tr class="table-info no-wrap-table-row">                        
@@ -79,17 +79,17 @@
 
         <ul class="main-ul">
             <li class="py-5 no-marker">
-                <h3 class="top-section" id="chapter_1">1. About SNOWFALL BUDDY</h3> 
+                <h3 class="top-section" id="chapter_1">1. About TotPrePart</h3> 
 
-                <h5>Snowfall and Rainfall Estimation Tool (SNOWFALL BUDDY) is an online tool that allows for estimation of daily snowfall and rainfall amounts based on user-provided daily timeseries of air temperature and total precipitation. Within the tool, snowfall as millimeters (mm) of water is obtained from total precipitation using adjustable temperature-dependent conversion factors. The amount of snowfall obtained in mm is then converted to centimeters (cm) of snow by using additional adjustable temperature-dependent conversion factors. The rainfall amount is calculated as the difference between total precipitation and snowfall expressed in mm. The tool is free to use and does not require user registration.</h5>
+                <h5>Total Precipitation Partitioning Tool (TotPrePart) is an online tool that allows for estimation of daily snowfall and rainfall amounts based on user-provided daily timeseries of air temperature and total precipitation. Within the tool, snowfall as millimeters (mm) of water is obtained from total precipitation using adjustable temperature-dependent conversion factors. The amount of snowfall obtained in mm is then converted to centimeters (cm) of snow by using additional adjustable temperature-dependent conversion factors. The rainfall amount is calculated as the difference between total precipitation and snowfall expressed in mm. The tool is free to use and does not require user registration.</h5>
 
-                <h5>SNOWFALL BUDDY has been developed through a collaborative research effort between Canadian Rivers Institute (CRI), University of New Brunswick (UNB), Agriculture and Agri-Food Canada (AAFC) and Environment and Climate Change Canada (ECCC). SNOWFALL BUDDY is the result of a larger research effort aimed at evaluating the effects of agricultural production systems on groundwater and surface water quantity and quality. SNOWFALL BUDDY is part of Hydrology Tool Set (HTS; <a href="https://portal.hydrotools.tech">https://portal.hydrotools.tech</a>). HTS includes additional applications, such as SepHydro (daily baseflow / hydrograph separation; 11 methods), ETCalc (daily potential, reference and actual evapotranspiration estimation; 8 methods), SWIB (daily estimation of soil water stress, crop water deficit, irrigation requirement and its impact on aquifer storage, water budget components), SNOSWAB (daily estimation of water balance terms, including snowfall, snowmelt, snowpack, soil water content, evapotranspiration, drainage, infiltration, surface runoff) and RECHARGE BUDDY (daily estimation of groundwater recharge).</h5>
+                <h5>TotPrePart has been developed through a collaborative research effort between Canadian Rivers Institute (CRI), University of New Brunswick (UNB), Agriculture and Agri-Food Canada (AAFC) and Environment and Climate Change Canada (ECCC). TotPrePart is the result of a larger research effort aimed at evaluating the effects of agricultural production systems on groundwater and surface water quantity and quality. TotPrePart is part of Hydrology Tool Set (HTS; <a href="https://portal.hydrotools.tech">https://portal.hydrotools.tech</a>). HTS includes additional applications, such as SepHydro (daily baseflow / hydrograph separation; 11 methods), ETCalc (daily potential, reference and actual evapotranspiration estimation; 8 methods), SWIB (daily estimation of soil water stress, crop water deficit, irrigation requirement and its impact on aquifer storage, water budget components), SNOSWAB (daily estimation of water balance terms, including snowfall, snowmelt, snowpack, soil water content, evapotranspiration, drainage, infiltration, surface runoff) and GWRech (daily estimation of groundwater recharge).</h5>
 
                 <br/>
-                <h5>If you used SNOWFALL BUDDY, please include the following citation(s) in your publication(s):<br/>
+                <h5>If you used TotPrePart, please include the following citation(s) in your publication(s):<br/>
 
-                <h5><span style="font-style:italic">Danielescu S (2022) Snowfall and Rainfall Estimation Tool (SNOWFALL BUDDY) - A web-based tool. Reference Manual.</span>
-                <br/>Available at <a href="https://sbuddy.hydrotools.tech">https://sbuddy.hydrotools.tech</a>.</h5>
+                <h5><span style="font-style:italic">Danielescu S (2022) Total Precipitation Partitioning Tool (TotPrePart) - A web-based tool. Reference Manual.</span>
+                <br/>Available at <a href="https://totprepart.hydrotools.tech">https://totprepart.hydrotools.tech</a>.</h5>
                 <div class="text-right"><a href="#contents">&rarr; Table of Contents</a></div>
             </li>            
 
@@ -98,7 +98,7 @@
 
                 <h5>Snowfall is an important hydrological process in many areas of the world. Snowfall, and by extension the snow cover, snowpack and snowmelt processes can for example play a significant role in replenishing water supplies (i.e., groundwater recharge; surface runoff), provide a reflective cover for the ground surface (and thus helps regulating the Earth's surface temperature) and provide critical habitat elements for many species of plants and animals. Similarly, rainfall, the dominant form of precipitation at global scale, is a key hydrological process, vital for sustaining life and socio-economic systems.</h5>
 
-                <h5>The estimation of snowfall amount is an important parameter for studies involving for example surface and subsurface hydrology, water resource planning, water (surface water and groundwater) quantity and contaminant transport modelling, irrigation, climate change, etc. Snowfall amount can be obtained from in situ measurements or from various public databases (e.g., weather stations). However, in many cases direct measurement of snowfall can be challenging or, in the case of weather stations, might be subject to errors. In many other cases, snowfall amount required for subsequent analyses is simply not available. For cases when snowfall and rainfall amounts are not available, SNOWFALL BUDDY provides a methodology for using air temperature and total precipitation to estimate the proportion of snowfall and rainfall associated with total precipitation timeseries.</h5>
+                <h5>The estimation of snowfall amount is an important parameter for studies involving for example surface and subsurface hydrology, water resource planning, water (surface water and groundwater) quantity and contaminant transport modelling, irrigation, climate change, etc. Snowfall amount can be obtained from in situ measurements or from various public databases (e.g., weather stations). However, in many cases direct measurement of snowfall can be challenging or, in the case of weather stations, might be subject to errors. In many other cases, snowfall amount required for subsequent analyses is simply not available. For cases when snowfall and rainfall amounts are not available, TotPrePart provides a methodology for using air temperature and total precipitation to estimate the proportion of snowfall and rainfall associated with total precipitation timeseries.</h5>
 
                 <h5>Depending on the ambient air temperature, precipitation can fall as rain, snow or as a mix of rain and snow. Hence, for cases when the snowfall data is not directly available, the snowfall portion of the total precipitation is estimated using the following formula:</h5>
 
@@ -154,9 +154,9 @@
                 </div>
 
                 <br/>
-                <h5>SNOWFALL BUDDY integrates a simple and easy to use method that can be applied to any location for which input data is available. The tool includes routines for validating the output when user-provided calibration data is available. The web-based tool provides various data visualization, analysis and output (i.e., export) options through a streamlined process and a user-friendly interface. The Test Data set allows users to test the various routines and familiarize themselves with the tool.</h5>
+                <h5>TotPrePart integrates a simple and easy to use method that can be applied to any location for which input data is available. The tool includes routines for validating the output when user-provided calibration data is available. The web-based tool provides various data visualization, analysis and output (i.e., export) options through a streamlined process and a user-friendly interface. The Test Data set allows users to test the various routines and familiarize themselves with the tool.</h5>
 
-                <h5>SNOWFALL BUDDY has a broad range of applicability and can be used for standalone analyses of snow related processes, for generation of critical data for external models that allow for uploading of user-provided snowfall timeseries; or for educational purposes to demonstrate the significance and the dynamics of snowfall or snow-related processes.</h5>
+                <h5>TotPrePart has a broad range of applicability and can be used for standalone analyses of snow related processes, for generation of critical data for external models that allow for uploading of user-provided snowfall timeseries; or for educational purposes to demonstrate the significance and the dynamics of snowfall or snow-related processes.</h5>
                 <div class="text-right"><a href="#contents">&rarr; Table of Contents</a></div>        
 
             <li class="pt-5 pb-3 no-marker">
@@ -164,7 +164,7 @@
 
                 <h5>At the top, a contextual menu provides access to the various modules of the tool. The modules can be accessed progressively, in the following order: 1) Home (Information module); 2) Input Data (Data entry module); and 3) Analysis (Calculation module). Once the calculations of a module are completed, the user can advance to the next module and can also return to the respective module at any time during the session. Menu tabs are available for both the data entry (i.e., Info, Load Data, Graphical View, Table View and Export Input Data for the Input Data module) and calculation (i.e., Info, Analysis, Graphical View, Table View and Export) modules.  Additional buttons (i.e., UCD and Reset Data) appear in the contextual menu once the Input Data is loaded to the tool.</h5>
 
-                <h5>SNOWFALL BUDDY uses a daily timestep for both input and output data and includes a series of averaging options for displaying and exporting data (i.e., monthly, seasonal, yearly).  SNOWFALL BUDDY also calculates and allows for displaying of input and output data using as a "typical year daily" timeseries (i.e., daily multi-year averages for each day of the year available in the input and output files) when the analysis is carried out for a period longer than one year. The daily values for the typical year can also be averaged by the tool over monthly, seasonal, and yearly periods. Daily typical and monthly averaging intervals are recommended for inspecting and analyzing "average" conditions when the datasets cover longer periods of time (several years).</h5>
+                <h5>TotPrePart uses a daily timestep for both input and output data and includes a series of averaging options for displaying and exporting data (i.e., monthly, seasonal, yearly).  TotPrePart also calculates and allows for displaying of input and output data using as a "typical year daily" timeseries (i.e., daily multi-year averages for each day of the year available in the input and output files) when the analysis is carried out for a period longer than one year. The daily values for the typical year can also be averaged by the tool over monthly, seasonal, and yearly periods. Daily typical and monthly averaging intervals are recommended for inspecting and analyzing "average" conditions when the datasets cover longer periods of time (several years).</h5>
 
                 <h5>In the following sections the options available under the various modules of the tool, together with details about the output data, calibration procedure and data inspection, visualization and export are presented in separate subsections.</h5>
                 <div class="text-right"><a href="#contents">&rarr; Table of Contents</a></div>
@@ -172,7 +172,7 @@
                 <br/>
                 <br/><h4 class="l2-section" id="chapter_3.1">3.1. Quick start</h4><br/>
 
-                <h5>In order to run Snowfall and Rainfall Estimation Tool (SNOWFALL BUDDY) the user has to complete the following steps:</h5>
+                <h5>In order to run Total Precipitation Partitioning Tool (TotPrePart) the user has to complete the following steps:</h5>
 
                 <ol class="large-list">
                     <li>
@@ -184,7 +184,7 @@
                     </li>                  
 
                     <li>
-                        <h5>Investigate Results and Export Data: review SNOWFALL BUDDY output from each module [Table View and/or Graphical View] and export results [Export Data button available under each data entry and calculation modules or the CSV button available under the Stats and Calibration Stats of the Graphical View or under the Table, Stats and Calibration Stats of the Table View].</h5>
+                        <h5>Investigate Results and Export Data: review TotPrePart output from each module [Table View and/or Graphical View] and export results [Export Data button available under each data entry and calculation modules or the CSV button available under the Stats and Calibration Stats of the Graphical View or under the Table, Stats and Calibration Stats of the Table View].</h5>
                     </li>
                 </ol>
 
@@ -194,7 +194,7 @@
                 <br/>
                 <br/><h4 class="l2-section" id="chapter_3.2">3.2. Home Module</h4><br/>
 
-                <h5>This module contains information related to the development, methodology and use of SNOWFALL BUDDY. Under each of the input and calculation modules an Info tab is available, where general information relevant to the respective module is provided.</h5>
+                <h5>This module contains information related to the development, methodology and use of TotPrePart. Under each of the input and calculation modules an Info tab is available, where general information relevant to the respective module is provided.</h5>
                 <div class="text-right"><a href="#contents">&rarr; Table of Contents</a></div>
 
                 <br/>
@@ -202,13 +202,13 @@
 
                 <!-- <h5>The Input Data menu entry has five tabs at the top of the page: Info, Load Data, Graphical View, Table View and Export Input Data.</h5> -->
 
-                <h5>The first step in conducting an analysis is to upload the input data file to be used by SNOWFALL. The users can run SNOWFALL BUDDY either by using the test dataset or by uploading a new dataset.</h5>
+                <h5>The first step in conducting an analysis is to upload the input data file to be used by SNOWFALL. The users can run TotPrePart either by using the test dataset or by uploading a new dataset.</h5>
              
-                <h5>For testing SNOWFALL BUDDY and better understanding how the various components of the tool operate, the user can upload the test data set provided by clicking on "Try the tool using the test dataset" button. The test dataset contains three years of weather and user calibration data (UCD). Test dataset UCD data consists of snowfall (mm; UCD1; corresponding to SNOWFALL BUDDY SNF (mm) output parameter; UCD1 estimated as the difference between total precipitation and rainfall measured at the Environment and Climate Change Canada (ECCC) weather station located at the Charlottetown Airport, Prince Edward Island, Canada), snowfall (cm; UCD2; corresponding to SNOWFALL BUDDY SNF (cm) output parameter; UCD2 measured at the ECCC weather station located at the Charlottetown Airport, Prince Edward Island, Canada), and rainfall (mm; UCD3; UCD3 measured at the ECCC weather station located at the Charlottetown Airport, Prince Edward Island, Canada).</h5>
+                <h5>For testing TotPrePart and better understanding how the various components of the tool operate, the user can upload the test data set provided by clicking on "Try the tool using the test dataset" button. The test dataset contains three years of weather and user calibration data (UCD). Test dataset UCD data consists of snowfall (mm; UCD1; corresponding to TotPrePart SNF (mm) output parameter; UCD1 estimated as the difference between total precipitation and rainfall measured at the Environment and Climate Change Canada (ECCC) weather station located at the Charlottetown Airport, Prince Edward Island, Canada), snowfall (cm; UCD2; corresponding to TotPrePart SNF (cm) output parameter; UCD2 measured at the ECCC weather station located at the Charlottetown Airport, Prince Edward Island, Canada), and rainfall (mm; UCD3; UCD3 measured at the ECCC weather station located at the Charlottetown Airport, Prince Edward Island, Canada).</h5>
 
-                <h5>For using SNOWFALL BUDDY, the users need to upload daily timeseries. The tool accepts source data sets in Comma Separated File (csv) format. The users can use the "Download Sample File" button located on the Upload User Data Page (Load Data) or the "Export Input Data - Daily" menu to obtain a correctly formatted input file that can be used as a model for populating the input data file with user data. The "Export Input Data - Daily" menu becomes available after the test or a user dataset is loaded. The user input file can be uploaded to SNOWFALL BUDDY by using the "Upload user data" button. SNOWFALL BUDDY allows uploading of files with maximum 7500 rows (~20 years of daily data). It is recommended to split the input data set in blocks of 20 years daily timeseries when the intent is to analyze longer time periods. It should be noted that the tool cannot accommodate missing data (i.e., blank rows in required data columns) or erroneous data entries, and hence it is recommended that the integrity of the source data is verified before uploading. An error message will be displayed, and the user will be redirected to the Load Data page if inconsistencies are detected in the user file.</h5>
+                <h5>For using TotPrePart, the users need to upload daily timeseries. The tool accepts source data sets in Comma Separated File (csv) format. The users can use the "Download Sample File" button located on the Upload User Data Page (Load Data) or the "Export Input Data - Daily" menu to obtain a correctly formatted input file that can be used as a model for populating the input data file with user data. The "Export Input Data - Daily" menu becomes available after the test or a user dataset is loaded. The user input file can be uploaded to TotPrePart by using the "Upload user data" button. TotPrePart allows uploading of files with maximum 7500 rows (~20 years of daily data). It is recommended to split the input data set in blocks of 20 years daily timeseries when the intent is to analyze longer time periods. It should be noted that the tool cannot accommodate missing data (i.e., blank rows in required data columns) or erroneous data entries, and hence it is recommended that the integrity of the source data is verified before uploading. An error message will be displayed, and the user will be redirected to the Load Data page if inconsistencies are detected in the user file.</h5>
 
-                <h5>The input data file consists of a tabular file, with the first row dedicated to the parameter names, 1 column dedicated to calendar date, 2 columns dedicated to required input data (TEMP – average daily air temperature [&deg;C] and TOTP – daily total precipitation [mm]) and 3 columns reserved for optional user calibration data (UCD1 to UCD3). The required input data columns have to contain values in all rows, while the optional data columns (i.e., UCD) can be left blank if data is not available. If UCD data is provided, then all the rows in the respective column(s), except for the column headings, must contain numeric values. UCD data sets are not restricted to certain parameters and can include time series for any parameter that the user intends to use for comparing with the output from SNOWFALL BUDDY. Although UCD data is optional, it provides critical information for adjusting the various coefficients of the tool during the calibration procedure. Examples of calibration time series datasets include snowfall amount (as mm or cm) and thickness of the snow layer.</h5>
+                <h5>The input data file consists of a tabular file, with the first row dedicated to the parameter names, 1 column dedicated to calendar date, 2 columns dedicated to required input data (TEMP – average daily air temperature [&deg;C] and TOTP – daily total precipitation [mm]) and 3 columns reserved for optional user calibration data (UCD1 to UCD3). The required input data columns have to contain values in all rows, while the optional data columns (i.e., UCD) can be left blank if data is not available. If UCD data is provided, then all the rows in the respective column(s), except for the column headings, must contain numeric values. UCD data sets are not restricted to certain parameters and can include time series for any parameter that the user intends to use for comparing with the output from TotPrePart. Although UCD data is optional, it provides critical information for adjusting the various coefficients of the tool during the calibration procedure. Examples of calibration time series datasets include snowfall amount (as mm or cm) and thickness of the snow layer.</h5>
 
                 <div class="table-responsive text-left pt-2">
 
@@ -219,7 +219,7 @@
                             <tr class="table-primary">
                                 <td class="customlegend" colspan=7>
                                     <fieldset>
-                                        <legend>SNOW BUDDY Input data file: format, columns, and units for input and user calibration data (UCD)</legend>
+                                        <legend>TotPrePart Input data file: format, columns, and units for input and user calibration data (UCD)</legend>
                                     </fieldset>
                                 </td>
                             </tr>
@@ -284,7 +284,7 @@
                     </li>
 
                     <li>
-                        <h5>SNOWFALL BUDDY includes several input data integrity and quality check routines; however, the user is advised to thoroughly check the input dataset before uploading it to the tool to minimize the risk for erroneous output</h5>
+                        <h5>TotPrePart includes several input data integrity and quality check routines; however, the user is advised to thoroughly check the input dataset before uploading it to the tool to minimize the risk for erroneous output</h5>
                     </li>                    
                 </ul>
 
@@ -306,7 +306,7 @@
 
                 <h5>In the "Calibration mapping" section of the page the users have to select the pairs of tool output and user calibration data that will be used during the calibration of the tool. The "Calibration Mapping" fields can be ignored if the UCD data is not available in the Input Data file.</h5>
 
-                <h5>SNOWFALL BUDDY starts the snowfall and rainfall amount calculations once the values of the required coefficients are set and the user clicks on the Run Analysis button at the bottom of the page.</h5>
+                <h5>TotPrePart starts the snowfall and rainfall amount calculations once the values of the required coefficients are set and the user clicks on the Run Analysis button at the bottom of the page.</h5>
 
                 <h5>All values entered on this page can be subsequently adjusted during the calibration procedure, with calibration being considered final once no further improvement in the output fitness is observed. See section <a href="#chapter_3.6">3.6</a> for instructions regarding the calibration of the tool and section <a href="#chapter_3.7">3.7</a> for instructions regarding the inspection of datasets using tables and graphs as well as for the various options available for exporting the data. </h5>
                 <div class="text-right"><a href="#contents">&rarr; Table of Contents</a></div>
@@ -314,7 +314,7 @@
                 <br/>
                 <br/><h4 class="l2-section" id="chapter_3.5">3.5. Output Timeseries</h4><br/>
 
-                <h5>The output from SNOWFALL BUDDY is shown in the table below.</h5>
+                <h5>The output from TotPrePart is shown in the table below.</h5>
 
                 <table class="table table-bordered text-center my-3">
                     <thead class="thead-dark">                        
@@ -349,7 +349,7 @@
 
                 <h5>Calibration of the tool is performed via the Analysis tab of ANALYSIS module and is available only when UCD data is included in the Input data file. Calibration is conducted by first pairing the datasets from the output of the tool with the user calibration data (UCD) using the "Calibration mapping" menu available under the "Analysis" tab. Once the pairing is completed, the user can proceed to running the ANALYSIS module (i.e., "Run Snow Analysis" button at the bottom of the Analysis tab page) and inspect the tool output in the subsequent Calibration overlay window. The fitness of the output for various timesteps and averaging intervals can be inspected in the Calibration overlay window via graphs as well as bivariate statistics. If the calibration is considered unsatisfactory the user can return to the Analysis menu (i.e., "Return" button), adjust the various coefficients of the tool and rerun the analysis. If the calibration is considered satisfactory the user can complete the calculations by proceeding to the next step (i.e., "Proceed to results" in the Calibration Overlay window).</h5>                
 
-                <h5>To aid with data inspection and assessment of the fitness of the output data, SNOWFALL BUDDY includes several univariate and bivariate statistics. Univariate statistics, including, average, minimum, maximum and standard deviation are calculated separately for the input (i.e., user provided calibration data) and tool output time series. The graphs and the univariate statistics can be used for example for comparing the general trends, the range of values and the amplitude of variations in both data sets. The bivariate statistics include the coefficient of determination (R2), root mean square error (RMSE) and the normalized root mean square error (NRMSE). NRMSE is calculated by using the average, the interquartile range or the differences between maximum and minimum (see definitions below). The bivariate statistics are used for evaluating the fitness of the output, by providing a measure of the differences between the values calculated by the tool and the user provided calibration data (i.e., UCD). The equations used for calculating each bivariate statistic are shown below.</h5>
+                <h5>To aid with data inspection and assessment of the fitness of the output data, TotPrePart includes several univariate and bivariate statistics. Univariate statistics, including, average, minimum, maximum and standard deviation are calculated separately for the input (i.e., user provided calibration data) and tool output time series. The graphs and the univariate statistics can be used for example for comparing the general trends, the range of values and the amplitude of variations in both data sets. The bivariate statistics include the coefficient of determination (R2), root mean square error (RMSE) and the normalized root mean square error (NRMSE). NRMSE is calculated by using the average, the interquartile range or the differences between maximum and minimum (see definitions below). The bivariate statistics are used for evaluating the fitness of the output, by providing a measure of the differences between the values calculated by the tool and the user provided calibration data (i.e., UCD). The equations used for calculating each bivariate statistic are shown below.</h5>
 
                 <div class="text-center mt-5 pb-2">
                     <?= $this->Html->image('eq_r_square.png', [
@@ -436,7 +436,7 @@
                 <br/>
                 <br/><h4 class="l2-section" id="chapter_3.7">3.7. Data inspection, visualisation and export</h4><br/>
             
-                <h5>Inspection of data via graphical and tabular views can be conducted via the Graphical View, Table View and Export Data menu entries that become available in the Input Data module once the input dataset is loaded to SNOWFALL BUDDY. These menu entries are also available under each ANALYSIS module and allow the user to evaluate the output for each of these modules.</h5>
+                <h5>Inspection of data via graphical and tabular views can be conducted via the Graphical View, Table View and Export Data menu entries that become available in the Input Data module once the input dataset is loaded to TotPrePart. These menu entries are also available under each ANALYSIS module and allow the user to evaluate the output for each of these modules.</h5>
 
                 <br/>
                 <h5><strong>Graphical View</strong> allows for plotting of input or output data using various time steps and intervals available via a drop-down menu. The parameters that can be displayed are available in the selection pane located to the right of the plot. Each parameter can be displayed on the primary (left) Y axis or on the secondary (right) Y axis by clicking on the toggle placed at the right of the selection pane. Additional options for customizing the plot become visible in the top right corner when the mouse pointer is placed above the plot. These options include zoom, auto scale, reset axes, show data point labels, download plot, etc. Univariate statistics (average, minimum, maximum, standard deviation) for selected timeseries and bivariate statistics (R<sup>2</sup>, RMSE, NRMSE<sub>ave</sub>, NRMSE<sub>IQR</sub>, NRMSE<sub>min/max</sub>) for inspecting the fitness of the tool output are available under the Stats and Calibration Stats tabs, respectively. These statistics are available either for the entire dataset ("Show Complete Dataset Stats" button) or for a selected subset ("Show stats by Interval" button). The tables shown on the statistics pages can be exported individually by using the corresponding CSV button located to the right of the page.</h5>
@@ -453,23 +453,23 @@
             <li class="py-3 no-marker">
                 <h3 class="top-section" id="chapter_4">4. Limitations</h3>
                 
-                <h5>SNOWFALL BUDDY allows uploading of files with maximum 7500 rows (~20 years of daily data). It is recommended to split the input data set in blocks of 20 years daily timeseries when the intent is to analyze longer time periods.</h5>
+                <h5>TotPrePart allows uploading of files with maximum 7500 rows (~20 years of daily data). It is recommended to split the input data set in blocks of 20 years daily timeseries when the intent is to analyze longer time periods.</h5>
 
                 <br/>
-                <h5>Although SNOWFALL BUDDY includes several input data integrity and quality check routines, the user is advised to thoroughly check the input dataset before uploading it to the tool to minimize the risk for erroneous output.</h5>
+                <h5>Although TotPrePart includes several input data integrity and quality check routines, the user is advised to thoroughly check the input dataset before uploading it to the tool to minimize the risk for erroneous output.</h5>
 
                 <br/>
-                <h5>Considering the variability of environmental conditions at small scales (e.g., shading, wind sheltering, etc.) the results obtained with SNOWFALL BUDDY are considered to be representative of the "average" environmental conditions for the area from where the source data has been obtained.</h5>
+                <h5>Considering the variability of environmental conditions at small scales (e.g., shading, wind sheltering, etc.) the results obtained with TotPrePart are considered to be representative of the "average" environmental conditions for the area from where the source data has been obtained.</h5>
 
                 <br/>
-                <h5>SNOWFALL BUDDY considers only precipitation as snow and rainfall, while other forms of precipitation such as hail, drizzle, snow and ice pellets, etc. are ignored. Typically, these other forms of precipitations represent only a small portion of the annual total precipitation; however, they can be the dominant form of precipitation during certain precipitation events.</h5>
+                <h5>TotPrePart considers only precipitation as snow and rainfall, while other forms of precipitation such as hail, drizzle, snow and ice pellets, etc. are ignored. Typically, these other forms of precipitations represent only a small portion of the annual total precipitation; however, they can be the dominant form of precipitation during certain precipitation events.</h5>
                 <div class="text-right"><a href="#contents">&rarr; Table of Contents</a></div>
             </li>
 
             <li class="py-3 no-marker">
                 <h3 class="top-section" id="chapter_5">5. Terms of Use</h3> 
 
-                <h5>Snowfall and Rainfall Estimation Tool (SNOWFALL BUDDY) can be used freely.</h5>
+                <h5>Total Precipitation Partitioning Tool (TotPrePart) can be used freely.</h5>
 
                 <h5>The authors do not assume any responsibility for the tool's operation, output, interpretation, or use of results.</h5>               
                 <div class="text-right"><a href="#contents">&rarr; Table of Contents</a></div>         

@@ -24,7 +24,7 @@
             <tr class="table-primary">
                 <td class="customlegend" colspan=7>
                     <fieldset>
-                        <legend>SNOW BUDDY Input data file: format, columns, and units for input and user calibration data (UCD)</legend>
+                        <legend>TotPrePart Input data file: format, columns, and units for input and user calibration data (UCD)</legend>
                     </fieldset>
                 </td>
             </tr>

@@ -832,7 +832,7 @@
                     extend: 'csv',
                     filename: () => {
                         var now = Date.now();
-                        return 'SBUDDY_inputStats_' + now;
+                        return 'totprepart_inputStats_' + now;
                     }
                 },
                 // {
