@@ -81,14 +81,14 @@
             <li class="py-5 no-marker">
                 <h3 class="top-section" id="chapter_1">1. About TotPrePart</h3> 
 
-                <h5>Total Precipitation Partitioning Tool (TotPrePart) is an online tool that allows for estimation of daily snowfall and rainfall amounts based on user-provided daily timeseries of air temperature and total precipitation. Within the tool, snowfall as millimeters (mm) of water is obtained from total precipitation using adjustable temperature-dependent conversion factors. The amount of snowfall obtained in mm is then converted to centimeters (cm) of snow by using additional adjustable temperature-dependent conversion factors. The rainfall amount is calculated as the difference between total precipitation and snowfall expressed in mm. The tool is free to use and does not require user registration.</h5>
+                <h5>TotPrePart is an online tool that allows for partitioning of total precipitation into snowfall and rainfall amounts based on user-provided daily timeseries of air temperature and total precipitation. Within the tool, snowfall expressed as millimeters (mm) of water is obtained from total precipitation using customizable temperature-dependent conversion factors. The rainfall amount is calculated as the difference between total precipitation and snowfall expressed in mm. The amount of snowfall obtained in mm is then converted to centimeters (cm) of snow by using additional customizable temperature-dependent conversion factors. The tool is free to use and does not require user registration.</h5>
 
-                <h5>TotPrePart has been developed through a collaborative research effort between Canadian Rivers Institute (CRI), University of New Brunswick (UNB), Agriculture and Agri-Food Canada (AAFC) and Environment and Climate Change Canada (ECCC). TotPrePart is the result of a larger research effort aimed at evaluating the effects of agricultural production systems on groundwater and surface water quantity and quality. TotPrePart is part of Hydrology Tool Set (HTS; <a href="https://portal.hydrotools.tech">https://portal.hydrotools.tech</a>). HTS includes additional applications, such as SepHydro (daily baseflow / hydrograph separation; 11 methods), ETCalc (daily potential, reference and actual evapotranspiration estimation; 8 methods), SWIB (daily estimation of soil water stress, crop water deficit, irrigation requirement and its impact on aquifer storage, water budget components), SNOSWAB (daily estimation of water balance terms, including snowfall, snowmelt, snowpack, soil water content, evapotranspiration, drainage, infiltration, surface runoff) and GWRech (daily estimation of groundwater recharge).</h5>
+                <h5>TotPrePart has been developed through a collaborative research effort between Canadian Rivers Institute (CRI), University of New Brunswick (UNB), Agriculture and Agri-Food Canada (AAFC) and Environment and Climate Change Canada (ECCC). TotPrePart is the result of a larger research effort aimed at evaluating the effects of agricultural production systems on groundwater and surface water quantity and quality. TotPrePart is part of Hydrology Tool Set (HTS; <a href="https://portal.hydrotools.tech">https://portal.hydrotools.tech</a>). HTS includes additional applications, such as SepHydro (daily baseflow / hydrograph separation; 11 methods), ETCalc (daily potential, reference and actual evapotranspiration estimation; 8 methods), SWIB (daily estimation of soil water stress, crop water deficit, irrigation requirement and its impact on aquifer storage, water budget components), SNOSWAB (daily estimation of water balance terms, including snowfall, snowmelt, snowpack, soil water content, evapotranspiration, drainage, infiltration, surface runoff) and GWRech (daily estimation of groundwater recharge and groundwater discharge).</h5>
 
                 <br/>
                 <h5>If you used TotPrePart, please include the following citation(s) in your publication(s):<br/>
 
-                <h5><span style="font-style:italic">Danielescu S (2022) Total Precipitation Partitioning Tool (TotPrePart) - A web-based tool. Reference Manual.</span>
+                <h5><span style="font-style:italic">Danielescu S (2022) TotPrePart - An online tool for partitioning of total precipitation into snowfall and rainfall. Reference Manual.</span>
                 <br/>Available at <a href="https://totprepart.hydrotools.tech">https://totprepart.hydrotools.tech</a>.</h5>
                 <div class="text-right"><a href="#contents">&rarr; Table of Contents</a></div>
             </li>            
@@ -96,9 +96,9 @@
             <li class="py-5 no-marker">
                 <h3 class="top-section" id="chapter_2">2. Background</h3> 
 
-                <h5>Snowfall is an important hydrological process in many areas of the world. Snowfall, and by extension the snow cover, snowpack and snowmelt processes can for example play a significant role in replenishing water supplies (i.e., groundwater recharge; surface runoff), provide a reflective cover for the ground surface (and thus helps regulating the Earth's surface temperature) and provide critical habitat elements for many species of plants and animals. Similarly, rainfall, the dominant form of precipitation at global scale, is a key hydrological process, vital for sustaining life and socio-economic systems.</h5>
+                <h5>In many areas of the world snowfall and rainfall are the two main phases of precipitation. Snowfall, and by extension the snow cover, snowpack and snowmelt processes can for example play a significant role in replenishing water supplies (i.e., groundwater recharge; surface runoff), provide a reflective cover for the ground surface (and thus helps regulating the Earth's surface temperature) and provide critical habitat elements for many species of plants and animals. Similarly, rainfall, the dominant form of precipitation at global scale, is a key hydrological process, vital for sustaining life and socio-economic systems.</h5>
 
-                <h5>The estimation of snowfall amount is an important parameter for studies involving for example surface and subsurface hydrology, water resource planning, water (surface water and groundwater) quantity and contaminant transport modelling, irrigation, climate change, etc. Snowfall amount can be obtained from in situ measurements or from various public databases (e.g., weather stations). However, in many cases direct measurement of snowfall can be challenging or, in the case of weather stations, might be subject to errors. In many other cases, snowfall amount required for subsequent analyses is simply not available. For cases when snowfall and rainfall amounts are not available, TotPrePart provides a methodology for using air temperature and total precipitation to estimate the proportion of snowfall and rainfall associated with total precipitation timeseries.</h5>
+                <h5>Knowledge of snowfall and precipitation amounts are important for studies involving for example surface and subsurface hydrology, water resource planning, water (surface water and groundwater) quantity and contaminant transport modelling, irrigation, climate change, etc. Snowfall amount can be obtained from in situ measurements or from various public databases (e.g., weather stations). However, in many cases direct measurement of snowfall can be challenging or, in the case of weather stations, might be subject to errors. In many other cases, snowfall and rainfall amounts required for subsequent analyses are simply not available (e.g., not measured). For cases when snowfall and rainfall amounts are not available, TotPrePart provides a methodology for using air temperature and total precipitation to estimate the proportion of snowfall and rainfall associated with total precipitation timeseries (i.e., precipitation partitioning).</h5>
 
                 <h5>Depending on the ambient air temperature, precipitation can fall as rain, snow or as a mix of rain and snow. Hence, for cases when the snowfall data is not directly available, the snowfall portion of the total precipitation is estimated using the following formula:</h5>
 
@@ -156,7 +156,7 @@
                 <br/>
                 <h5>TotPrePart integrates a simple and easy to use method that can be applied to any location for which input data is available. The tool includes routines for validating the output when user-provided calibration data is available. The web-based tool provides various data visualization, analysis and output (i.e., export) options through a streamlined process and a user-friendly interface. The Test Data set allows users to test the various routines and familiarize themselves with the tool.</h5>
 
-                <h5>TotPrePart has a broad range of applicability and can be used for standalone analyses of snow related processes, for generation of critical data for external models that allow for uploading of user-provided snowfall timeseries; or for educational purposes to demonstrate the significance and the dynamics of snowfall or snow-related processes.</h5>
+                <h5>TotPrePart has a broad range of applicability and can be used for standalone analyses of snow and rainfall related processes, for generation of critical data for external models that allow for uploading of user-provided snowfall and rainfall timeseries; or for educational purposes to demonstrate the significance and the dynamics of rainfall, snowfall or rainfall and snowfall dependent processes.</h5>
                 <div class="text-right"><a href="#contents">&rarr; Table of Contents</a></div>        
 
             <li class="pt-5 pb-3 no-marker">
@@ -172,7 +172,7 @@
                 <br/>
                 <br/><h4 class="l2-section" id="chapter_3.1">3.1. Quick start</h4><br/>
 
-                <h5>In order to run Total Precipitation Partitioning Tool (TotPrePart) the user has to complete the following steps:</h5>
+                <h5>In order to run TotPrePart the user has to complete the following steps:</h5>
 
                 <ol class="large-list">
                     <li>
@@ -202,7 +202,7 @@
 
                 <!-- <h5>The Input Data menu entry has five tabs at the top of the page: Info, Load Data, Graphical View, Table View and Export Input Data.</h5> -->
 
-                <h5>The first step in conducting an analysis is to upload the input data file to be used by SNOWFALL. The users can run TotPrePart either by using the test dataset or by uploading a new dataset.</h5>
+                <h5>The first step in conducting an analysis is to upload the input data file to be used by TotPrePart. The users can run TotPrePart either by using the test dataset or by uploading a new dataset.</h5>
              
                 <h5>For testing TotPrePart and better understanding how the various components of the tool operate, the user can upload the test data set provided by clicking on "Try the tool using the test dataset" button. The test dataset contains three years of weather and user calibration data (UCD). Test dataset UCD data consists of snowfall (mm; UCD1; corresponding to TotPrePart SNF (mm) output parameter; UCD1 estimated as the difference between total precipitation and rainfall measured at the Environment and Climate Change Canada (ECCC) weather station located at the Charlottetown Airport, Prince Edward Island, Canada), snowfall (cm; UCD2; corresponding to TotPrePart SNF (cm) output parameter; UCD2 measured at the ECCC weather station located at the Charlottetown Airport, Prince Edward Island, Canada), and rainfall (mm; UCD3; UCD3 measured at the ECCC weather station located at the Charlottetown Airport, Prince Edward Island, Canada).</h5>
 
@@ -306,7 +306,7 @@
 
                 <h5>In the "Calibration mapping" section of the page the users have to select the pairs of tool output and user calibration data that will be used during the calibration of the tool. The "Calibration Mapping" fields can be ignored if the UCD data is not available in the Input Data file.</h5>
 
-                <h5>TotPrePart starts the snowfall and rainfall amount calculations once the values of the required coefficients are set and the user clicks on the Run Analysis button at the bottom of the page.</h5>
+                <h5>TotPrePart starts the calculations once the values of the required coefficients are set and the user clicks on the Run Analysis button at the bottom of the page.</h5>
 
                 <h5>All values entered on this page can be subsequently adjusted during the calibration procedure, with calibration being considered final once no further improvement in the output fitness is observed. See section <a href="#chapter_3.6">3.6</a> for instructions regarding the calibration of the tool and section <a href="#chapter_3.7">3.7</a> for instructions regarding the inspection of datasets using tables and graphs as well as for the various options available for exporting the data. </h5>
                 <div class="text-right"><a href="#contents">&rarr; Table of Contents</a></div>
@@ -347,7 +347,7 @@
                 <br/>
                 <br/><h4 class="l2-section" id="chapter_3.6">3.6. Calibration Procedure</h4><br/>
 
-                <h5>Calibration of the tool is performed via the Analysis tab of ANALYSIS module and is available only when UCD data is included in the Input data file. Calibration is conducted by first pairing the datasets from the output of the tool with the user calibration data (UCD) using the "Calibration mapping" menu available under the "Analysis" tab. Once the pairing is completed, the user can proceed to running the ANALYSIS module (i.e., "Run Snow Analysis" button at the bottom of the Analysis tab page) and inspect the tool output in the subsequent Calibration overlay window. The fitness of the output for various timesteps and averaging intervals can be inspected in the Calibration overlay window via graphs as well as bivariate statistics. If the calibration is considered unsatisfactory the user can return to the Analysis menu (i.e., "Return" button), adjust the various coefficients of the tool and rerun the analysis. If the calibration is considered satisfactory the user can complete the calculations by proceeding to the next step (i.e., "Proceed to results" in the Calibration Overlay window).</h5>                
+                <h5>Calibration of the tool is performed via the Analysis tab of ANALYSIS module and is available only when UCD data is included in the Input data file. Calibration is conducted by first pairing the datasets from the output of the tool with the user calibration data (UCD) using the “Calibration mapping” menu available under the “Analysis” tab. Once the pairing is completed, the user can proceed to adjust coefficients, validate the data (“Validate” button at the bottom of the Analysis page) and run the tool (i.e., “Run Analysis” button at the bottom of the Analysis tab page) and inspect the tool output in the subsequent Calibration overlay window. The fitness of the output for various timesteps and averaging intervals can be inspected in the Calibration overlay window via graphs as well as bivariate statistics. If the calibration is considered unsatisfactory the user can return to the Analysis menu (i.e., “Return” button), adjust the various coefficients of the tool and rerun the analysis. If the calibration is considered satisfactory the user can complete the calculations by proceeding to the next step (i.e., “Proceed to results” in the Calibration Overlay window). </h5>                
 
                 <h5>To aid with data inspection and assessment of the fitness of the output data, TotPrePart includes several univariate and bivariate statistics. Univariate statistics, including, average, minimum, maximum and standard deviation are calculated separately for the input (i.e., user provided calibration data) and tool output time series. The graphs and the univariate statistics can be used for example for comparing the general trends, the range of values and the amplitude of variations in both data sets. The bivariate statistics include the coefficient of determination (R2), root mean square error (RMSE) and the normalized root mean square error (NRMSE). NRMSE is calculated by using the average, the interquartile range or the differences between maximum and minimum (see definitions below). The bivariate statistics are used for evaluating the fitness of the output, by providing a measure of the differences between the values calculated by the tool and the user provided calibration data (i.e., UCD). The equations used for calculating each bivariate statistic are shown below.</h5>
 
@@ -430,7 +430,7 @@
                 </div>
 
                 <br/>
-                <h5>It is recommended that the calibration is conducted by changing one coefficient at a time over a selected range of values. When no further improvement is observed in the output the user can advance to adjusting the values of the next coefficient. The values of the various coefficients can be considered final once no further improvement in the fitness of the data is observed. Currently, only calibration by trial and error is available, however the integration of an autocalibration routine is in planning stages.</h5>
+                <h5>It is recommended that the calibration is conducted by changing one coefficient at a time over a selected range of values. When no further improvement is observed in the fitness of TotPrePart output the user can advance to adjusting the values of the next coefficient. The values of the various coefficients can be considered final once no further improvement in the fitness TotPrePart output is observed. Currently, only calibration by trial and error is available, however the integration of an autocalibration routine is in planning stages.</h5>
                 <div class="text-right"><a href="#contents">&rarr; Table of Contents</a></div>                               
                 
                 <br/>
@@ -462,14 +462,14 @@
                 <h5>Considering the variability of environmental conditions at small scales (e.g., shading, wind sheltering, etc.) the results obtained with TotPrePart are considered to be representative of the "average" environmental conditions for the area from where the source data has been obtained.</h5>
 
                 <br/>
-                <h5>TotPrePart considers only precipitation as snow and rainfall, while other forms of precipitation such as hail, drizzle, snow and ice pellets, etc. are ignored. Typically, these other forms of precipitations represent only a small portion of the annual total precipitation; however, they can be the dominant form of precipitation during certain precipitation events.</h5>
+                <h5>TotPrePart considers only precipitation as snowfall and rainfall, while other forms of precipitation such as hail, drizzle, ice pellets, etc. are ignored. Typically, these other forms of precipitations represent only a small portion of the annual total precipitation; however, they can be the dominant form of precipitation during certain precipitation events.</h5>
                 <div class="text-right"><a href="#contents">&rarr; Table of Contents</a></div>
             </li>
 
             <li class="py-3 no-marker">
                 <h3 class="top-section" id="chapter_5">5. Terms of Use</h3> 
 
-                <h5>Total Precipitation Partitioning Tool (TotPrePart) can be used freely.</h5>
+                <h5>TotPrePart can be used freely.</h5>
 
                 <h5>The authors do not assume any responsibility for the tool's operation, output, interpretation, or use of results.</h5>               
                 <div class="text-right"><a href="#contents">&rarr; Table of Contents</a></div>         
