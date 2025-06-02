@@ -438,7 +438,7 @@
 
 <?php $this->start('snow_analysis_modal'); ?>
 <!-- SNOW ANALYSIS MODAL -->
-<div class="modal fade" id="snowAnalysisModal" tabindex="-1" role="dialog" aria-labelledby="snowAnalysisModalTitle" aria-hidden="true">
+<div class="modal fade" id="snowAnalysisModal" tabindex="-1" role="dialog" aria-labelledby="analysisCompletionRate" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">        
