@@ -687,8 +687,8 @@
                 if (response.success) {
                     // console.log('SUCCESS');
                     $("#cancel-sn-analysis").hide(); // this is found in the analysis modal
-                    $("#return-sn-analysis").show(); // this is found in the analysis modal
-                    $("#complete-sn-analysis").show(); // this is found in the analysis modal
+                    $(".return-sn-analysis").show(); // this is found in the analysis modal
+                    $(".complete-sn-analysis").show(); // this is found in the analysis modal
                     $("#calibTypeMenu").show();
                     $("#analysisCompletionRate").html('COMPLETED');
                 } else {
@@ -700,7 +700,7 @@
                     if (response.user_stopped) {
                         console.log('USER STOPPED');
                         $("#cancel-sn-analysis").hide(); // this is found in the analysis modal
-                        $("#return-sn-analysis").show(); // this is found in the analysis modal
+                        $(".return-sn-analysis").show(); // this is found in the analysis modal
                     }
                 }                
             }).catch(function(){

@@ -441,10 +441,12 @@
 <div class="modal fade" id="snowAnalysisModal" tabindex="-1" role="dialog" aria-labelledby="snowAnalysisModalTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="snowAnalysisModalTitle">Performing Analysis...</h5>
+      <div class="modal-header">        
+        <button type="button" class="btn btn-danger" id="cancel-sn-analysis">STOP ANALYSIS</button>
+        <button type="button" class="btn btn-secondary return-sn-analysis" style="display:none">RETURN</button>
+        <button type="button" class="btn btn-primary complete-sn-analysis" style="display:none">PROCEED TO RESULTS</button>
         <div float="right">
-          <h5 class="modal-title" id="analysisCompletionRate">0 %</h5>
+          <h5 class="modal-title" id="analysisCompletionRate">Performing analysis... 0 %</h5>
         </div>
       </div>
       <div class="modal-body">
@@ -496,9 +498,9 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" id="cancel-sn-analysis">STOP ANALYSIS</button>
-        <button type="button" class="btn btn-secondary" id="return-sn-analysis" style="display:none">RETURN</button>
-        <button type="button" class="btn btn-primary" id="complete-sn-analysis" style="display:none">PROCEED TO RESULTS</button>
+        <!-- <button type="button" class="btn btn-danger" id="cancel-sn-analysis">STOP ANALYSIS</button> -->
+        <button type="button" class="btn btn-secondary return-sn-analysis" style="display:none">RETURN</button>
+        <button type="button" class="btn btn-primary complete-sn-analysis" style="display:none">PROCEED TO RESULTS</button>
       </div>
     </div>
   </div>
@@ -751,9 +753,9 @@ function stopAnalysisRequest() {
       stopAnalysisRequest(); // not interested in a return from this
     }); 
 
-    $("#return-sn-analysis").click(function() {
-      $('#return-sn-analysis').prop('disabled', true);
-      $('#return-sn-analysis').addClass('disabled');
+    $(".return-sn-analysis").click(function() {
+      $('.return-sn-analysis').prop('disabled', true);
+      $('.return-sn-analysis').addClass('disabled');
 
       resetAnalysisRequest().finally(function(){
         window.location.href = '<?= $this->Url->build([
@@ -763,9 +765,9 @@ function stopAnalysisRequest() {
       });
     }); 
 
-    $("#complete-sn-analysis").click(function() {
-      $('#complete-sn-analysis').prop('disabled', true);
-      $('#complete-sn-analysis').addClass('disabled');
+    $(".complete-sn-analysis").click(function() {
+      $('.complete-sn-analysis').prop('disabled', true);
+      $('.complete-sn-analysis').addClass('disabled');
 
       window.location.href = '<?= $this->Url->build([
                         "controller" => "snow",
@@ -849,7 +851,7 @@ function stopAnalysisRequest() {
                   await waitForCalibData();
                   // console.log('will draw graph now...');
                   if ($("#analysisCompletionRate").html() !== 'COMPLETED') {
-                    $("#analysisCompletionRate").html(completionRate + ' %');
+                    $("#analysisCompletionRate").html('Performing analysis... ' + completionRate + ' %');
                   }                  
                   $("#graphWrapper").show();
 
@@ -1321,7 +1323,7 @@ function stopAnalysisRequest() {
                   await waitForCalibData();
                   // console.log('will draw graph now...');
                   if ($("#analysisCompletionRate").html() !== 'COMPLETED') {
-                    $("#analysisCompletionRate").html(completionRate + ' %');
+                    $("#analysisCompletionRate").html('Performing analysis...' + completionRate + ' %');
                   }
                   $("#graphWrapper").show();
 
