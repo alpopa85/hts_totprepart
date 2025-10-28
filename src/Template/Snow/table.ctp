@@ -56,20 +56,20 @@
         <div class="col-6">
             <div class="mb-1 pl-1">Select time step below:</div>
             <select class="custom-select" id="graph_source">
-                <option selected value="1">Snow - Daily</option>
-                <option value="2">Snow - Monthly</option>
-                <option value="10">Snow - Seasons</option>
+                <option selected value="1">Output Data - Daily</option>
+                <option value="2">Output Data - Monthly</option>
+                <option value="10">Output Data - Seasons</option>
                 <?php /* if ($this->isSetGrowthSeason->getFlag()){ ?>
-                <option value="11">Snow - Growing Season</option>
+                <option value="11">Output Data - Growing Season</option>
             <?php } */ ?>
-                <option value="3">Snow - Yearly</option>                                
-                <option value="21">Snow - Typical Year Daily</option>
-                <option value="22">Snow - Typical Year Monthly</option>
-                <option value="24">Snow - Typical Year Seasons</option>
+                <option value="3">Output Data - Yearly</option>                                
+                <option value="21">Output Data - Typical Year Daily</option>
+                <option value="22">Output Data - Typical Year Monthly</option>
+                <option value="24">Output Data - Typical Year Seasons</option>
             <?php /* if ($this->isSetGrowthSeason->getFlag()){ ?>
-                <option value="25">Snow - Typical Year Growing Season</option>
+                <option value="25">Output Data - Typical Year Growing Season</option>
             <?php } */ ?>
-                <option value="23">Snow - Typical Year Average</option>
+                <option value="23">Output Data - Typical Year Average</option>
             </select>
         </div>
     </div>
